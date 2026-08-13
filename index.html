@@ -885,7 +885,7 @@ const IMAGE_NAMES = {
   '07-live-chat': ['07-live-chat.png.png','07-live-chat.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
   '08-live-chat': ['08-live-chat.png.png','08-live-chat.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
   '08-customer-service': ['08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png','08-customer-service.png.png'],
-  'pizzaoffice': ['pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
+  'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
   '09-Sf-case': ['09-Sf-case.png.png','09-Sf-case.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
   'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
 };
@@ -1030,7 +1030,7 @@ function openClaimsInteractiveStudy(){
 
 function openCustomerSupportModal(){
   claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
-  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); modal.classList.add('open'); document.body.style.overflow='hidden';
+  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
 function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
