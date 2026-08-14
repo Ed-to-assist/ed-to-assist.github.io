@@ -464,9 +464,6 @@ body.modal-open{overflow:hidden}
 <section class="background-section container" id="background">
     <div class="section-label">BACKGROUND</div>
     <h2 class="section-title">My Background</h2>
-    <p class="section-intro">
-        A focused version of my professional background tailored to the Customer Experience Specialist role.
-    </p>
 
     <div class="resume-card">
         <img
@@ -537,11 +534,6 @@ body.modal-open{overflow:hidden}
                 <button class="work-open" data-project="email">View 3 Samples →</button>
             </article>
 
-            <article class="work-card">
-                <h3>Live Chat Support</h3>
-                <p>One focused sample demonstrating clarification, verification, issue handling, and follow-through.</p>
-                <button class="work-open" data-project="chat">View Sample →</button>
-            </article>
         </div>
     </div>
 </section>
@@ -818,10 +810,6 @@ const imageSets = {
         "../Images/05-email-support-3.png.png",
         "../Images/05-email-support-3.png"
     ],
-    chat: [
-        "../Images/06-live-chat.png.png",
-        "../Images/06-live-chat.png"
-    ],
     claims: [
         "../Images/09-Sf-case.png",
         "../Images/09-Sf-case.png.png",
@@ -866,7 +854,6 @@ const modalMap = {
     documentation: "documentationModal",
     workflow: "workflowModal",
     email: "emailModal",
-    chat: "chatModal"
 };
 
 function openModal(name){
@@ -899,9 +886,6 @@ function openModal(name){
         showEmail();
     }
 
-    if(name === "chat"){
-        resolveImage(document.getElementById("chatModalImage"), imageSets.chat);
-    }
 }
 
 function closeModal(modal){
