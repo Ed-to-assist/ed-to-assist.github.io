@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Edward | Customer Experience Specialist</title>
+
+    <meta
+        name="description"
+        content="Edward's Customer Experience Specialist profile for Vuelio, highlighting CRM, data operations, customer support, documentation review, issue investigation, and administrative support."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #172b4d;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e3e8ee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            width: min(1180px, 92%);
+            margin: auto;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .logo span {
+            color: #2d78b7;
+        }
+
+        .back-link {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #295f8f;
+            transition: 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #163f63;
+        }
+
+        /* HERO */
+        .hero {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            padding: 75px 0 55px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            color: #2d78b7;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5vw, 4.4rem);
+            line-height: 1.04;
+            max-width: 860px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #2d78b7;
+        }
+
+        .hero-text {
+            max-width: 780px;
+            font-size: 1.08rem;
+            color: #526477;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 19px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: 0.2s ease;
+        }
+
+        .button-primary {
+            background: #173a61;
+            color: #ffffff;
+        }
+
+        .button-primary:hover {
+            background: #102d4a;
+        }
+
+        .button-secondary {
+            background: #ffffff;
+            border: 1px solid #cfd8e2;
+            color: #173a61;
+        }
+
+        .button-secondary:hover {
+            background: #edf3f8;
+        }
+
+        /* VALUE CARDS */
+        .value-section {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            padding-bottom: 45px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .value-card {
+            background: #ffffff;
+            border: 1px solid #e1e7ed;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 8px 24px rgba(23, 43, 77, 0.05);
+        }
+
+        .value-card h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: #657587;
+            font-size: 0.9rem;
+        }
+
+        /* RESUME */
+        .resume-section {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            padding: 30px 0 80px;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #2d78b7;
+            margin-bottom: 7px;
+        }
+
+        .section-heading {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #657587;
+            max-width: 760px;
+            margin-bottom: 30px;
+        }
+
+        .resume-card {
+            background: #ffffff;
+            border: 1px solid #dfe6ed;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 12px 30px rgba(23, 43, 77, 0.08);
+        }
+
+        .resume-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        /* SELECTED WORK */
+        .work-section {
+            background: #ffffff;
+            border-top: 1px solid #e3e8ee;
+            border-bottom: 1px solid #e3e8ee;
+        }
+
+        .work-inner {
+            width: min(1180px, 92%);
+            margin: auto;
+            padding: 70px 0;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .work-card {
+            border: 1px solid #dfe6ed;
+            border-radius: 12px;
+            padding: 24px;
+            background: #f9fbfd;
+        }
+
+        .work-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .work-card p {
+            color: #657587;
+            font-size: 0.92rem;
+            margin-bottom: 15px;
+        }
+
+        .work-card a {
+            color: #2d78b7;
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            width: min(1180px, 92%);
+            margin: auto;
+            padding: 70px 0 90px;
+        }
+
+        .cta {
+            background: #173a61;
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 7px;
+        }
+
+        .cta p {
+            color: #d9e6f2;
+            max-width: 650px;
+        }
+
+        .cta .button {
+            background: #ffffff;
+            color: #173a61;
+            flex-shrink: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #102b47;
+            color: #dce7f1;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.82rem;
+        }
+
+        footer p + p {
+            margin-top: 4px;
+            color: #aebdcb;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .value-grid,
+            .work-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-inner {
+                min-height: 62px;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .value-grid,
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-card {
+                padding: 8px;
+            }
+
+            .cta {
+                padding: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                EDWARD<span>.</span>
+            </div>
+
+            <a href="../index.html" class="back-link">
+                ← Main Portfolio
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="eyebrow">
+                Customer Experience Specialist Application
+            </div>
+
+            <h1>
+                Customer Experience
+                <span>• CRM • Data Operations</span>
+            </h1>
+
+            <p class="hero-text">
+                Customer support and administrative professional with hands-on
+                experience in CRM operations, data entry, documentation review,
+                case follow-up, issue investigation, and client support.
+                I focus on accurate information, clear communication,
+                organized follow-through, and getting requests completed correctly.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#resume" class="button button-primary">
+                    View My Resume
+                </a>
+
+                <a href="../index.html#portfolio" class="button button-secondary">
+                    View My Portfolio
+                </a>
+            </div>
+
+        </section>
+
+        <!-- VALUE -->
+        <section class="value-section">
+
+            <div class="value-grid">
+
+                <div class="value-card">
+                    <h3>Customer Focused</h3>
+                    <p>
+                        Experienced in handling customer requests across
+                        phone, email, chat, and CRM systems.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Detail Oriented</h3>
+                    <p>
+                        Strong background in documentation review,
+                        data accuracy, and record maintenance.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Problem Solver</h3>
+                    <p>
+                        Used to investigating issues, identifying missing
+                        information, and coordinating the next steps.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Reliable Follow-Through</h3>
+                    <p>
+                        Comfortable tracking cases from the initial request
+                        through resolution and follow-up.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RESUME -->
+        <section class="resume-section" id="resume">
+
+            <div class="section-label">
+                Relevant Experience
+            </div>
+
+            <h2 class="section-heading">
+                My Resume
+            </h2>
+
+            <p class="section-description">
+                This version highlights the experience most relevant to
+                customer experience, CRM, data operations, documentation,
+                issue investigation, and administrative support.
+            </p>
+
+            <div class="resume-card">
+
+                <img
+                    src="vuelio-resume.png"
+                    alt="Edward Customer Experience Specialist resume"
+                    class="resume-image"
+                >
+
+            </div>
+
+        </section>
+
+        <!-- WORK -->
+        <section class="work-section">
+
+            <div class="work-inner">
+
+                <div class="section-label">
+                    Selected Work
+                </div>
+
+                <h2 class="section-heading">
+                    Related Portfolio Work
+                </h2>
+
+                <p class="section-description">
+                    Examples from my broader portfolio demonstrating
+                    CRM management, customer support, documentation review,
+                    and administrative workflow experience.
+                </p>
+
+                <div class="work-grid">
+
+                    <div class="work-card">
+                        <h3>CRM Dashboard</h3>
+
+                        <p>
+                            Customer cases, tasks, support activity,
+                            and administrative workflows.
+                        </p>
+
+                        <a href="../index.html#portfolio">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <div class="work-card">
+                        <h3>Customer Profile</h3>
+
+                        <p>
+                            Customer information, case history,
+                            support activity, and record management.
+                        </p>
+
+                        <a href="../index.html#portfolio">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <div class="work-card">
+                        <h3>Documentation Review</h3>
+
+                        <p>
+                            Reviewing submitted information,
+                            identifying missing details, and documenting
+                            the next action.
+                        </p>
+
+                        <a href="../index.html#portfolio">
+                            View Portfolio →
+                        </a>
+                    </div>
+
+                    <div class="work-card">
+                        <h3>Administrative Workflow</h3>
+
+                        <p>
+                            Request received → information review →
+                            verification → data entry → quality check →
+                            follow-up.
+                        </p>
+
+                        <a href="../index.html#portfolio">
+                            View Workflow →
+                        </a>
+                    </div>
+
+                    <div class="work-card">
+                        <h3>Email Support</h3>
+
+                        <p>
+                            Customer inquiries, clear responses,
+                            follow-up, and resolution.
+                        </p>
+
+                        <a href="../index.html#portfolio">
+                            View Samples →
+                        </a>
+                    </div>
+
+                    <div class="work-card">
+                        <h3>Live Chat Support</h3>
+
+                        <p>
+                            Customer clarification, verification,
+                            issue handling, and case follow-up.
+                        </p>
+
+                        <a href="../index.html#portfolio">
+                            View Samples →
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+
+            <div class="cta">
+
+                <div>
+                    <h2>
+                        Reliable Support. Accurate Work.
+                    </h2>
+
+                    <p>
+                        My goal is to provide dependable customer support,
+                        maintain accurate information, and help keep
+                        customer operations organized.
+                    </p>
+                </div>
+
+                <a href="../index.html" class="button">
+                    Main Portfolio →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            Edward • Customer Experience & Administrative Support
+        </p>
+
+        <p>
+            Vuelio-specific application page • Portfolio demonstrations only
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
