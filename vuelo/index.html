@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edward | Customer Experience Specialist</title>
+<title>Customer Experience Specialist</title>
 <meta name="description" content="Vuelio-specific customer experience portfolio for Edward.">
 
 <style>
@@ -40,12 +40,6 @@ header{
     font-weight:800;
     letter-spacing:.1em;
     text-transform:uppercase;
-}
-.contact-email{
-    color:#526477;
-    font-weight:700;
-    letter-spacing:0;
-    text-transform:none;
 }
 
 .hero,.value-section,.resume-section,.work-inner,.cta-section{
@@ -424,6 +418,11 @@ footer p+p{margin-top:4px;color:#aebdcb}
     .cta{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:640px){
+    .header-inner{align-items:flex-start;padding:10px 0;flex-direction:column;gap:8px}
+    .header-email{font-size:.82rem}
+    .documentation-image-grid{grid-template-columns:1fr}
+    .contact-card-large{flex-direction:column;align-items:flex-start}
+
     .documentation-image-grid{grid-template-columns:1fr;}
     .hero{padding-top:52px}
     .value-grid,.work-grid,.case-grid{grid-template-columns:1fr}
@@ -433,16 +432,92 @@ footer p+p{margin-top:4px;color:#aebdcb}
     .cta{padding:28px}
     .claims-frame{height:70vh;min-height:520px}
 }
+
+.contact-button{
+    background:#fff;
+    color:#173a61;
+    border:1px solid #c9d7e4;
+}
+.contact-button:hover{
+    background:#edf4f9;
+}
+.contact-note{
+    margin-top:16px;
+    color:#617385;
+    font-size:.88rem;
+}
+.contact-note a{
+    color:#2d78b7;
+    font-weight:800;
+}
+.contact-dot{
+    display:inline-block;
+    width:8px;
+    height:8px;
+    margin-right:7px;
+    border-radius:50%;
+    background:#2d78b7;
+}
+
+
+.contact-section{
+    width:min(1180px,92%);
+    margin:auto;
+    padding:0 0 80px;
+}
+.contact-card-large{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    padding:30px;
+    background:#fff;
+    border:1px solid #dfe6ed;
+    border-radius:16px;
+    box-shadow:0 10px 26px rgba(23,43,77,.06);
+}
+.contact-card-large h2{
+    margin:0 0 7px;
+    font-size:1.65rem;
+}
+.contact-card-large p{
+    margin:0;
+    max-width:650px;
+    color:#657587;
+}
+.email-action{
+    flex-shrink:0;
+    padding:13px 17px;
+    border-radius:9px;
+    background:#173a61;
+    color:#fff;
+    font-weight:800;
+}
+.email-action:hover{background:#102d4a}
+.image-missing{
+    min-height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#657587;
+    font-size:.9rem;
+}
+
 </style>
 </head>
 
 <body>
 
+
 <header>
     <div class="header-inner">
-        <div class="header-label">Customer Experience Specialist Application <span class="contact-email">• edapalla@zohomail.com</span></div>
+        <div class="header-label">CUSTOMER EXPERIENCE SPECIALIST APPLICATION</div>
+        <a class="header-email" href="mailto:edapalla@zohomail.com">
+            ✉ edapalla@zohomail.com
+        </a>
     </div>
 </header>
+
 
 <main>
 
@@ -463,6 +538,11 @@ footer p+p{margin-top:4px;color:#aebdcb}
     <div class="hero-buttons">
         <a class="button primary" href="#resume">View My Resume</a>
         <a class="button secondary" href="#work">View Related Work</a>
+        <a class="button contact-button" href="mailto:edapalla@zohomail.com">✉ Email Me</a>
+    </div>
+    <div class="contact-note">
+        <span class="contact-dot"></span>
+        Direct contact: <a href="mailto:edapalla@zohomail.com">edapalla@zohomail.com</a>
     </div>
 </section>
 
@@ -583,6 +663,23 @@ footer p+p{margin-top:4px;color:#aebdcb}
 
 </main>
 
+
+<section class="contact-section">
+    <div class="contact-card-large">
+        <div>
+            <div class="section-label">DIRECT CONTACT</div>
+            <h2>Let's connect about the role.</h2>
+            <p>
+                For questions, interview scheduling, or application follow-up,
+                you can reach me directly by email.
+            </p>
+        </div>
+        <a class="email-action" href="mailto:edapalla@zohomail.com">
+            ✉ edapalla@zohomail.com
+        </a>
+    </div>
+</section>
+
 <footer>
     <p>Edward • Customer Experience & Administrative Support</p>
     <p>Vuelio-specific application page • Fictional portfolio demonstrations only</p>
@@ -689,27 +786,23 @@ footer p+p{margin-top:4px;color:#aebdcb}
         </p>
 
         <div class="documentation-image-grid">
-
             <div class="documentation-image-card">
                 <div class="documentation-image-title">Documentation Review</div>
                 <img
+                    id="documentationImage1"
                     class="documentation-main-image"
-                    src="../Images/documentation-review.png"
-                    alt="Documentation Review"
-                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='../Images/documentation-review.png.png';}else{this.alt='Documentation Review image not found';}"
+                    alt="Documentation Review portfolio example"
                 >
             </div>
 
             <div class="documentation-image-card">
                 <div class="documentation-image-title">Claims / Receipt Review</div>
                 <img
+                    id="documentationImage2"
                     class="documentation-main-image"
-                    src="../Images/claims-review.png"
-                    alt="Claims Review"
-                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='../Images/claims-review.png.png';}else{this.alt='Claims Review image not found';}"
+                    alt="Claims and receipt review portfolio example"
                 >
             </div>
-
         </div>
 
         <div class="case-grid">
@@ -826,9 +919,8 @@ footer p+p{margin-top:4px;color:#aebdcb}
             <img
                 id="chatImage"
                 class="modal-main-image"
-                src="../Images/06-live-chat.png.png"
+                src=""
                 alt="Live Chat Support"
-                onerror="this.onerror=null;this.src='../Images/06-live-chat.png';"
             >
         </div>
 
@@ -856,43 +948,35 @@ footer p+p{margin-top:4px;color:#aebdcb}
 </div>
 
 <script>
-const emailSamples = [
-    "../Images/05-email-support-1.png.png",
-    "../Images/05-email-support-2.png.png",
-    "../Images/05-email-support-3.png.png"
+const SITE_ROOT = "https://ed-to-assist.github.io";
+const IMAGE_ROOTS = [
+    "../Images/",
+    "./Images/",
+    SITE_ROOT + "/Images/"
 ];
 
-const emailFallbacks = [
-    "../Images/05-email-support-1.png",
-    "../Images/05-email-support-2.png",
-    "../Images/05-email-support-3.png"
+const IMAGE_EXTENSIONS = [
+    ".png",
+    ".png.png",
+    ".jpg",
+    ".jpeg",
+    ".webp"
+];
+
+const emailSamples = [
+    "05-email-support-1",
+    "05-email-support-2",
+    "05-email-support-3"
 ];
 
 const chatSamples = [
-    "../Images/06-live-chat.png.png",
-    "../Images/07-live-chat.png"
+    "06-live-chat",
+    "07-live-chat"
 ];
 
-const chatFallbacks = [
-    "../Images/06-live-chat.png",
-    "../Images/07-live-chat.png.png"
-];
-
-const chatAlternate = [
-    [
-        "../Images/06-live-chat.png.png",
-        "../Images/06-live-chat.png",
-        "../Images/06-live-chat.jpg",
-        "../Images/06-live-chat.jpeg",
-        "../Images/06-live-chat.webp"
-    ],
-    [
-        "../Images/07-live-chat.png",
-        "../Images/07-live-chat.png.png",
-        "../Images/07-live-chat.jpg",
-        "../Images/07-live-chat.jpeg",
-        "../Images/07-live-chat.webp"
-    ]
+const documentationSamples = [
+    "documentation-review",
+    "claims-review"
 ];
 
 let emailIndex = 0;
@@ -906,62 +990,90 @@ const chatImage = document.getElementById("chatImage");
 const chatCounter = document.getElementById("chatCounter");
 const chatCaption = document.getElementById("chatCaption");
 
-function loadWithFallback(img, primary, fallback, altText, failureText){
-    img.onerror = function(){
-        if(this.src.endsWith(fallback)){
-            this.onerror = null;
-            this.removeAttribute("src");
-            this.alt = failureText;
+const documentationImage1 = document.getElementById("documentationImage1");
+const documentationImage2 = document.getElementById("documentationImage2");
+
+function makeCandidates(baseName){
+    const candidates = [];
+    IMAGE_ROOTS.forEach(root => {
+        IMAGE_EXTENSIONS.forEach(ext => {
+            candidates.push(root + baseName + ext);
+        });
+    });
+    return [...new Set(candidates)];
+}
+
+function loadImage(img, baseNames, failMessage){
+    if(!img) return;
+
+    const names = Array.isArray(baseNames) ? baseNames : [baseNames];
+    const candidates = [];
+
+    names.forEach(name => {
+        candidates.push(...makeCandidates(name));
+    });
+
+    let index = 0;
+
+    function next(){
+        if(index >= candidates.length){
+            img.removeAttribute("src");
+            img.alt = failMessage;
+            img.classList.add("image-missing");
             return;
         }
-        this.src = fallback;
-    };
-    img.src = primary;
-    img.alt = altText;
+
+        const url = candidates[index++];
+        const probe = new Image();
+
+        probe.onload = () => {
+            img.src = url;
+            img.classList.remove("image-missing");
+        };
+
+        probe.onerror = next;
+        probe.src = url;
+    }
+
+    next();
 }
 
 function showEmail(){
-    loadWithFallback(
+    loadImage(
         emailImage,
         emailSamples[emailIndex],
-        emailFallbacks[emailIndex],
-        "Email Support Sample",
-        "Email Support image could not be found."
+        "Email Support sample could not be loaded."
     );
+
     emailCounter.textContent = `${emailIndex + 1} / ${emailSamples.length}`;
     emailCaption.textContent =
         `Email Support sample ${emailIndex + 1} of ${emailSamples.length}.`;
 }
 
 function showChat(){
-    const candidates = chatAlternate[chatIndex];
-    let i = 0;
+    loadImage(
+        chatImage,
+        chatSamples[chatIndex],
+        "Live Chat sample could not be loaded."
+    );
 
-    function tryNext(){
-        if(i >= candidates.length){
-            chatImage.removeAttribute("src");
-            chatImage.alt = "Live Chat image could not be found.";
-            chatCaption.textContent =
-                `Live Chat sample ${chatIndex + 1} could not be loaded.`;
-            return;
-        }
-
-        const test = new Image();
-        const candidate = candidates[i++];
-
-        test.onload = () => {
-            chatImage.src = candidate;
-            chatImage.alt = "Live Chat Support Sample";
-            chatCaption.textContent =
-                `Live Chat sample ${chatIndex + 1} of ${chatSamples.length}.`;
-        };
-
-        test.onerror = tryNext;
-        test.src = candidate;
-    }
-
-    tryNext();
     chatCounter.textContent = `${chatIndex + 1} / ${chatSamples.length}`;
+    chatCaption.textContent =
+        `Live Chat sample ${chatIndex + 1} of ${chatSamples.length}.`;
+}
+
+function showDocumentation(){
+    loadImage(
+        documentationImage1,
+        documentationSamples[0],
+        "Documentation Review image could not be loaded."
+    );
+
+    loadImage(
+        documentationImage2,
+        documentationSamples[1],
+        "Claims / Receipt review image could not be loaded."
+    );
 }
 
 document.getElementById("emailPrev").addEventListener("click",function(e){
@@ -998,6 +1110,7 @@ document.querySelectorAll(".work-button").forEach(button=>{
 
         if(button.dataset.modal === "emailModal") showEmail();
         if(button.dataset.modal === "chatModal") showChat();
+        if(button.dataset.modal === "documentationModal") showDocumentation();
     });
 });
 
