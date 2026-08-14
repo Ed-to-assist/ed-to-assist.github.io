@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Connect | Edward Portfolio</title>
+<!-- Local image source: C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images -->
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f6f8;
+    color:#172033;
+    line-height:1.5;
+}
+body.dark{background:#0d1524;color:#f1f5f9}
+
+.navbar{
+    position:sticky;top:0;z-index:1000;height:66px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 6.5%;background:rgba(255,255,255,.96);
+    border-bottom:1px solid #e2e6ec;backdrop-filter:blur(12px)
+}
+body.dark .navbar{background:rgba(13,21,36,.96);border-color:#26364f}
+.logo{font-size:21px;font-weight:800;letter-spacing:2px}
+.logo span{color:#4963ed}
+.logo.connect-brand{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    text-decoration:none;
+    line-height:1.05;
+    letter-spacing:0;
+}
+.connect-label{
+    color:#18213f;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:1.8px;
+}
+.connect-email{
+    color:#596b91;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:.1px;
+}
+.connect-brand:hover .connect-label{
+    color:#4963ed;
+}
+.connect-brand:hover .connect-email{
+    color:#18213f;
+}
+
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-links{display:flex;gap:27px}
+.nav-links a{text-decoration:none;color:inherit;font-size:13px;font-weight:700}
+.nav-links a:hover{color:#4963ed}
+.theme-button{
+    width:38px;height:38px;border:1px solid #d5dce6;border-radius:9px;
+    background:white;cursor:pointer;font-size:16px
+}
+body.dark .theme-button{background:#172235;border-color:#34445d;color:white}
+
+.hero{
+    min-height:620px;display:grid;
+    grid-template-columns:minmax(0,1fr) 480px;
+    align-items:center;gap:70px;padding:70px 8%;
+    background:radial-gradient(circle at 80% 25%,#e3ebff 0,transparent 35%),
+               linear-gradient(135deg,#fafbfc,#eef2f7)
+}
+body.dark .hero{
+    background:radial-gradient(circle at 80% 25%,#203b67 0,transparent 35%),
+               linear-gradient(135deg,#0d1524,#111d31)
+}
+.hero-content{max-width:650px}
+.eyebrow{margin-bottom:20px;color:#4963ed;font-size:11px;font-weight:800;letter-spacing:1.6px}
+.hero h1{
+    margin-bottom:24px;font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(48px,5.5vw,72px);line-height:1.02;letter-spacing:-2px
+}
+.hero h1 span{color:#4963ed}
+.hero-description{max-width:610px;color:#61718a;font-size:17px;line-height:1.8}
+body.dark .hero-description{color:#aebbd0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:29px}
+
+.primary-button,.secondary-button{
+    min-height:45px;display:inline-flex;align-items:center;justify-content:center;
+    padding:0 20px;border-radius:9px;text-decoration:none;font-size:13px;font-weight:700
+}
+.primary-button{background:#4963ed;color:white}
+.primary-button:hover{background:#3e56d4}
+.secondary-button{background:white;color:#172033;border:1px solid #ccd5e1}
+body.dark .secondary-button{background:#172235;color:white;border-color:#34445d}
+
+.cover-card{
+    width:100%;max-width:480px;background:#fff;border:1px solid #dfe4ea;
+    border-radius:18px;padding:15px;box-shadow:0 25px 60px rgba(30,45,70,.14)
+}
+body.dark .cover-card{background:#172235;border-color:#2d3c55}
+.cover-image{
+    display:block;width:100%;height:390px;object-fit:cover;
+    object-position:center;border-radius:10px;background:#edf1f5
+}
+.cover-caption{padding:17px 8px 7px}
+.cover-caption strong{display:block;margin-bottom:4px;font-size:15px}
+.cover-caption span{color:#718198;font-size:12px}
+body.dark .cover-caption span{color:#aebbd0}
+
+.section{width:86%;max-width:1240px;margin:auto;padding:85px 0}
+.section-header{margin-bottom:34px}
+.section-label{margin-bottom:7px;color:#4963ed;font-size:11px;font-weight:800;letter-spacing:1.5px}
+.section-header h2{
+    margin-bottom:10px;font-family:Georgia,"Times New Roman",serif;
+    font-size:42px;line-height:1.1
+}
+.section-header p{max-width:700px;color:#68788f;font-size:15px;line-height:1.7}
+body.dark .section-header p{color:#aebbd0}
+
+.strength-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px}
+.strength{min-height:145px;padding:22px;background:white;border:1px solid #e0e5eb;border-radius:13px}
+body.dark .strength{background:#172235;border-color:#2d3c55}
+.strength-icon{
+    width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;border-radius:50%;background:#eef2ff;color:#4963ed;font-weight:800
+}
+.strength h3{margin-bottom:7px;font-size:14px}
+.strength p{color:#718198;font-size:12px;line-height:1.6}
+body.dark .strength p{color:#aebbd0}
+
+.background-section{background:#fff;border-top:1px solid #e4e7ec;border-bottom:1px solid #e4e7ec}
+body.dark .background-section{background:#111d31;border-color:#26364f}
+.background-grid{
+    display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:50px;align-items:center
+}
+.background-image{
+    width:100%;display:block;border:1px solid #dfe4ea;border-radius:12px;
+    box-shadow:0 15px 35px rgba(25,40,65,.08);cursor:zoom-in
+}
+.background-copy h3{
+    margin-bottom:15px;font-family:Georgia,"Times New Roman",serif;font-size:28px
+}
+.background-copy p{margin-bottom:18px;color:#63748d;font-size:15px;line-height:1.8}
+body.dark .background-copy p{color:#aebbd0}
+
+.skills-section{background:#f1f3f6}
+body.dark .skills-section{background:#0d1524}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.skill{
+    min-height:55px;display:flex;align-items:center;padding:14px 17px;
+    background:white;border:1px solid #dfe4ea;border-radius:10px;
+    font-size:13px;font-weight:700
+}
+body.dark .skill{background:#172235;border-color:#2d3c55}
+.clickable-skill{
+    position:relative;cursor:pointer;
+    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease
+}
+.clickable-skill:hover{
+    transform:translateY(-3px);border-color:#4963ed;
+    box-shadow:0 8px 20px rgba(73,99,237,.12);color:#4963ed
+}
+.skill-arrow{margin-left:auto;color:#4963ed;font-size:16px;font-weight:800}
+
+.portfolio-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filter-button{
+    padding:9px 16px;background:white;color:#172033;border:1px solid #d4dce7;
+    border-radius:8px;cursor:pointer;font-size:12px;font-weight:700
+}
+body.dark .filter-button{background:#172235;color:white;border-color:#34445d}
+.filter-button.active{background:#4963ed;border-color:#4963ed;color:white}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.portfolio-card{
+    display:flex;flex-direction:column;overflow:hidden;background:white;
+    border:1px solid #dfe4ea;border-radius:15px;cursor:pointer;
+    transition:transform .2s ease,box-shadow .2s ease
+}
+body.dark .portfolio-card{background:#172235;border-color:#2d3c55}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(30,45,70,.12)}
+.portfolio-image-box{width:100%;height:285px;overflow:hidden;background:#edf1f5}
+.portfolio-image{width:100%;height:100%;display:block;object-fit:cover}
+.portfolio-info{min-height:185px;display:flex;flex-direction:column;padding:22px}
+.portfolio-category{margin-bottom:7px;color:#4963ed;font-size:10px;font-weight:800;letter-spacing:1.1px}
+.portfolio-info h3{margin-bottom:8px;font-size:21px}
+.portfolio-info p{color:#68788f;font-size:13px;line-height:1.6}
+body.dark .portfolio-info p{color:#aebbd0}
+.portfolio-link{margin-top:auto;padding-top:16px;color:#4963ed;font-size:13px;font-weight:800}
+
+.cta{
+    display:flex;align-items:center;justify-content:space-between;gap:30px;
+    padding:45px 48px;background:linear-gradient(135deg,#193760,#4963ed);
+    border-radius:18px;color:white
+}
+.cta h2{margin-bottom:8px;font-family:Georgia,"Times New Roman",serif;font-size:32px}
+.cta p{max-width:650px;opacity:.86;font-size:14px;line-height:1.6}
+.cta-button{
+    flex-shrink:0;padding:13px 20px;background:white;border-radius:9px;
+    color:#193760;text-decoration:none;font-size:13px;font-weight:800
+}
+
+/* IN-PAGE MODAL */
+
+.claims-site-frame{
+    width:100%;
+    height:min(78vh, 760px);
+    min-height:520px;
+    border:0;
+    border-radius:14px;
+    background:#fff;
+    display:block;
+}
+.claims-images-wrap{
+    padding:24px;
+    background:#f7f8fb;
+}
+.claims-section-heading{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    margin:2px 2px 18px;
+}
+.claims-step{
+    flex:0 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#5b55f6;
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.08em;
+}
+.claims-section-heading h3{
+    margin:0 0 4px;
+    font-size:18px;
+    color:#18233b;
+}
+.claims-section-heading p{
+    margin:0;
+    font-size:13px;
+    line-height:1.5;
+    color:#687286;
+}
+.claims-evidence-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+.claims-image-card{
+    background:#fff;
+    border:1px solid #e1e5ec;
+    border-radius:14px;
+    padding:11px;
+    box-shadow:0 8px 24px rgba(24,35,59,.06);
+}
+.claims-image-name{
+    font-size:12px;
+    font-weight:800;
+    color:#18233b;
+    padding:5px 7px 10px;
+}
+.claims-support-image{
+    width:100%;
+    height:380px;min-height:380px;
+    object-fit:contain;
+    display:block;
+    border-radius:9px;
+    background:#f1f3f6;
+}
+.claims-next-note{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+    padding:14px 16px;
+    border:1px solid #dfe3eb;
+    border-radius:12px;
+    background:#fff;
+}
+.claims-next-note span{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#5b55f6;
+}
+.claims-next-note strong{
+    font-size:13px;
+    color:#18233b;
+    margin-right:auto;
+}
+.claims-next-note button{
+    border:0;
+    border-radius:8px;
+    padding:9px 13px;
+    background:#5b55f6;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+.claims-next-note button:hover{
+    filter:brightness(.96);
+}
+@media (max-width:700px){
+    .claims-evidence-grid{
+        grid-template-columns:1fr;
+    }
+    .claims-support-image{
+        height:300px;
+    }
+    .claims-next-note{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+    .claims-next-note strong{
+        margin-right:0;
+        width:100%;
+    }
+}
+.claims-site-status{
+    display:none;
+    padding:40px 24px;
+    text-align:center;
+    color:#5b6475;
+}
+.modal{
+    position:fixed;inset:0;z-index:3000;display:none;align-items:center;
+    justify-content:center;padding:20px;background:rgba(5,12,25,.88)
+}
+.modal.open{display:flex}
+.modal-box{
+    position:relative;width:96vw;max-width:1500px;max-height:94vh;
+    overflow:hidden;background:white;border-radius:13px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35)
+}
+.modal-image{
+    width:100%;max-height:91vh;display:block;object-fit:contain;
+    background:#f4f5f7
+}
+.modal-close{
+    position:absolute;top:12px;right:12px;z-index:5;width:40px;height:40px;
+    border:none;border-radius:50%;background:rgba(0,0,0,.75);color:white;
+    font-size:24px;cursor:pointer
+}
+.modal-title{
+    position:absolute;left:16px;top:16px;z-index:4;
+    padding:8px 12px;border-radius:7px;background:rgba(0,0,0,.7);
+    color:white;font-size:12px;font-weight:700
+}
+.email-controls{
+    position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+    display:none;align-items:center;gap:8px;padding:7px;background:rgba(0,0,0,.78);
+    border-radius:9px
+}
+.email-controls.show{display:flex}
+.email-controls button{
+    padding:8px 12px;border:none;border-radius:6px;background:rgba(255,255,255,.15);
+    color:white;cursor:pointer;font-size:12px;font-weight:700
+}
+.counter{padding:0 7px;color:white;font-size:11px;font-weight:700}
+
+footer{padding:32px 20px;background:#101c2e;color:white;text-align:center;font-size:12px;line-height:1.7}
+footer p+p{opacity:.65}
+
+@media(max-width:1000px){
+    .hero{grid-template-columns:1fr;gap:45px}
+    .cover-card{max-width:560px}
+    .background-grid{grid-template-columns:1fr;gap:35px}
+    .strength-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:750px){
+    .portfolio-grid{grid-template-columns:1fr}
+    .cta{flex-direction:column;align-items:flex-start}
+    .nav-links{display:none}
+}
+@media(max-width:600px){
+    .hero{padding:55px 6%}
+    .hero h1{font-size:43px;letter-spacing:-1.5px}
+    .section{width:90%;padding:65px 0}
+    .section-header h2{font-size:34px}
+    .cover-image{height:350px}
+    .strength-grid{grid-template-columns:1fr}
+    .skills-grid{grid-template-columns:1fr}
+    .portfolio-image-box{height:auto;aspect-ratio:16/9}
+    .cta{padding:35px}
+    .modal{padding:8px}
+}
+</style>
+<style>
+/* Hero + About combined layout */
+.hero-with-about{
+    padding-top:72px !important;
+    padding-bottom:72px !important;
+}
+.hero-about-layout{
+    width:min(1280px, calc(100% - 80px));
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(420px, .9fr);
+    gap:56px;
+    align-items:center;
+}
+.hero-main-content{
+    min-width:0;
+}
+.hero-about-panel{
+    min-width:0;
+    padding:0 !important;
+    margin:0 !important;
+}
+.hero-about-panel > *{
+    max-width:none;
+}
+.hero-about-panel .container,
+.hero-about-panel .inner,
+.hero-about-panel .section-inner{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+.hero-about-panel h2{
+    margin-top:0;
+}
+.hero-about-panel .cards,
+.hero-about-panel .about-grid,
+.hero-about-panel .features,
+.hero-about-panel .benefits-grid{
+    width:100%;
+}
+.hero-about-panel .section-label{
+    margin-top:0;
+}
+
+/* Hide the old standalone-cover image if a legacy selector remains. */
+.hero-with-about img[src*="01-cover"],
+.hero-with-about img[src*="01_cover"]{
+    display:none !important;
+}
+
+@media (max-width:1000px){
+    .hero-about-layout{
+        grid-template-columns:1fr;
+        gap:42px;
+        width:min(900px, calc(100% - 48px));
+        align-items:start;
+    }
+    .hero-with-about{
+        padding-top:56px !important;
+        padding-bottom:56px !important;
+    }
+}
+
+@media (max-width:600px){
+    .hero-about-layout{
+        width:calc(100% - 32px);
+        gap:34px;
+    }
+}
+</style>
+
+<style>
+/* Expanded hero + About presentation */
+.hero-with-about{
+    min-height:680px !important;
+    padding:76px 4.5% !important;
+    display:flex !important;
+    align-items:center !important;
+}
+.hero-about-layout{
+    width:min(1440px, 100%) !important;
+    margin:0 auto !important;
+    display:grid !important;
+    grid-template-columns:minmax(500px, .88fr) minmax(680px, 1.12fr) !important;
+    gap:76px !important;
+    align-items:center !important;
+}
+.hero-main-content{
+    max-width:620px !important;
+}
+.hero-main-content .hero-content{
+    max-width:620px !important;
+}
+.hero-main-content .eyebrow{
+    max-width:590px;
+    margin-bottom:22px;
+}
+.hero-main-content .hero h1,
+.hero-main-content h1{
+    font-size:clamp(58px, 5.2vw, 82px) !important;
+    line-height:1.01 !important;
+    margin-bottom:28px !important;
+}
+.hero-main-content .hero-description{
+    max-width:570px !important;
+    font-size:18px !important;
+    line-height:1.85 !important;
+}
+.hero-main-content .hero-actions{
+    margin-top:34px !important;
+}
+.hero-about-panel{
+    width:100% !important;
+    padding:18px 0 !important;
+}
+.hero-about-panel .section-header{
+    margin-bottom:34px !important;
+}
+.hero-about-panel .section-header h2{
+    font-size:clamp(42px, 4vw, 58px) !important;
+    margin-bottom:14px !important;
+}
+.hero-about-panel .section-header p{
+    max-width:650px !important;
+    font-size:16px !important;
+    line-height:1.75 !important;
+}
+.hero-about-panel .strength-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:18px !important;
+    margin-top:0 !important;
+}
+.hero-about-panel .strength{
+    min-height:175px !important;
+    padding:25px !important;
+    border-radius:16px !important;
+    box-shadow:0 10px 28px rgba(30,45,70,.055);
+}
+.hero-about-panel .strength-icon{
+    width:40px !important;
+    height:40px !important;
+    margin-bottom:15px !important;
+}
+.hero-about-panel .strength h3{
+    font-size:15px !important;
+    margin-bottom:8px !important;
+}
+.hero-about-panel .strength p{
+    max-width:290px;
+    font-size:13px !important;
+    line-height:1.65 !important;
+}
+@media (max-width:1250px){
+    .hero-about-layout{
+        grid-template-columns:minmax(430px, .9fr) minmax(560px, 1.1fr) !important;
+        gap:50px !important;
+    }
+}
+@media (max-width:1000px){
+    .hero-with-about{
+        min-height:auto !important;
+        padding:64px 6% !important;
+    }
+    .hero-about-layout{
+        width:100% !important;
+        grid-template-columns:1fr !important;
+        gap:58px !important;
+    }
+    .hero-main-content,.hero-main-content .hero-content{
+        max-width:760px !important;
+    }
+    .hero-about-panel{
+        padding:0 !important;
+    }
+}
+@media (max-width:650px){
+    .hero-with-about{padding:52px 6% !important}
+    .hero-about-layout{gap:42px !important}
+    .hero-main-content .hero h1,.hero-main-content h1{font-size:48px !important}
+    .hero-main-content .hero-description{font-size:16px !important}
+    .hero-about-panel .strength-grid{grid-template-columns:1fr !important}
+    .hero-about-panel .strength{min-height:150px !important}
+}
+</style>
+
+<style>
+.customer-support-wrap{padding:28px;background:#f7f8fb}.customer-support-heading{margin-bottom:22px}.customer-support-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:#4963ed}.customer-support-heading h3{font-size:25px;margin:5px 0 7px}.customer-support-heading p{font-size:13px;color:#68788f;max-width:760px}.customer-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.customer-support-card{background:#fff;border:1px solid #dfe4ea;border-radius:14px;padding:12px;box-shadow:0 8px 24px rgba(24,35,59,.06)}.customer-support-image{width:100%;height:360px;object-fit:contain;border-radius:9px;background:#f1f3f6;display:block}.customer-support-caption{padding:10px 4px 2px;font-size:12px;font-weight:700;color:#18233b}.customer-support-footer{margin-top:18px;padding:15px 16px;border:1px solid #dfe3eb;border-radius:12px;background:#fff;display:flex;align-items:center;gap:15px}.customer-support-footer strong{margin-right:auto;font-size:13px}.customer-support-footer a{padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}@media(max-width:700px){.customer-support-grid{grid-template-columns:1fr}.customer-support-image{height:300px}.customer-support-footer{flex-direction:column;align-items:flex-start}.customer-support-footer strong{margin-right:0}}</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a class="logo connect-brand" href="mailto:edapalla@zohomail.com" aria-label="Email Edward at edapalla@zohomail.com">
+    <span class="connect-label">LET'S CONNECT • HOW CAN I HELP?</span>
+    <span class="connect-email">edapalla@zohomail.com</span>
+</a>
+    <div class="nav-right">
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#background">Background</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#expertise">Expertise</a>
+        </nav>
+        <button class="theme-button" id="themeButton" type="button">☾</button>
+    </div>
+</header>
+
+<section class="hero hero-with-about">
+<div class="hero-about-layout">
+    <div class="hero-main-content">
+        
+    <div class="hero-content">
+        <div class="eyebrow">CUSTOMER SUPPORT • BENEFITS ADMINISTRATION • ADMINISTRATIVE SUPPORT</div>
+        <h1>Hello,<br>My name is<br><span>Edward.</span></h1>
+        <p class="hero-description">
+            Customer support and administrative professional focused on accurate work,
+            organized documentation, clear customer communication, and dependable follow-through.
+        </p>
+        <div class="hero-actions">
+            <a href="#portfolio" class="primary-button">View My Work →</a>
+            <a href="#background" class="secondary-button">View My Background</a>
+        </div>
+    </div>
+
+    
+
+    </div>
+    <div class="hero-about-panel">
+    <div class="section-header">
+        <div class="section-label">ABOUT</div>
+        <h2>What I Bring</h2>
+        <p>A practical approach to customer support, documentation, administrative work, and day-to-day customer operations.</p>
+    </div>
+
+    <div class="strength-grid">
+        <div class="strength"><div class="strength-icon">✓</div><h3>Customer Focused</h3><p>Listen carefully, understand the issue, and provide clear and useful assistance.</p></div>
+        <div class="strength"><div class="strength-icon">□</div><h3>Detail Oriented</h3><p>Careful with customer records, documentation, data entry, and administrative details.</p></div>
+        <div class="strength"><div class="strength-icon">+</div><h3>Problem Solving</h3><p>Review information, identify what is needed, and work toward practical solutions.</p></div>
+        <div class="strength"><div class="strength-icon">✓</div><h3>Reliable Support</h3><p>Follow processes, keep records organized, and follow through on customer requests.</p></div>
+    </div>
+</div>
+</div>
+</section>
+
+
+
+<section class="background-section" id="background">
+    <div class="section">
+        <div class="section-header">
+            <div class="section-label">BACKGROUND</div>
+            <h2>My Background</h2>
+            <p>Click the image below to view the full professional background.</p>
+        </div>
+
+        <div class="background-grid">
+            <div>
+                <img src="" data-image-base="02-about" class="background-image" id="backgroundImage"
+                     alt="Edward professional background">
+            </div>
+
+            <div class="background-copy">
+                <h3>Customer Support &amp; Administrative Experience</h3>
+                <p>My professional background combines customer service, benefits administration, administrative support, documentation, and data coordination.</p>
+                <p>My work has included customer inquiries, account updates, documentation review, data entry, claims and invoice review, and coordination with internal teams and external partners.</p>
+                <p>I am particularly comfortable with work that requires accuracy, organization, careful documentation, and established processes.</p>
+                <a href="#portfolio" class="primary-button">See My Work →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section skills-section" id="expertise">
+    <div class="section-header">
+        <div class="section-label">EXPERTISE</div>
+        <h2>Core Skills</h2>
+        <p>Click a highlighted skill to see a corresponding portfolio example.</p>
+    </div>
+
+    <div class="skills-grid">
+
+        <div class="skill clickable-skill" data-skill="customer-service">
+            Customer &amp; Phone Support <span class="skill-arrow">→</span>
+        </div>
+
+        <div class="skill clickable-skill" data-skill="benefits">
+            Benefits Administration <span class="skill-arrow">→</span>
+        </div>
+
+        <div class="skill clickable-skill" data-skill="crm">
+            CRM Management <span class="skill-arrow">→</span>
+        </div>
+
+        <div class="skill clickable-skill" data-skill="email">
+            Email Support <span class="skill-arrow">→</span>
+        </div>
+
+        <div class="skill clickable-skill" data-skill="chat">
+            Live Chat Support <span class="skill-arrow">→</span>
+        </div>
+
+        <div class="skill">Administrative Support</div>
+        <div class="skill">Documentation Review</div>
+        <div class="skill">Data Entry</div>
+        <div class="skill clickable-skill" data-skill="claims">
+            Claims &amp; Case Review <span class="skill-arrow">→</span>
+        </div>
+        <div class="skill">Microsoft Office</div>
+        <div class="skill">Google Workspace</div>
+        <div class="skill">Process Coordination</div>
+
+    </div>
+</section>
+
+<section class="section" id="portfolio">
+    <div class="section-header">
+        <div class="section-label">PORTFOLIO</div>
+        <h2>Selected Work</h2>
+        <p>Fictional demonstrations created to showcase customer support, CRM, benefits administration, email, live chat, and administrative capabilities.</p>
+    </div>
+
+    <div class="portfolio-controls">
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="crm">CRM</button>
+        <button class="filter-button" data-filter="support">Customer Support</button>
+    </div>
+
+    <div class="portfolio-grid">
+
+        <article class="portfolio-card" data-category="crm" data-type="single" data-image-base="03-crm-dashboard">
+            <div class="portfolio-image-box">
+                <img src="" data-image-base="03-crm-dashboard" class="portfolio-image" alt="CRM Dashboard">
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">CRM</div>
+                <h3>CRM Dashboard</h3>
+                <p>Customer cases, tasks, support activity, and administrative workflows.</p>
+                <div class="portfolio-link">View Project →</div>
+            </div>
+        </article>
+
+        <article class="portfolio-card" data-category="crm" data-type="single" data-image-base="04-customer-profile">
+            <div class="portfolio-image-box">
+                <img src="" data-image-base="04-customer-profile" class="portfolio-image" alt="Customer Profile">
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">CRM</div>
+                <h3>Customer Profile</h3>
+                <p>Customer information, plan details, case history, and support activity.</p>
+                <div class="portfolio-link">View Project →</div>
+            </div>
+        </article>
+
+        <article class="portfolio-card" data-category="support" data-type="email">
+            <div class="portfolio-image-box">
+                <img src="" data-image-base="05-email-support-1" class="portfolio-image" alt="Email Support Samples">
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">CUSTOMER SUPPORT</div>
+                <h3>Email Support Samples</h3>
+                <p>Professional customer responses, follow-ups, and coverage inquiries.</p>
+                <div class="portfolio-link">View 3 Samples →</div>
+            </div>
+        </article>
+
+        <article class="portfolio-card" data-category="support" data-type="single" data-image-base="08-live-chat">
+            <div class="portfolio-image-box">
+                <img src="" data-image-base="08-live-chat" class="portfolio-image" alt="Live Chat Samples">
+            </div>
+            <div class="portfolio-info">
+                <div class="portfolio-category">CUSTOMER SUPPORT</div>
+                <h3>Live Chat Samples</h3>
+                <p>Customer conversations demonstrating clarification, support, and issue resolution.</p>
+                <div class="portfolio-link">View Samples →</div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="cta">
+        <div>
+            <h2>Reliable Support. Accurate Work.</h2>
+            <p>Customer service and administrative support focused on keeping operations organized and customers informed.</p>
+        </div>
+        <a href="#portfolio" class="cta-button">View My Work →</a>
+    </div>
+</section>
+
+<div class="modal" id="portfolioModal">
+    <div class="modal-box">
+        <div class="modal-title" id="modalTitle">Portfolio Preview</div>
+        <button class="modal-close" id="modalClose" type="button">×</button>
+        <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
+<div id="crmSourceWrap" style="display:none; padding:12px 18px 18px; background:#fff; border-top:1px solid #e1e5ec;">
+    <div style="font-size:12px;color:#687286;margin-bottom:8px;">
+        <strong style="color:#18233b;">Design &amp; layout:</strong> Created by Edward in Canva.
+    </div>
+    <a id="crmSourceLink"
+       href="https://canva.link/phyp86qtqgt0phj"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display:inline-block;padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700;">
+       View Design Source →
+    </a>
+</div>
+
+        <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
+            <div class="customer-support-heading">
+                <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
+                <h3>Customer &amp; Phone Support</h3>
+                <p>Clear communication, active listening, accurate case handling, and dependable follow-through across customer interactions.</p>
+            </div>
+            <div class="customer-support-grid">
+                <div class="customer-support-card">
+                    <img id="customerServiceImage" class="customer-support-image" alt="Customer service support example">
+                    <div class="customer-support-caption">Customer support workflow</div>
+                </div>
+                <div class="customer-support-card">
+                    <img id="pizzaOfficeImage" class="customer-support-image" alt="Customer and phone support office example">
+                    <div class="customer-support-caption">Professional phone support environment</div>
+                </div>
+            </div>
+            <div class="customer-support-footer">
+                <strong>I can help keep customers informed and operations moving.</strong>
+                <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
+            </div>
+        </div>
+
+        <div id="claimsImagesWrap" class="claims-images-wrap" style="display:none;">
+            <div class="claims-section-heading">
+                <span class="claims-step">01</span>
+                <div>
+                    <h3>Claims Review Evidence</h3>
+                    <p>Two supporting documents reviewed together before opening the interactive case study.</p>
+                </div>
+            </div>
+
+            <div class="claims-evidence-grid">
+                <div class="claims-image-card">
+                    <img id="claimsSfImage" class="claims-support-image" alt="09-Sf-case claims case review example">
+                </div>
+                <div class="claims-image-card">
+                    <img id="claimsReceiptImage" class="claims-support-image" alt="Receipts Aug 9 2026 claims receipt example">
+                </div>
+            </div>
+
+            <div class="claims-next-note">
+                <span>Next</span>
+                <strong>Interactive Missing Date Case Study</strong>
+                <button type="button" id="claimsOpenCaseStudy">View Case Study →</button>
+            </div>
+        </div>
+
+        <div id="claimsSiteWrap" style="display:none;">
+            <iframe
+                id="claimsSiteFrame"
+                class="claims-site-frame"
+                title="Missing Date Case Study"
+                loading="eager"
+                referrerpolicy="no-referrer"
+                sandbox="allow-scripts allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+            ></iframe>
+            <div id="claimsSiteStatus" class="claims-site-status">The interactive case study could not be loaded. Make sure the case-study HTML file is uploaded inside the Images folder.</div>
+        </div>
+
+        <div class="email-controls" id="emailControls">
+            <button id="previousEmail" type="button">← Previous</button>
+            <span class="counter" id="emailCounter">1 / 3</span>
+            <button id="nextEmail" type="button">Next →</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Edward • Customer Support &amp; Administrative Support</p>
+    <p>Fictional portfolio demonstrations — no real customer data.</p>
+</footer>
+
+
+<script>
+/* =========================================================
+   ROBUST LOCAL IMAGE LOADER
+   Works with the user's Windows Images folder and also provides
+   a folder-picker fallback for browsers that restrict file:// access.
+========================================================= */
+const LOCAL_IMAGES_PATH = 'C:/Users/ed_workpro/Desktop/Edward PortFolio/Images/';
+const imageFileMap = new Map();
+let selectedImagesFolder = false;
+
+const IMAGE_NAMES = {
+  '01-cover': ['01-cover.png.png','01-cover.png','01-cover.jpg','01-cover.jpeg','01-cover.webp'],
+  '02-about': ['02-about.png.png','02-about.png','02-about.jpg','02-about.jpeg','02-about.webp'],
+  '03-crm-dashboard': ['03-crm-dashboard.png','03-crm-dashboard.png.png','03-crm-dashboard.jpg','03-crm-dashboard.jpeg','03-crm-dashboard.webp'],
+  '04-customer-profile': ['04-customer-profile.png','04-customer-profile.png.png','04-customer-profile.jpg','04-customer-profile.jpeg','04-customer-profile.webp'],
+  '05-email-support-1': ['05-email-support-1.png','05-email-support-1.png.png','05-email-support-1.jpg','05-email-support-1.jpeg','05-email-support-1.webp'],
+  '05-email-support-2': ['05-email-support-2.png','05-email-support-2.png.png','05-email-support-2.jpg','05-email-support-2.jpeg','05-email-support-2.webp'],
+  '05-email-support-3': ['05-email-support-3.png','05-email-support-3.png.png','05-email-support-3.jpg','05-email-support-3.jpeg','05-email-support-3.webp'],
+  '06-live-chat': ['06-live-chat.png.png','06-live-chat.png','06-live-chat.jpg','06-live-chat.jpeg','06-live-chat.webp'],
+  '07-live-chat': ['07-live-chat.png','07-live-chat.png.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
+  '08-live-chat': ['08-live-chat.png','08-live-chat.png.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
+  '08-customer-service': ['08-customer-service.png','08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png.png'],
+  'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
+  '09-Sf-case': ['09-Sf-case.png','09-Sf-case.png.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
+  'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
+};
+
+function encodeFileName(name){ return name.split('/').map(encodeURIComponent).join('/'); }
+
+function autoCandidates(baseName){
+  const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
+  const roots = [
+    'Images/', './Images/'
+  ];
+  return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
+}
+
+function setFromSelectedFolder(baseName, element){
+  const names = IMAGE_NAMES[baseName] || [];
+  for(const n of names){
+    const url = imageFileMap.get(n.toLowerCase());
+    if(url){ element.src=url; element.style.display='block'; return true; }
+  }
+  return false;
+}
+
+function resolveImage(baseName, element, failure){
+  if(!element) return;
+  if(setFromSelectedFolder(baseName, element)) return;
+  const candidates = autoCandidates(baseName);
+  let i=0;
+  function next(){
+    if(i>=candidates.length){
+      if(failure) failure();
+      else { element.style.display='none'; }
+      return;
+    }
+    const src=candidates[i++];
+    const probe=new Image();
+    probe.onload=()=>{element.src=src; element.style.display='block';};
+    probe.onerror=next;
+    probe.src=src;
+  }
+  next();
+}
+
+function resolvePageImage(img, baseName){
+  resolveImage(baseName,img,()=>{
+    img.style.display='block';
+    img.alt = img.alt + ' — image not found. Use Load Images Folder.';
+  });
+}
+
+function resolveModalImage(baseName){
+  resolveImage(baseName,modalImage,()=>{
+    modalImage.removeAttribute('src');
+    modalImage.style.display='block';
+    modalTitle.textContent='Image not found — use Load Images Folder';
+  });
+}
+
+/* Folder picker */
+const folderInput=document.createElement('input');
+folderInput.type='file';
+folderInput.webkitdirectory=true;
+folderInput.directory=true;
+folderInput.multiple=true;
+folderInput.style.display='none';
+document.body.appendChild(folderInput);
+
+const loadImagesButton=document.createElement('button');
+loadImagesButton.type='button';
+loadImagesButton.textContent='Load Images Folder';
+loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
+loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
+document.body.appendChild(loadImagesButton);
+
+loadImagesButton.addEventListener('click',()=>folderInput.click());
+folderInput.addEventListener('change',()=>{
+  imageFileMap.clear();
+  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
+  selectedImagesFolder=true;
+  loadImagesButton.textContent='Images Loaded ✓';
+  loadImagesButton.style.background='#4963ed';
+  loadImagesButton.style.color='#fff';
+  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
+  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
+});
+
+/* DARK MODE */
+const themeButton=document.getElementById('themeButton');
+themeButton.addEventListener('click',()=>{document.body.classList.toggle('dark');themeButton.textContent=document.body.classList.contains('dark')?'☀':'☾';});
+
+/* PAGE IMAGES — only actual IMG elements */
+document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
+
+/* FILTERS */
+const filterButtons=document.querySelectorAll('.filter-button');
+const portfolioCards=document.querySelectorAll('.portfolio-card');
+filterButtons.forEach(button=>button.addEventListener('click',()=>{
+  filterButtons.forEach(item=>item.classList.remove('active')); button.classList.add('active');
+  const filter=button.dataset.filter;
+  portfolioCards.forEach(card=>card.style.display=(filter==='all'||card.dataset.category===filter)?'flex':'none');
+}));
+
+/* MODAL */
+const modal=document.getElementById('portfolioModal');
+const modalImage=document.getElementById('modalImage');
+const modalClose=document.getElementById('modalClose');
+const modalTitle=document.getElementById('modalTitle');
+const crmSourceWrap=document.getElementById('crmSourceWrap');
+const claimsSiteWrap=document.getElementById('claimsSiteWrap');
+const claimsSiteFrame=document.getElementById('claimsSiteFrame');
+const claimsSiteStatus=document.getElementById('claimsSiteStatus');
+const claimsImagesWrap=document.getElementById('claimsImagesWrap');
+const claimsSfImage=document.getElementById('claimsSfImage');
+const claimsReceiptImage=document.getElementById('claimsReceiptImage');
+const claimsOpenCaseStudy=document.getElementById('claimsOpenCaseStudy');
+const customerSupportWrap=document.getElementById('customerSupportWrap');
+const customerServiceImage=document.getElementById('customerServiceImage');
+const pizzaOfficeImage=document.getElementById('pizzaOfficeImage');
+const emailControls=document.getElementById('emailControls');
+const previousEmail=document.getElementById('previousEmail');
+const nextEmail=document.getElementById('nextEmail');
+const emailCounter=document.getElementById('emailCounter');
+const backgroundImage=document.getElementById('backgroundImage');
+
+const emailSamples=['05-email-support-1','05-email-support-2','05-email-support-3'];
+const liveChatSamples=['07-live-chat','08-live-chat'];
+let currentEmail=0,currentLiveChat=0;
+
+function loadClaimsSupportImages(){
+  resolveImage('09-Sf-case',claimsSfImage);
+  resolveImage('receipt',claimsReceiptImage);
+}
+
+function openClaimsCaseStudy(){crmSourceWrap.style.display='none';
+  customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
+}
+
+function openClaimsInteractiveStudy(){crmSourceWrap.style.display='none';
+  customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Case Review — Interactive Case Study';
+  const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
+  let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
+}
+
+function openCustomerSupportModal(){crmSourceWrap.style.display='none';
+  claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
+  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
+}
+
+function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';crmSourceWrap.style.display=(baseName==='03-crm-dashboard'?'block':'none');claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
+function openLiveChatModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
+
+portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
+backgroundImage.addEventListener('click',()=>openModal('02-about','Professional Background'));
+
+document.querySelectorAll('.clickable-skill').forEach(skill=>skill.addEventListener('click',()=>{
+  const type=skill.dataset.skill;
+  if(type==='customer-service') openCustomerSupportModal();
+  else if(type==='benefits') openModal('04-customer-profile','Benefits Administration');
+  else if(type==='crm') openModal('03-crm-dashboard','CRM Management');
+  else if(type==='email') openEmailModal();
+  else if(type==='chat') openLiveChatModal();
+  else if(type==='claims') openClaimsCaseStudy();
+}));
+
+previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail-1+emailSamples.length)%emailSamples.length;showEmail();}});
+nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
+claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
+
+function closeModal(){modal.classList.remove('open');crmSourceWrap.style.display='none';document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+</script>
+
+</body>
+</html>
