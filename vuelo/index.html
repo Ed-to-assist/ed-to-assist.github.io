@@ -472,6 +472,22 @@ footer p+p{margin-top:4px;color:#aebdcb}
     .flow{grid-template-columns:1fr}
     .modal-box{padding:23px 16px}
 }
+
+/* GitHub-safe modal opening: works without JavaScript */
+.modal:target{
+    display:flex;
+}
+.modal .close{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
+.work-button{
+    display:inline-block;
+    text-decoration:none;
+}
+
 </style>
 </head>
 
@@ -558,13 +574,13 @@ footer p+p{margin-top:4px;color:#aebdcb}
         <article class="work-card">
             <h3>CRM Dashboard</h3>
             <p>Customer cases, tasks, support activity, and administrative workflows.</p>
-            <button class="work-button" data-modal="crmModal">View Project →</button>
+            <a class="work-button" href="#crmModal">View Project →</a>
         </article>
 
         <article class="work-card">
             <h3>Customer Profile</h3>
             <p>Customer information, case history, support activity, and record management.</p>
-            <button class="work-button" data-modal="profileModal">View Project →</button>
+            <a class="work-button" href="#profileModal">View Project →</a>
         </article>
 
         <article class="work-card">
@@ -573,25 +589,25 @@ footer p+p{margin-top:4px;color:#aebdcb}
                 The strongest investigation example: compare documents, identify gaps,
                 verify details, and determine what is needed next.
             </p>
-            <button class="work-button" data-modal="documentationModal">View Investigation →</button>
+            <a class="work-button" href="#documentationModal">View Investigation →</a>
         </article>
 
         <article class="work-card">
             <h3>Administrative Workflow</h3>
             <p>Request received → review → verification → data entry → quality check → follow-up.</p>
-            <button class="work-button" data-modal="workflowModal">View Workflow →</button>
+            <a class="work-button" href="#workflowModal">View Workflow →</a>
         </article>
 
         <article class="work-card">
             <h3>Email Support</h3>
             <p>Customer inquiry, response, follow-up, and resolution across three supporting samples.</p>
-            <button class="work-button" data-modal="emailModal">View 3 Samples →</button>
+            <a class="work-button" href="#emailModal">View 3 Samples →</a>
         </article>
 
         <article class="work-card">
             <h3>Live Chat Support</h3>
             <p>One focused support sample demonstrating clarification, verification, and follow-up.</p>
-            <button class="work-button" data-modal="chatModal">View Sample →</button>
+            <a class="work-button" href="#chatModal">View Sample →</a>
         </article>
 
     </div>
@@ -624,7 +640,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 <!-- CRM MODAL -->
 <div class="modal" id="crmModal">
 <div class="modal-box">
-    <button class="close" type="button">×</button>
+    <a class="close" href="#work" aria-label="Close">×</a>
 
     <div class="modal-label">CRM / DATA OPERATIONS</div>
     <h2>CRM Dashboard</h2>
@@ -655,7 +671,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 <!-- CUSTOMER PROFILE MODAL -->
 <div class="modal" id="profileModal">
 <div class="modal-box">
-    <button class="close" type="button">×</button>
+    <a class="close" href="#work" aria-label="Close">×</a>
 
     <div class="modal-label">CUSTOMER DATA</div>
     <h2>Customer Profile</h2>
@@ -686,7 +702,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 <!-- DOCUMENTATION REVIEW MODAL -->
 <div class="modal" id="documentationModal">
 <div class="modal-box">
-    <button class="close" type="button">×</button>
+    <a class="close" href="#work" aria-label="Close">×</a>
 
     <div class="modal-label">DOCUMENTATION REVIEW</div>
     <h2>Investigation & Documentation Review</h2>
@@ -773,7 +789,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 <!-- ADMINISTRATIVE WORKFLOW MODAL -->
 <div class="modal" id="workflowModal">
 <div class="modal-box">
-    <button class="close" type="button">×</button>
+    <a class="close" href="#work" aria-label="Close">×</a>
 
     <div class="modal-label">ADMINISTRATIVE OPERATIONS</div>
     <h2>Administrative Workflow</h2>
@@ -805,7 +821,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 <!-- EMAIL MODAL -->
 <div class="modal" id="emailModal">
 <div class="modal-box">
-    <button class="close" type="button">×</button>
+    <a class="close" href="#work" aria-label="Close">×</a>
 
     <div class="modal-label">CUSTOMER SUPPORT</div>
     <h2>Email Support</h2>
@@ -845,7 +861,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 <!-- LIVE CHAT MODAL - ONE IMAGE -->
 <div class="modal" id="chatModal">
 <div class="modal-box">
-    <button class="close" type="button">×</button>
+    <a class="close" href="#work" aria-label="Close">×</a>
 
     <div class="modal-label">CUSTOMER SUPPORT</div>
     <h2>Live Chat Support</h2>
@@ -914,55 +930,9 @@ document.getElementById("emailNext").addEventListener("click",function(e){
     showEmail();
 });
 
-document.querySelectorAll(".work-button").forEach(function(button){
-    button.addEventListener("click",function(){
-        const modal = document.getElementById(button.dataset.modal);
-        if(!modal) return;
 
-        modal.classList.add("open");
-        document.body.classList.add("modal-open");
 
-        if(button.dataset.modal === "emailModal"){
-            showEmail();
-        }
-    });
-});
 
-document.querySelectorAll(".close").forEach(function(button){
-    button.addEventListener("click",function(){
-        const modal = button.closest(".modal");
-        modal.classList.remove("open");
-        document.body.classList.remove("modal-open");
-    });
-});
-
-document.querySelectorAll(".modal").forEach(function(modal){
-    modal.addEventListener("click",function(event){
-        if(event.target === modal){
-            modal.classList.remove("open");
-            document.body.classList.remove("modal-open");
-        }
-    });
-});
-
-document.addEventListener("keydown",function(event){
-    const openModal = document.querySelector(".modal.open");
-    if(!openModal) return;
-
-    if(event.key === "Escape"){
-        openModal.classList.remove("open");
-        document.body.classList.remove("modal-open");
-    }
-
-    if(openModal.id === "emailModal"){
-        if(event.key === "ArrowLeft"){
-            document.getElementById("emailPrev").click();
-        }
-        if(event.key === "ArrowRight"){
-            document.getElementById("emailNext").click();
-        }
-    }
-});
 </script>
 
 </body>
