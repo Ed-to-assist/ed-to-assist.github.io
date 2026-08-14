@@ -41,6 +41,12 @@ header{
     letter-spacing:.1em;
     text-transform:uppercase;
 }
+.contact-email{
+    color:#526477;
+    font-weight:700;
+    letter-spacing:0;
+    text-transform:none;
+}
 
 .hero,.value-section,.resume-section,.work-inner,.cta-section{
     width:min(1180px,92%);
@@ -434,7 +440,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 
 <header>
     <div class="header-inner">
-        <div class="header-label">Customer Experience Specialist Application</div>
+        <div class="header-label">Customer Experience Specialist Application <span class="contact-email">• edapalla@zohomail.com</span></div>
     </div>
 </header>
 
@@ -872,6 +878,23 @@ const chatFallbacks = [
     "../Images/07-live-chat.png.png"
 ];
 
+const chatAlternate = [
+    [
+        "../Images/06-live-chat.png.png",
+        "../Images/06-live-chat.png",
+        "../Images/06-live-chat.jpg",
+        "../Images/06-live-chat.jpeg",
+        "../Images/06-live-chat.webp"
+    ],
+    [
+        "../Images/07-live-chat.png",
+        "../Images/07-live-chat.png.png",
+        "../Images/07-live-chat.jpg",
+        "../Images/07-live-chat.jpeg",
+        "../Images/07-live-chat.webp"
+    ]
+];
+
 let emailIndex = 0;
 let chatIndex = 0;
 
@@ -911,16 +934,34 @@ function showEmail(){
 }
 
 function showChat(){
-    loadWithFallback(
-        chatImage,
-        chatSamples[chatIndex],
-        chatFallbacks[chatIndex],
-        "Live Chat Support Sample",
-        "Live Chat image could not be found."
-    );
+    const candidates = chatAlternate[chatIndex];
+    let i = 0;
+
+    function tryNext(){
+        if(i >= candidates.length){
+            chatImage.removeAttribute("src");
+            chatImage.alt = "Live Chat image could not be found.";
+            chatCaption.textContent =
+                `Live Chat sample ${chatIndex + 1} could not be loaded.`;
+            return;
+        }
+
+        const test = new Image();
+        const candidate = candidates[i++];
+
+        test.onload = () => {
+            chatImage.src = candidate;
+            chatImage.alt = "Live Chat Support Sample";
+            chatCaption.textContent =
+                `Live Chat sample ${chatIndex + 1} of ${chatSamples.length}.`;
+        };
+
+        test.onerror = tryNext;
+        test.src = candidate;
+    }
+
+    tryNext();
     chatCounter.textContent = `${chatIndex + 1} / ${chatSamples.length}`;
-    chatCaption.textContent =
-        `Live Chat sample ${chatIndex + 1} of ${chatSamples.length}.`;
 }
 
 document.getElementById("emailPrev").addEventListener("click",function(e){
