@@ -789,6 +789,18 @@ footer p+p{opacity:.65}
         <div class="modal-title" id="modalTitle">Portfolio Preview</div>
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
+<div id="crmSourceWrap" style="display:none; padding:12px 18px 18px; background:#fff; border-top:1px solid #e1e5ec;">
+    <div style="font-size:12px;color:#687286;margin-bottom:8px;">
+        <strong style="color:#18233b;">Design &amp; layout:</strong> Created by Edward in Canva.
+    </div>
+    <a id="crmSourceLink"
+       href="https://canva.link/phyp86qtqgt0phj"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display:inline-block;padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700;">
+       View Design Source →
+    </a>
+</div>
 
         <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
             <div class="customer-support-heading">
@@ -876,17 +888,17 @@ let selectedImagesFolder = false;
 const IMAGE_NAMES = {
   '01-cover': ['01-cover.png.png','01-cover.png','01-cover.jpg','01-cover.jpeg','01-cover.webp'],
   '02-about': ['02-about.png.png','02-about.png','02-about.jpg','02-about.jpeg','02-about.webp'],
-  '03-crm-dashboard': ['03-crm-dashboard.png.png','03-crm-dashboard.png','03-crm-dashboard.jpg','03-crm-dashboard.jpeg','03-crm-dashboard.webp'],
-  '04-customer-profile': ['04-customer-profile.png.png','04-customer-profile.png','04-customer-profile.jpg','04-customer-profile.jpeg','04-customer-profile.webp'],
-  '05-email-support-1': ['05-email-support-1.png.png','05-email-support-1.png','05-email-support-1.jpg','05-email-support-1.jpeg','05-email-support-1.webp'],
-  '05-email-support-2': ['05-email-support-2.png.png','05-email-support-2.png','05-email-support-2.jpg','05-email-support-2.jpeg','05-email-support-2.webp'],
-  '05-email-support-3': ['05-email-support-3.png.png','05-email-support-3.png','05-email-support-3.jpg','05-email-support-3.jpeg','05-email-support-3.webp'],
+  '03-crm-dashboard': ['03-crm-dashboard.png','03-crm-dashboard.png.png','03-crm-dashboard.jpg','03-crm-dashboard.jpeg','03-crm-dashboard.webp'],
+  '04-customer-profile': ['04-customer-profile.png','04-customer-profile.png.png','04-customer-profile.jpg','04-customer-profile.jpeg','04-customer-profile.webp'],
+  '05-email-support-1': ['05-email-support-1.png','05-email-support-1.png.png','05-email-support-1.jpg','05-email-support-1.jpeg','05-email-support-1.webp'],
+  '05-email-support-2': ['05-email-support-2.png','05-email-support-2.png.png','05-email-support-2.jpg','05-email-support-2.jpeg','05-email-support-2.webp'],
+  '05-email-support-3': ['05-email-support-3.png','05-email-support-3.png.png','05-email-support-3.jpg','05-email-support-3.jpeg','05-email-support-3.webp'],
   '06-live-chat': ['06-live-chat.png.png','06-live-chat.png','06-live-chat.jpg','06-live-chat.jpeg','06-live-chat.webp'],
-  '07-live-chat': ['07-live-chat.png.png','07-live-chat.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
-  '08-live-chat': ['08-live-chat.png.png','08-live-chat.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
-  '08-customer-service': ['08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png','08-customer-service.png.png'],
+  '07-live-chat': ['07-live-chat.png','07-live-chat.png.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
+  '08-live-chat': ['08-live-chat.png','08-live-chat.png.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
+  '08-customer-service': ['08-customer-service.png','08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png.png'],
   'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
-  '09-Sf-case': ['09-Sf-case.png.png','09-Sf-case.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
+  '09-Sf-case': ['09-Sf-case.png','09-Sf-case.png.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
   'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
 };
 
@@ -993,6 +1005,7 @@ const modal=document.getElementById('portfolioModal');
 const modalImage=document.getElementById('modalImage');
 const modalClose=document.getElementById('modalClose');
 const modalTitle=document.getElementById('modalTitle');
+const crmSourceWrap=document.getElementById('crmSourceWrap');
 const claimsSiteWrap=document.getElementById('claimsSiteWrap');
 const claimsSiteFrame=document.getElementById('claimsSiteFrame');
 const claimsSiteStatus=document.getElementById('claimsSiteStatus');
@@ -1018,25 +1031,25 @@ function loadClaimsSupportImages(){
   resolveImage('receipt',claimsReceiptImage);
 }
 
-function openClaimsCaseStudy(){
+function openClaimsCaseStudy(){crmSourceWrap.style.display='none';
   customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){
+function openClaimsInteractiveStudy(){crmSourceWrap.style.display='none';
   customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Case Review — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
 
-function openCustomerSupportModal(){
+function openCustomerSupportModal(){crmSourceWrap.style.display='none';
   claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
   customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';crmSourceWrap.style.display=(baseName==='03-crm-dashboard'?'block':'none');claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
-function openLiveChatModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openLiveChatModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
 portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
@@ -1056,7 +1069,7 @@ previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.tex
 nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
 claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
-function closeModal(){modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+function closeModal(){modal.classList.remove('open');crmSourceWrap.style.display='none';document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
 </script>
