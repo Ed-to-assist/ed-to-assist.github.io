@@ -629,7 +629,7 @@ const IMAGE_VARIANTS = [
 function fileCandidates(baseName){
     const names = [];
     for(const ext of IMAGE_VARIANTS){
-        names.push("../Images/" + encodeURIComponent(baseName + ext));
+        names.push("https://ed-to-assist.github.io/Images/" + encodeURIComponent(baseName + ext));
     }
     return [...new Set(names)];
 }
