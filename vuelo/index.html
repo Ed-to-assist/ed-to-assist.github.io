@@ -28,18 +28,11 @@ header{
 }
 .header-inner{
     width:min(1180px,92%);
-    min-height:70px;
+    min-height:58px;
     margin:auto;
     display:flex;
     align-items:center;
-    justify-content:space-between;
 }
-.logo{
-    font-size:1.2rem;
-    font-weight:800;
-    letter-spacing:.05em;
-}
-.logo span{color:#2d78b7}
 .back-link{
     font-size:.92rem;
     font-weight:700;
@@ -210,11 +203,7 @@ header{
 }
 .cta h2{margin:0 0 6px;font-size:1.75rem}
 .cta p{margin:0;color:#d9e6f2;max-width:680px}
-.cta a{
-    flex-shrink:0;
-    background:#fff;
-    color:#173a61;
-}
+
 
 footer{
     padding:24px 20px;
@@ -409,8 +398,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 
 <header>
     <div class="header-inner">
-        <div class="logo">EDWARD<span>.</span></div>
-        <a href="../index.html" class="back-link">← Main Portfolio</a>
+        <div class="eyebrow header-label">Customer Experience Specialist Application</div>
     </div>
 </header>
 
@@ -547,7 +535,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
                 information accurate, and customers informed.
             </p>
         </div>
-        <a class="button" href="../index.html">Main Portfolio →</a>
+
     </div>
 </section>
 
@@ -644,25 +632,69 @@ footer p+p{margin-top:4px;color:#aebdcb}
     </div>
 </div>
 
-<!-- DOCUMENTATION REVIEW HTML CASE STUDY -->
+<!-- DOCUMENTATION REVIEW -->
 <div class="modal" id="documentationModal">
     <div class="modal-box">
         <button class="modal-close" type="button" aria-label="Close">×</button>
+
         <div class="modal-label">DOCUMENTATION REVIEW</div>
-        <h2>Documentation Review Case Study</h2>
-        <span class="status">Interactive Mini-Site</span>
+        <h2>Documentation Review</h2>
+        <span class="status">Review • Verification • Follow-Up</span>
 
         <p class="modal-intro">
-            This case study demonstrates document review, missing-information identification,
-            verification, and follow-up using a fictional reimbursement scenario.
+            A fictional reimbursement-document review showing how submitted information
+            is checked for completeness, missing details are identified, and the next action is documented.
         </p>
 
+        <div class="documentation-image-grid">
+            <div class="documentation-image-card">
+                <div class="documentation-image-title">Documentation Review</div>
+                <img
+                    src="../Images/documentation-review.png"
+                    alt="Documentation Review portfolio example"
+                    onerror="this.onerror=null;this.src='../Images/documentation-review.png.png';"
+                >
+            </div>
+
+            <div class="documentation-image-card">
+                <div class="documentation-image-title">Claims / Receipt Review</div>
+                <img
+                    src="../Images/claims-review.png"
+                    alt="Claims review and receipt portfolio example"
+                    onerror="this.onerror=null;this.src='../Images/claims-review.png.png';"
+                >
+            </div>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-card">
+                <h4>Information Reviewed</h4>
+                <p>Claim information, receipt, date of service, item details, amount, and supporting documentation.</p>
+            </div>
+
+            <div class="case-card">
+                <h4>Issue Identified</h4>
+                <p>Missing or incomplete information that needs to be clarified before processing.</p>
+            </div>
+
+            <div class="case-card">
+                <h4>Action Taken</h4>
+                <p>Identify the missing detail, explain the requirement, request the correct documentation, and record the follow-up.</p>
+            </div>
+
+            <div class="case-card">
+                <h4>Outcome</h4>
+                <p>Prepare the request for continued review once the required information is received.</p>
+            </div>
+        </div>
+
         <div class="claims-frame-wrap">
+            <div class="embedded-label">Interactive Case Study</div>
             <iframe
                 class="claims-frame"
                 src="../Images/Missing_Date_Case_Study_Improved.html"
-                title="Documentation Review Case Study"
-                loading="eager"
+                title="Documentation Review Interactive Case Study"
+                loading="lazy"
             ></iframe>
         </div>
 
