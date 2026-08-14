@@ -1,682 +1,870 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Edward's Vuelio-specific Customer Experience Specialist portfolio page featuring CRM, data operations, issue investigation, documentation review, and customer support experience.">
-    <title>Edward | Customer Experience Specialist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edward | Customer Experience Specialist</title>
+<meta name="description" content="Edward's Vuelio-specific customer experience portfolio featuring CRM, data operations, documentation review, email support, live chat, and administrative workflow experience.">
 
-    <style>
-        :root {
-            --navy: #173a61;
-            --navy-dark: #102d4a;
-            --blue: #2d78b7;
-            --blue-soft: #e8f2fa;
-            --text: #24384f;
-            --muted: #60738a;
-            --bg: #f5f7fa;
-            --white: #ffffff;
-            --line: #dfe6ed;
-            --panel: #f6f9fb;
-            --shadow: 0 12px 30px rgba(23, 43, 77, 0.08);
-        }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fa;
+    color:#173a61;
+    line-height:1.6;
+}
+body.modal-open{overflow:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+header{
+    background:#fff;
+    border-bottom:1px solid #dfe6ed;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.header-inner{
+    width:min(1180px,92%);
+    min-height:72px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.logo{font-size:1.22rem;font-weight:800;letter-spacing:.04em}
+.logo span{color:#2d78b7}
+.back-link{font-size:.92rem;font-weight:700;color:#295f8f}
+.back-link:hover{color:#173a61}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        body.modal-open { overflow: hidden; }
-        a { color: inherit; text-decoration: none; }
-        button { font: inherit; }
+.hero,.value-section,.resume-section,.work-inner,.cta-section{
+    width:min(1180px,92%);
+    margin:auto;
+}
+.hero{padding:68px 0 46px}
+.eyebrow{
+    display:inline-block;
+    color:#2d78b7;
+    font-size:.78rem;
+    font-weight:800;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+.hero h1{
+    font-size:clamp(2.3rem,5vw,4.3rem);
+    line-height:1.04;
+    margin-bottom:18px;
+    max-width:860px;
+}
+.hero h1 span{color:#2d78b7}
+.hero-text{
+    max-width:820px;
+    color:#526477;
+    font-size:1.05rem;
+    margin-bottom:26px;
+}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:.92rem;
+    cursor:pointer;
+    transition:.2s ease;
+}
+.button-primary{background:#173a61;color:#fff}
+.button-primary:hover{background:#102d4a}
+.button-secondary{background:#fff;border:1px solid #ccd7e1;color:#173a61}
+.button-secondary:hover{background:#edf3f8}
 
-        header {
-            background: var(--white);
-            border-bottom: 1px solid #e3e8ee;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-inner {
-            width: min(1180px, 92%);
-            min-height: 72px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: .04em;
-            color: var(--navy);
-        }
-        .logo span { color: var(--blue); }
-        .back-link {
-            font-size: .92rem;
-            font-weight: 700;
-            color: var(--navy);
-        }
-        .back-link:hover { color: var(--blue); }
+.value-section{padding-bottom:46px}
+.value-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+.value-card{
+    background:#fff;
+    border:1px solid #e1e7ed;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 8px 24px rgba(23,43,77,.05);
+}
+.value-card h3{font-size:1rem;margin-bottom:8px}
+.value-card p{color:#657587;font-size:.9rem}
 
-        .hero {
-            width: min(1180px, 92%);
-            margin: auto;
-            padding: 70px 0 45px;
-        }
-        .eyebrow, .section-label, .modal-label {
-            color: var(--blue);
-            font-size: .78rem;
-            font-weight: 800;
-            letter-spacing: .11em;
-            text-transform: uppercase;
-        }
-        .eyebrow { margin-bottom: 14px; }
-        .hero h1 {
-            max-width: 900px;
-            margin-bottom: 18px;
-            color: var(--navy);
-            font-size: clamp(2.4rem, 5vw, 4.4rem);
-            line-height: 1.04;
-        }
-        .hero h1 span { color: var(--blue); }
-        .hero-text {
-            max-width: 800px;
-            margin-bottom: 26px;
-            color: var(--muted);
-            font-size: 1.05rem;
-        }
-        .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            border-radius: 8px;
-            font-size: .92rem;
-            font-weight: 700;
-            transition: .2s ease;
-        }
-        .button-primary { background: var(--navy); color: #fff; }
-        .button-primary:hover { background: var(--navy-dark); }
-        .button-secondary {
-            background: #fff;
-            border: 1px solid #cfd8e2;
-            color: var(--navy);
-        }
-        .button-secondary:hover { background: #edf3f8; }
+.resume-section{padding:30px 0 74px}
+.section-label{
+    color:#2d78b7;
+    font-size:.79rem;
+    font-weight:800;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+.section-heading{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:10px}
+.section-description{color:#657587;max-width:760px;margin-bottom:28px}
+.resume-card{
+    background:#fff;
+    border:1px solid #dfe6ed;
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 12px 30px rgba(23,43,77,.08);
+}
+.resume-image{display:block;width:100%;height:auto;border-radius:8px}
 
-        .value-section {
-            width: min(1180px, 92%);
-            margin: auto;
-            padding-bottom: 50px;
-        }
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .value-card {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 21px;
-            box-shadow: 0 8px 24px rgba(23,43,77,.05);
-        }
-        .value-card h3 { margin-bottom: 7px; color: var(--navy); font-size: 1rem; }
-        .value-card p { color: var(--muted); font-size: .88rem; }
+.work-section{
+    background:#fff;
+    border-top:1px solid #e3e8ee;
+    border-bottom:1px solid #e3e8ee;
+}
+.work-inner{padding:68px 0}
+.work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:28px;
+}
+.work-card{
+    border:1px solid #dfe6ed;
+    border-radius:12px;
+    padding:24px;
+    background:#f9fbfd;
+}
+.work-card h3{font-size:1.05rem;margin-bottom:8px}
+.work-card p{color:#657587;font-size:.92rem;margin-bottom:16px}
+.work-button{
+    border:0;
+    background:transparent;
+    padding:0;
+    color:#2d78b7;
+    font-weight:700;
+    cursor:pointer;
+}
+.work-button:hover{color:#173a61}
 
-        .resume-section {
-            width: min(1180px, 92%);
-            margin: auto;
-            padding: 25px 0 75px;
-        }
-        .section-heading {
-            margin: 5px 0 9px;
-            color: var(--navy);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            line-height: 1.1;
-        }
-        .section-description {
-            max-width: 800px;
-            margin-bottom: 28px;
-            color: var(--muted);
-        }
-        .resume-card {
-            padding: 16px;
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-        .resume-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            background: #fff;
-        }
+.cta-section{padding:68px 0 86px}
+.cta{
+    background:#173a61;
+    color:#fff;
+    border-radius:16px;
+    padding:36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+}
+.cta h2{font-size:1.75rem;margin-bottom:6px}
+.cta p{color:#d9e6f2;max-width:680px}
+.cta .button{background:#fff;color:#173a61;flex-shrink:0}
 
-        .work-section {
-            background: var(--white);
-            border-top: 1px solid #e3e8ee;
-            border-bottom: 1px solid #e3e8ee;
-        }
-        .work-inner {
-            width: min(1180px, 92%);
-            margin: auto;
-            padding: 70px 0;
-        }
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-top: 28px;
-        }
-        .work-card {
-            display: flex;
-            min-height: 220px;
-            flex-direction: column;
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 24px;
-            background: var(--panel);
-        }
-        .work-card h3 { margin-bottom: 8px; color: var(--navy); font-size: 1.05rem; }
-        .work-card p { margin-bottom: 18px; color: var(--muted); font-size: .92rem; }
-        .work-button {
-            width: fit-content;
-            margin-top: auto;
-            padding: 0;
-            border: 0;
-            background: transparent;
-            color: var(--blue);
-            cursor: pointer;
-            font-size: .88rem;
-            font-weight: 700;
-        }
-        .work-button:hover { color: var(--navy); }
+footer{
+    background:#102b47;
+    color:#dce7f1;
+    text-align:center;
+    padding:24px 20px;
+    font-size:.82rem;
+}
+footer p+p{margin-top:4px;color:#aebdcb}
 
-        .cta-section {
-            width: min(1180px, 92%);
-            margin: auto;
-            padding: 70px 0 88px;
-        }
-        .cta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            padding: 38px;
-            border-radius: 16px;
-            background: var(--navy);
-            color: #fff;
-        }
-        .cta h2 { margin-bottom: 7px; font-size: 1.8rem; }
-        .cta p { max-width: 690px; color: #d9e6f2; }
-        .cta .button { flex-shrink: 0; background: #fff; color: var(--navy); }
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(10,25,40,.76);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    z-index:5000;
+}
+.modal.open{display:flex}
+.modal-box{
+    width:min(1040px,96vw);
+    max-height:92vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:16px;
+    padding:30px;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
+}
+.modal-close{
+    position:absolute;
+    right:14px;
+    top:14px;
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:50%;
+    background:#eef3f7;
+    color:#173a61;
+    font-size:22px;
+    cursor:pointer;
+    z-index:3;
+}
+.modal-close:hover{background:#dce7ef}
+.modal-label{
+    color:#2d78b7;
+    font-size:.78rem;
+    font-weight:800;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+.modal-box h2{font-size:2rem;margin-bottom:10px;color:#173a61}
+.modal-intro{color:#526477;margin-bottom:18px}
+.status{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#e8f2fa;
+    color:#285f8f;
+    font-size:.74rem;
+    font-weight:700;
+    margin-bottom:16px;
+}
+.case-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:18px;
+}
+.case-card{
+    background:#f6f9fb;
+    border:1px solid #e0e7ed;
+    border-radius:10px;
+    padding:17px;
+}
+.case-card h4{color:#173a61;margin-bottom:6px;font-size:.98rem}
+.case-card p{color:#657587;margin:0;font-size:.89rem}
 
-        footer {
-            padding: 25px 20px;
-            background: #102b47;
-            color: #dce7f1;
-            text-align: center;
-            font-size: .82rem;
-        }
-        footer p + p { margin-top: 4px; color: #aebdcb; }
+.image-stage{
+    background:#f4f7fa;
+    border:1px solid #e0e7ed;
+    border-radius:12px;
+    padding:12px;
+    margin-top:16px;
+    min-height:240px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.gallery-image{
+    display:none;
+    max-width:100%;
+    max-height:62vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:8px;
+    background:#fff;
+}
+.gallery-controls{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-top:12px;
+}
+.gallery-controls.show{display:flex}
+.gallery-controls button{
+    border:1px solid #cfd8e2;
+    background:#fff;
+    color:#173a61;
+    border-radius:8px;
+    padding:8px 14px;
+    font-weight:700;
+    cursor:pointer;
+}
+.gallery-controls button:hover{background:#edf3f8}
+.counter{font-size:.86rem;color:#5e7185;font-weight:700;min-width:52px;text-align:center}
 
-        /* MODALS */
-        .modal {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: rgba(8, 23, 39, .76);
-            z-index: 5000;
-        }
-        .modal.open { display: flex; }
-        .modal-box {
-            position: relative;
-            width: min(980px, 96vw);
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 32px;
-            border: 1px solid #dfe7ee;
-            border-radius: 16px;
-            background: #fff;
-            box-shadow: 0 28px 80px rgba(0,0,0,.28);
-        }
-        .modal-close {
-            position: sticky;
-            top: 0;
-            float: right;
-            width: 38px;
-            height: 38px;
-            margin-left: 12px;
-            border: none;
-            border-radius: 50%;
-            background: #eef3f7;
-            color: var(--navy);
-            font-size: 22px;
-            line-height: 1;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .modal-close:hover { background: #dce7ef; }
-        .modal h2 {
-            margin: 4px 0 12px;
-            color: var(--navy);
-            font-size: 2rem;
-            line-height: 1.15;
-        }
-        .modal-intro {
-            max-width: 820px;
-            margin-bottom: 20px;
-            color: var(--muted);
-        }
-        .case-status {
-            display: inline-block;
-            margin-bottom: 14px;
-            padding: 5px 9px;
-            border-radius: 20px;
-            background: var(--blue-soft);
-            color: #285f8f;
-            font-size: .74rem;
-            font-weight: 700;
-        }
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 22px;
-        }
-        .case-card {
-            padding: 18px;
-            border: 1px solid #e0e7ed;
-            border-radius: 10px;
-            background: #f6f9fb;
-        }
-        .case-card h4 { margin-bottom: 6px; color: var(--navy); font-size: .98rem; }
-        .case-card p { margin: 0; color: var(--muted); font-size: .88rem; }
-        .modal-image-wrap {
-            margin: 18px 0 20px;
-            padding: 10px;
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            background: #f7f9fb;
-        }
-        .modal-image {
-            display: block;
-            width: 100%;
-            max-height: 58vh;
-            object-fit: contain;
-            border-radius: 8px;
-            background: #fff;
-        }
-        .workflow-list {
-            display: grid;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .workflow-step {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 13px 15px;
-            border: 1px solid var(--line);
-            border-radius: 9px;
-            background: #f8fafc;
-        }
-        .workflow-number {
-            display: inline-flex;
-            width: 30px;
-            height: 30px;
-            align-items: center;
-            justify-content: center;
-            flex: 0 0 30px;
-            border-radius: 50%;
-            background: var(--navy);
-            color: #fff;
-            font-size: .78rem;
-            font-weight: 800;
-        }
-        .workflow-step strong { color: var(--navy); }
-        .small-note {
-            margin-top: 14px;
-            color: #7a8896;
-            font-size: .76rem;
-        }
+.image-caption{
+    margin-top:9px;
+    color:#657587;
+    font-size:.82rem;
+    text-align:center;
+}
+.note{
+    margin-top:16px;
+    padding:12px 14px;
+    background:#f7fafc;
+    border-left:3px solid #2d78b7;
+    color:#5d7084;
+    font-size:.82rem;
+}
 
-        @media (max-width: 900px) {
-            .value-grid, .work-grid { grid-template-columns: repeat(2, 1fr); }
-            .cta { flex-direction: column; align-items: flex-start; }
-        }
-        @media (max-width: 640px) {
-            .header-inner { min-height: 62px; }
-            .hero { padding-top: 52px; }
-            .value-grid, .work-grid, .case-grid { grid-template-columns: 1fr; }
-            .resume-card { padding: 8px; }
-            .cta { padding: 28px; }
-            .modal { padding: 12px; }
-            .modal-box { padding: 22px 16px; }
-            .modal h2 { font-size: 1.55rem; }
-        }
-    </style>
+.hidden{display:none!important}
+
+@media(max-width:900px){
+    .value-grid,.work-grid{grid-template-columns:repeat(2,1fr)}
+    .cta{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:640px){
+    .hero{padding-top:52px}
+    .value-grid,.work-grid,.case-grid{grid-template-columns:1fr}
+    .resume-card{padding:8px}
+    .modal-box{padding:24px 16px}
+    .modal-box h2{font-size:1.6rem}
+    .cta{padding:28px}
+}
+</style>
 </head>
 
 <body>
-
 <header>
     <div class="header-inner">
         <div class="logo">EDWARD<span>.</span></div>
-        <a class="back-link" href="../index.html">← Main Portfolio</a>
+        <a href="../index.html" class="back-link">← Main Portfolio</a>
     </div>
 </header>
 
 <main>
+<section class="hero">
+    <div class="eyebrow">Customer Experience Specialist Application</div>
+    <h1>Customer Experience <span>• CRM • Data Operations</span></h1>
+    <p class="hero-text">
+        Customer support and administrative professional with hands-on experience in CRM operations,
+        data entry, documentation review, case follow-up, issue investigation, and client support.
+        I focus on accurate information, clear communication, organized follow-through, and getting requests completed correctly.
+    </p>
+    <div class="hero-buttons">
+        <a href="#resume" class="button button-primary">View My Resume</a>
+        <a href="#related-work" class="button button-secondary">View Related Work</a>
+    </div>
+</section>
 
-    <section class="hero">
-        <div class="eyebrow">Customer Experience Specialist Application</div>
-        <h1>Customer Experience <span>• CRM • Data Operations</span></h1>
-        <p class="hero-text">
-            Customer support and administrative professional with hands-on experience in CRM operations,
-            data entry, documentation review, case follow-up, issue investigation, and client support.
-            I focus on accurate information, clear communication, organized follow-through, and getting
-            requests completed correctly.
-        </p>
-        <div class="hero-buttons">
-            <a class="button button-primary" href="#resume">View My Resume</a>
-            <a class="button button-secondary" href="#work">View Selected Work</a>
+<section class="value-section">
+    <div class="value-grid">
+        <div class="value-card">
+            <h3>Customer Focused</h3>
+            <p>Phone, email, chat, and CRM support with careful follow-through.</p>
         </div>
-    </section>
-
-    <section class="value-section">
-        <div class="value-grid">
-            <article class="value-card">
-                <h3>Customer Focused</h3>
-                <p>Experience supporting customers through phone, email, chat, and CRM systems.</p>
-            </article>
-            <article class="value-card">
-                <h3>Detail Oriented</h3>
-                <p>Strong background in documentation review, data accuracy, and record maintenance.</p>
-            </article>
-            <article class="value-card">
-                <h3>Problem Solver</h3>
-                <p>Used to investigating issues, identifying missing information, and coordinating next steps.</p>
-            </article>
-            <article class="value-card">
-                <h3>Reliable Follow-Through</h3>
-                <p>Comfortable tracking requests from the initial issue through completion and follow-up.</p>
-            </article>
+        <div class="value-card">
+            <h3>Detail Oriented</h3>
+            <p>Documentation review, accurate data entry, and record maintenance.</p>
         </div>
-    </section>
-
-    <section class="resume-section" id="resume">
-        <div class="section-label">Relevant Experience</div>
-        <h2 class="section-heading">My Resume</h2>
-        <p class="section-description">
-            This version highlights the experience most relevant to customer experience, CRM, data operations,
-            documentation, issue investigation, and administrative support.
-        </p>
-        <div class="resume-card">
-            <img class="resume-image" src="./vuelio-resume.png" alt="Edward Customer Experience Specialist resume">
+        <div class="value-card">
+            <h3>Problem Solver</h3>
+            <p>Investigating issues, checking information, and identifying next steps.</p>
         </div>
-    </section>
+        <div class="value-card">
+            <h3>Reliable Follow-Through</h3>
+            <p>Tracking requests from intake through resolution and follow-up.</p>
+        </div>
+    </div>
+</section>
 
-    <section class="work-section" id="work">
-        <div class="work-inner">
-            <div class="section-label">Selected Work</div>
-            <h2 class="section-heading">Related Portfolio Work</h2>
-            <p class="section-description">
-                Examples from my broader portfolio demonstrating CRM management, customer support,
-                documentation review, and administrative workflow experience.
+<section class="resume-section" id="resume">
+    <div class="section-label">Relevant Experience</div>
+    <h2 class="section-heading">My Resume</h2>
+    <p class="section-description">
+        This version highlights the experience most relevant to customer experience, CRM,
+        data operations, documentation, issue investigation, and administrative support.
+    </p>
+    <div class="resume-card">
+        <img src="vuelio-resume.png" alt="Edward Customer Experience Specialist resume" class="resume-image">
+    </div>
+</section>
+
+<section class="work-section" id="related-work">
+<div class="work-inner">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-heading">Related Portfolio Work</h2>
+    <p class="section-description">
+        Visual examples of CRM work, customer communication, documentation review,
+        and administrative workflows. All examples are fictional portfolio demonstrations.
+    </p>
+
+    <div class="work-grid">
+        <div class="work-card">
+            <h3>CRM Dashboard</h3>
+            <p>Customer cases, support activity, tasks, and administrative workflows.</p>
+            <button class="work-button" data-modal="crmModal">View Project →</button>
+        </div>
+
+        <div class="work-card">
+            <h3>Customer Profile</h3>
+            <p>Customer information, case history, support activity, and record management.</p>
+            <button class="work-button" data-modal="profileModal">View Project →</button>
+        </div>
+
+        <div class="work-card">
+            <h3>Documentation Review</h3>
+            <p>Reviewing submitted information, identifying missing details, and documenting next actions.</p>
+            <button class="work-button" data-modal="documentationModal">View Samples →</button>
+        </div>
+
+        <div class="work-card">
+            <h3>Administrative Workflow</h3>
+            <p>Request received → information review → verification → data entry → quality check → follow-up.</p>
+            <button class="work-button" data-modal="workflowModal">View Workflow →</button>
+        </div>
+
+        <div class="work-card">
+            <h3>Email Support</h3>
+            <p>Customer inquiry, review, response, follow-up, and resolution.</p>
+            <button class="work-button" data-modal="emailModal">View 3 Samples →</button>
+        </div>
+
+        <div class="work-card">
+            <h3>Live Chat Support</h3>
+            <p>Customer clarification, verification, issue handling, and follow-up.</p>
+            <button class="work-button" data-modal="chatModal">View Samples →</button>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="cta-section">
+    <div class="cta">
+        <div>
+            <h2>Reliable Support. Accurate Work.</h2>
+            <p>
+                Customer service and administrative support focused on keeping operations organized,
+                information accurate, and customers informed.
             </p>
-
-            <div class="work-grid">
-                <article class="work-card">
-                    <h3>CRM Dashboard</h3>
-                    <p>Customer cases, tasks, support activity, and administrative workflows.</p>
-                    <button class="work-button" type="button" data-modal="crmModal">View Project →</button>
-                </article>
-
-                <article class="work-card">
-                    <h3>Customer Profile</h3>
-                    <p>Customer information, case history, support activity, and record management.</p>
-                    <button class="work-button" type="button" data-modal="profileModal">View Project →</button>
-                </article>
-
-                <article class="work-card">
-                    <h3>Documentation Review</h3>
-                    <p>Reviewing submitted information, identifying missing details, and documenting the next action.</p>
-                    <button class="work-button" type="button" data-modal="documentationModal">View Portfolio →</button>
-                </article>
-
-                <article class="work-card">
-                    <h3>Administrative Workflow</h3>
-                    <p>Request received → information review → verification → data entry → quality check → follow-up.</p>
-                    <button class="work-button" type="button" data-modal="workflowModal">View Workflow →</button>
-                </article>
-
-                <article class="work-card">
-                    <h3>Email Support</h3>
-                    <p>Customer inquiries, clear responses, follow-up, and resolution.</p>
-                    <button class="work-button" type="button" data-modal="emailModal">View Samples →</button>
-                </article>
-
-                <article class="work-card">
-                    <h3>Live Chat Support</h3>
-                    <p>Customer clarification, verification, issue handling, and case follow-up.</p>
-                    <button class="work-button" type="button" data-modal="chatModal">View Samples →</button>
-                </article>
-            </div>
         </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="cta">
-            <div>
-                <h2>Reliable Support. Accurate Work.</h2>
-                <p>
-                    My goal is to provide dependable customer support, maintain accurate information,
-                    and help keep customer operations organized.
-                </p>
-            </div>
-            <a class="button" href="../index.html">Main Portfolio →</a>
-        </div>
-    </section>
-
+        <a href="../index.html" class="button">Main Portfolio →</a>
+    </div>
+</section>
 </main>
 
 <footer>
-    <p>Edward • Customer Experience &amp; Administrative Support</p>
-    <p>Vuelio-specific application page • Portfolio demonstrations only</p>
+    <p>Edward • Customer Experience & Administrative Support</p>
+    <p>Vuelio-specific application page • Fictional portfolio demonstrations only</p>
 </footer>
 
 <!-- CRM MODAL -->
-<div class="modal" id="crmModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="crmTitle">
-        <button class="modal-close" type="button" aria-label="Close">×</button>
-        <div class="modal-label">CRM / DATA OPERATIONS</div>
-        <h2 id="crmTitle">CRM Dashboard</h2>
-        <span class="case-status">Workflow Demonstration</span>
-        <p class="modal-intro">
-            A Salesforce-inspired demonstration showing how customer cases, tasks, support activity,
-            and administrative requests can be organized and tracked.
-        </p>
-        <div class="modal-image-wrap">
-            <img class="modal-image" src="../Images/03-crm-dashboard.png" alt="CRM dashboard portfolio demonstration">
-        </div>
-        <div class="case-grid">
-            <div class="case-card"><h4>Customer Cases</h4><p>Track incoming requests, case status, assigned actions, and resolution progress.</p></div>
-            <div class="case-card"><h4>Data Accuracy</h4><p>Maintain accurate customer information and update records based on verified details.</p></div>
-            <div class="case-card"><h4>Follow-Up</h4><p>Monitor outstanding requests and make sure the required next action is completed.</p></div>
-            <div class="case-card"><h4>Outcome</h4><p>Keep customer information organized and cases moving toward completion.</p></div>
-        </div>
-        <p class="small-note">Fictional portfolio demonstration — no real customer data.</p>
-    </div>
+<div class="modal" id="crmModal">
+<div class="modal-box">
+<button class="modal-close" type="button">×</button>
+<div class="modal-label">CRM / DATA OPERATIONS</div>
+<h2>CRM Dashboard</h2>
+<span class="status">CRM Workflow Demonstration</span>
+<p class="modal-intro">
+A Salesforce-inspired dashboard example showing customer cases, support activity,
+tasks, and administrative workflows.
+</p>
+<div class="image-stage">
+    <img id="crmImage" class="gallery-image" alt="CRM Dashboard">
+</div>
+<div class="image-caption">Customer cases, support activity, and administrative workflow example.</div>
+<div class="case-grid">
+    <div class="case-card"><h4>Case Management</h4><p>Track incoming requests, status, assigned actions, and resolution progress.</p></div>
+    <div class="case-card"><h4>Data Integrity</h4><p>Keep customer records accurate and update information from verified details.</p></div>
+    <div class="case-card"><h4>Follow-Up</h4><p>Monitor outstanding actions and keep cases moving toward completion.</p></div>
+    <div class="case-card"><h4>Outcome</h4><p>Organize customer information and activity so the next action is clear.</p></div>
+</div>
+</div>
 </div>
 
-<!-- PROFILE MODAL -->
-<div class="modal" id="profileModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
-        <button class="modal-close" type="button" aria-label="Close">×</button>
-        <div class="modal-label">CUSTOMER DATA</div>
-        <h2 id="profileTitle">Customer Profile</h2>
-        <span class="case-status">Record Management Demonstration</span>
-        <p class="modal-intro">
-            A customer-profile example showing how account information, case history, plan information,
-            and support activity can be organized for accurate customer service.
-        </p>
-        <div class="modal-image-wrap">
-            <img class="modal-image" src="../Images/04-customer-profile.png" alt="Customer profile portfolio demonstration">
-        </div>
-        <div class="case-grid">
-            <div class="case-card"><h4>Customer Information</h4><p>Review and maintain customer details and account information.</p></div>
-            <div class="case-card"><h4>Case History</h4><p>Review previous requests and document actions taken.</p></div>
-            <div class="case-card"><h4>Support Activity</h4><p>Keep communication and case activity organized in one place.</p></div>
-            <div class="case-card"><h4>Data Integrity</h4><p>Verify information before making updates or completing a customer request.</p></div>
-        </div>
-        <p class="small-note">Fictional portfolio demonstration — no real customer data.</p>
-    </div>
+<!-- CUSTOMER PROFILE MODAL -->
+<div class="modal" id="profileModal">
+<div class="modal-box">
+<button class="modal-close" type="button">×</button>
+<div class="modal-label">CUSTOMER DATA</div>
+<h2>Customer Profile</h2>
+<span class="status">Record Management Demonstration</span>
+<p class="modal-intro">
+A customer-profile example showing how account information, case history,
+plan information, and support activity can be organized for accurate service.
+</p>
+<div class="image-stage">
+    <img id="profileImage" class="gallery-image" alt="Customer Profile">
+</div>
+<div class="image-caption">Customer information, case history, and support activity.</div>
+<div class="case-grid">
+    <div class="case-card"><h4>Customer Information</h4><p>Review and maintain customer and account details.</p></div>
+    <div class="case-card"><h4>Case History</h4><p>Review previous requests and document actions taken.</p></div>
+    <div class="case-card"><h4>Support Activity</h4><p>Keep customer communication and case activity organized.</p></div>
+    <div class="case-card"><h4>Data Integrity</h4><p>Verify details before completing an update or request.</p></div>
+</div>
+</div>
 </div>
 
 <!-- DOCUMENTATION MODAL -->
-<div class="modal" id="documentationModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="documentationTitle">
-        <button class="modal-close" type="button" aria-label="Close">×</button>
-        <div class="modal-label">DOCUMENTATION REVIEW</div>
-        <h2 id="documentationTitle">Documentation Review</h2>
-        <span class="case-status">Quality &amp; Verification</span>
-        <p class="modal-intro">
-            A demonstration of reviewing submitted information, identifying incomplete details,
-            and communicating the required next step.
-        </p>
-        <div class="case-grid">
-            <div class="case-card"><h4>Information Review</h4><p>Check submitted forms, receipts, and supporting documentation for completeness.</p></div>
-            <div class="case-card"><h4>Issue Identified</h4><p>Identify missing, incorrect, or incomplete information.</p></div>
-            <div class="case-card"><h4>Action Taken</h4><p>Explain what information is needed and request the correct documentation.</p></div>
-            <div class="case-card"><h4>Follow-Up</h4><p>Document the action and monitor the request until the missing information is received.</p></div>
-        </div>
-        <p class="small-note">Fictional portfolio demonstration — no real customer data.</p>
-    </div>
+<div class="modal" id="documentationModal">
+<div class="modal-box">
+<button class="modal-close" type="button">×</button>
+<div class="modal-label">DOCUMENTATION REVIEW</div>
+<h2>Documentation Review</h2>
+<span class="status">Quality & Verification</span>
+<p class="modal-intro">
+A visual demonstration of reviewing submitted documents, identifying missing information,
+checking required fields, and documenting the next action.
+</p>
+
+<div class="image-stage">
+    <img id="documentationImage" class="gallery-image" alt="Documentation Review">
+</div>
+
+<div class="gallery-controls" id="documentationControls">
+    <button type="button" data-dir="-1" data-gallery="documentation">← Previous</button>
+    <span class="counter" id="documentationCounter">1 / 4</span>
+    <button type="button" data-dir="1" data-gallery="documentation">Next →</button>
+</div>
+
+<div class="image-caption" id="documentationCaption">
+    Documentation review workflow example.
+</div>
+
+<div class="case-grid">
+    <div class="case-card"><h4>Review</h4><p>Check claim information, receipts, forms, dates, amounts, and required fields.</p></div>
+    <div class="case-card"><h4>Issue Identified</h4><p>Identify missing or incomplete supporting information.</p></div>
+    <div class="case-card"><h4>Action</h4><p>Explain what is missing, request the correct documentation, and document the follow-up.</p></div>
+    <div class="case-card"><h4>Outcome</h4><p>Prepare the request for continued review once required information is received.</p></div>
+</div>
+<div class="note">Fictional portfolio demonstration — no real customer data.</div>
+</div>
 </div>
 
 <!-- WORKFLOW MODAL -->
-<div class="modal" id="workflowModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="workflowTitle">
-        <button class="modal-close" type="button" aria-label="Close">×</button>
-        <div class="modal-label">ADMINISTRATIVE OPERATIONS</div>
-        <h2 id="workflowTitle">Administrative Workflow</h2>
-        <span class="case-status">Process Demonstration</span>
-        <p class="modal-intro">
-            A structured workflow showing how an administrative request can move from receipt through completion.
-        </p>
-        <div class="workflow-list">
-            <div class="workflow-step"><span class="workflow-number">01</span><strong>Request Received</strong></div>
-            <div class="workflow-step"><span class="workflow-number">02</span><strong>Information Review</strong></div>
-            <div class="workflow-step"><span class="workflow-number">03</span><strong>Document Verification</strong></div>
-            <div class="workflow-step"><span class="workflow-number">04</span><strong>Data Entry</strong></div>
-            <div class="workflow-step"><span class="workflow-number">05</span><strong>Processing</strong></div>
-            <div class="workflow-step"><span class="workflow-number">06</span><strong>Quality Check</strong></div>
-            <div class="workflow-step"><span class="workflow-number">07</span><strong>Follow-Up</strong></div>
-            <div class="workflow-step"><span class="workflow-number">08</span><strong>Completed</strong></div>
-        </div>
-        <p class="small-note">Fictional workflow demonstration based on administrative support processes.</p>
-    </div>
+<div class="modal" id="workflowModal">
+<div class="modal-box">
+<button class="modal-close" type="button">×</button>
+<div class="modal-label">ADMINISTRATIVE OPERATIONS</div>
+<h2>Administrative Workflow</h2>
+<span class="status">Process Demonstration</span>
+<p class="modal-intro">
+A structured workflow showing how an administrative request can move from receipt
+through verification, data entry, quality check, follow-up, and completion.
+</p>
+<div class="image-stage">
+    <img id="workflowImage" class="gallery-image" alt="Administrative Workflow">
+</div>
+<div class="case-grid">
+    <div class="case-card"><h4>01 — Request Received</h4><p>Review the incoming request and determine the action required.</p></div>
+    <div class="case-card"><h4>02 — Information Review</h4><p>Check available records and supporting information.</p></div>
+    <div class="case-card"><h4>03 — Verification</h4><p>Confirm that required details are complete and accurate.</p></div>
+    <div class="case-card"><h4>04 — Data Entry</h4><p>Update the appropriate CRM or internal system.</p></div>
+    <div class="case-card"><h4>05 — Quality Check</h4><p>Review the completed update before finalizing.</p></div>
+    <div class="case-card"><h4>06 — Follow-Up</h4><p>Provide updates and make sure the request reaches completion.</p></div>
+</div>
+</div>
 </div>
 
 <!-- EMAIL MODAL -->
-<div class="modal" id="emailModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="emailTitle">
-        <button class="modal-close" type="button" aria-label="Close">×</button>
-        <div class="modal-label">CUSTOMER SUPPORT</div>
-        <h2 id="emailTitle">Email Support</h2>
-        <span class="case-status">Customer Communication</span>
-        <p class="modal-intro">
-            A demonstration of handling a customer inquiry through review, response, follow-up, and resolution.
-        </p>
-        <div class="modal-image-wrap">
-            <img class="modal-image" src="../Images/05-email-support-1.png" alt="Email support portfolio demonstration">
-        </div>
-        <div class="case-grid">
-            <div class="case-card"><h4>Customer Inquiry</h4><p>Review the customer's concern and identify the information needed.</p></div>
-            <div class="case-card"><h4>Response</h4><p>Provide a clear and professional response using simple language.</p></div>
-            <div class="case-card"><h4>Follow-Up</h4><p>Track outstanding information or actions until the issue is resolved.</p></div>
-            <div class="case-card"><h4>Resolution</h4><p>Document the outcome and close the request when the required action is complete.</p></div>
-        </div>
-        <p class="small-note">Fictional portfolio demonstration — no real customer data.</p>
-    </div>
+<div class="modal" id="emailModal">
+<div class="modal-box">
+<button class="modal-close" type="button">×</button>
+<div class="modal-label">CUSTOMER SUPPORT</div>
+<h2>Email Support</h2>
+<span class="status">3 Supporting Samples</span>
+<p class="modal-intro">
+Three examples showing customer inquiry review, professional response,
+follow-up, and resolution.
+</p>
+<div class="image-stage">
+    <img id="emailImage" class="gallery-image" alt="Email Support Sample">
+</div>
+<div class="gallery-controls" id="emailControls">
+    <button type="button" data-dir="-1" data-gallery="email">← Previous</button>
+    <span class="counter" id="emailCounter">1 / 3</span>
+    <button type="button" data-dir="1" data-gallery="email">Next →</button>
+</div>
+<div class="image-caption" id="emailCaption">Email support sample 1 of 3.</div>
+<div class="case-grid">
+    <div class="case-card"><h4>Customer Inquiry</h4><p>Review the customer's concern and identify the information needed.</p></div>
+    <div class="case-card"><h4>Response</h4><p>Provide a clear and professional answer using simple language.</p></div>
+    <div class="case-card"><h4>Follow-Up</h4><p>Track outstanding information or actions until completed.</p></div>
+    <div class="case-card"><h4>Resolution</h4><p>Document the outcome and close the request when complete.</p></div>
+</div>
+</div>
 </div>
 
 <!-- CHAT MODAL -->
-<div class="modal" id="chatModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
-        <button class="modal-close" type="button" aria-label="Close">×</button>
-        <div class="modal-label">CUSTOMER SUPPORT</div>
-        <h2 id="chatTitle">Live Chat Support</h2>
-        <span class="case-status">Issue Resolution</span>
-        <p class="modal-intro">
-            A demonstration of a support interaction involving clarification, verification, issue handling,
-            and follow-up.
-        </p>
-        <div class="modal-image-wrap">
-            <img class="modal-image" src="../Images/06-live-chat.png" alt="Live chat support portfolio demonstration">
-        </div>
-        <div class="case-grid">
-            <div class="case-card"><h4>Clarification</h4><p>Ask focused questions to understand the customer's concern.</p></div>
-            <div class="case-card"><h4>Verification</h4><p>Review account and supporting information before providing an answer.</p></div>
-            <div class="case-card"><h4>Issue Handling</h4><p>Explain the issue clearly and identify the appropriate next step.</p></div>
-            <div class="case-card"><h4>Follow-Up</h4><p>Document the interaction and follow the case through the required next action.</p></div>
-        </div>
-        <p class="small-note">Fictional portfolio demonstration — no real customer data.</p>
-    </div>
+<div class="modal" id="chatModal">
+<div class="modal-box">
+<button class="modal-close" type="button">×</button>
+<div class="modal-label">CUSTOMER SUPPORT</div>
+<h2>Live Chat Support</h2>
+<span class="status">Multiple Chat Samples</span>
+<p class="modal-intro">
+Visual examples of live customer support demonstrating clarification,
+verification, issue handling, documentation, and follow-up.
+</p>
+<div class="image-stage">
+    <img id="chatImage" class="gallery-image" alt="Live Chat Support Sample">
+</div>
+<div class="gallery-controls" id="chatControls">
+    <button type="button" data-dir="-1" data-gallery="chat">← Previous</button>
+    <span class="counter" id="chatCounter">1 / 3</span>
+    <button type="button" data-dir="1" data-gallery="chat">Next →</button>
+</div>
+<div class="image-caption" id="chatCaption">Live chat support sample 1.</div>
+<div class="case-grid">
+    <div class="case-card"><h4>Clarification</h4><p>Ask focused questions to understand the customer's concern.</p></div>
+    <div class="case-card"><h4>Verification</h4><p>Review account and supporting information before responding.</p></div>
+    <div class="case-card"><h4>Issue Handling</h4><p>Explain the issue clearly and identify the appropriate next step.</p></div>
+    <div class="case-card"><h4>Follow-Up</h4><p>Document the interaction and follow the case through the next action.</p></div>
+</div>
+</div>
 </div>
 
 <script>
-    const modalButtons = document.querySelectorAll('.work-button');
-    const modals = document.querySelectorAll('.modal');
+/*
+  The main portfolio already uses several image-name variants.
+  This Vuelio page deliberately tries multiple variants so that
+  files such as "06-live-chat.png", "06-live-chat.png.png",
+  "07-live-chat.png", etc. can all work.
+*/
 
-    function openModal(id) {
-        const modal = document.getElementById(id);
-        if (!modal) return;
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('modal-open');
+const IMAGE_VARIANTS = [
+    ".png",
+    ".png.png",
+    ".jpg",
+    ".jpg.jpg",
+    ".jpeg",
+    ".jpeg.jpeg",
+    ".webp",
+    ".webp.webp"
+];
+
+function fileCandidates(baseName){
+    const names = [];
+    for(const ext of IMAGE_VARIANTS){
+        names.push("../Images/" + encodeURIComponent(baseName + ext));
     }
+    return [...new Set(names)];
+}
 
-    function closeModal(modal) {
-        if (!modal) return;
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('modal-open');
-    }
+function findImage(baseName, onSuccess, onFailure){
+    const candidates = fileCandidates(baseName);
+    let index = 0;
 
-    modalButtons.forEach(button => {
-        button.addEventListener('click', () => openModal(button.dataset.modal));
-    });
-
-    modals.forEach(modal => {
-        const closeButton = modal.querySelector('.modal-close');
-        if (closeButton) {
-            closeButton.addEventListener('click', () => closeModal(modal));
+    function next(){
+        if(index >= candidates.length){
+            if(onFailure) onFailure();
+            return;
         }
 
-        modal.addEventListener('click', event => {
-            if (event.target === modal) closeModal(modal);
-        });
-    });
+        const src = candidates[index++];
+        const probe = new Image();
 
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') {
-            modals.forEach(closeModal);
+        probe.onload = () => onSuccess(src);
+        probe.onerror = next;
+        probe.src = src;
+    }
+
+    next();
+}
+
+const galleries = {
+    email: {
+        images: [
+            "05-email-support-1",
+            "05-email-support-2",
+            "05-email-support-3"
+        ],
+        index: 0,
+        image: document.getElementById("emailImage"),
+        counter: document.getElementById("emailCounter"),
+        caption: document.getElementById("emailCaption"),
+        controls: document.getElementById("emailControls"),
+        labels: [
+            "Email support sample 1 — customer inquiry/review.",
+            "Email support sample 2 — customer response and follow-up.",
+            "Email support sample 3 — resolution and case completion."
+        ]
+    },
+    chat: {
+        images: [
+            "06-live-chat",
+            "07-live-chat",
+            "08-live-chat"
+        ],
+        index: 0,
+        image: document.getElementById("chatImage"),
+        counter: document.getElementById("chatCounter"),
+        caption: document.getElementById("chatCaption"),
+        controls: document.getElementById("chatControls"),
+        labels: [
+            "Live chat sample 1 — customer support interaction.",
+            "Live chat sample 2 — verification and issue handling.",
+            "Live chat sample 3 — clarification and follow-up."
+        ]
+    },
+    documentation: {
+        images: [
+            "documentation-review",
+            "Documentation Review Workflow Infographic",
+            "Documentation Review Receipt Samples",
+            "Salesforce Claims Documentation Review Dashboard"
+        ],
+        index: 0,
+        image: document.getElementById("documentationImage"),
+        counter: document.getElementById("documentationCounter"),
+        caption: document.getElementById("documentationCaption"),
+        controls: document.getElementById("documentationControls"),
+        labels: [
+            "Documentation review — supporting information and quality checks.",
+            "Documentation review workflow — before, review, and after process.",
+            "Receipt and reimbursement documentation sample.",
+            "CRM-style documentation review dashboard."
+        ]
+    }
+};
+
+const singleImages = {
+    crmImage: "03-crm-dashboard",
+    profileImage: "04-customer-profile",
+    workflowImage: "administrative-workflow"
+};
+
+function showGallery(name){
+    const g = galleries[name];
+    if(!g) return;
+
+    const base = g.images[g.index];
+    g.counter.textContent = `${g.index + 1} / ${g.images.length}`;
+    g.caption.textContent = g.labels[g.index] || `${name} sample ${g.index + 1}.`;
+
+    g.image.style.display = "none";
+
+    findImage(base, src => {
+        g.image.src = src;
+        g.image.style.display = "block";
+    }, () => {
+        g.image.style.display = "none";
+        g.caption.textContent =
+            `${g.labels[g.index] || "Sample"} — image file not found.`;
+    });
+}
+
+function openGallery(name){
+    const g = galleries[name];
+    if(!g) return;
+
+    g.index = 0;
+    g.controls.classList.add("show");
+    showGallery(name);
+}
+
+function moveGallery(name, direction){
+    const g = galleries[name];
+    if(!g) return;
+
+    g.index += direction;
+
+    if(g.index < 0) g.index = g.images.length - 1;
+    if(g.index >= g.images.length) g.index = 0;
+
+    showGallery(name);
+}
+
+function loadSingleImage(elementId, baseName){
+    const element = document.getElementById(elementId);
+    if(!element) return;
+
+    element.style.display = "none";
+
+    findImage(baseName, src => {
+        element.src = src;
+        element.style.display = "block";
+    }, () => {
+        element.style.display = "none";
+    });
+}
+
+function hideModal(modal){
+    modal.classList.remove("open");
+    document.body.classList.remove("modal-open");
+}
+
+document.querySelectorAll(".work-button").forEach(button => {
+    button.addEventListener("click", () => {
+        const modal = document.getElementById(button.dataset.modal);
+        if(!modal) return;
+
+        modal.classList.add("open");
+        document.body.classList.add("modal-open");
+
+        if(button.dataset.modal === "crmModal"){
+            loadSingleImage("crmImage", singleImages.crmImage);
+        }
+
+        if(button.dataset.modal === "profileModal"){
+            loadSingleImage("profileImage", singleImages.profileImage);
+        }
+
+        if(button.dataset.modal === "workflowModal"){
+            loadSingleImage("workflowImage", singleImages.workflowImage);
+        }
+
+        if(button.dataset.modal === "emailModal"){
+            openGallery("email");
+        }
+
+        if(button.dataset.modal === "chatModal"){
+            openGallery("chat");
+        }
+
+        if(button.dataset.modal === "documentationModal"){
+            openGallery("documentation");
         }
     });
+});
+
+document.querySelectorAll(".gallery-controls button").forEach(button => {
+    button.addEventListener("click", event => {
+        event.stopPropagation();
+        moveGallery(button.dataset.gallery, Number(button.dataset.dir));
+    });
+});
+
+document.querySelectorAll(".modal-close").forEach(button => {
+    button.addEventListener("click", () => {
+        hideModal(button.closest(".modal"));
+    });
+});
+
+document.querySelectorAll(".modal").forEach(modal => {
+    modal.addEventListener("click", event => {
+        if(event.target === modal){
+            hideModal(modal);
+        }
+    });
+});
+
+document.addEventListener("keydown", event => {
+    const openModalElement = document.querySelector(".modal.open");
+
+    if(event.key === "Escape" && openModalElement){
+        hideModal(openModalElement);
+    }
+
+    if(openModalElement){
+        if(event.key === "ArrowLeft"){
+            const gallery = openModalElement.id === "emailModal"
+                ? "email"
+                : openModalElement.id === "chatModal"
+                    ? "chat"
+                    : openModalElement.id === "documentationModal"
+                        ? "documentation"
+                        : null;
+
+            if(gallery) moveGallery(gallery, -1);
+        }
+
+        if(event.key === "ArrowRight"){
+            const gallery = openModalElement.id === "emailModal"
+                ? "email"
+                : openModalElement.id === "chatModal"
+                    ? "chat"
+                    : openModalElement.id === "documentationModal"
+                        ? "documentation"
+                        : null;
+
+            if(gallery) moveGallery(gallery, 1);
+        }
+    }
+});
 </script>
-
 </body>
 </html>
