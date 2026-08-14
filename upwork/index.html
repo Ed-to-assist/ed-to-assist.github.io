@@ -875,7 +875,7 @@ footer p+p{opacity:.65}
    Works with the user's Windows Images folder and also provides
    a folder-picker fallback for browsers that restrict file:// access.
 ========================================================= */
-const LOCAL_IMAGES_PATH = 'C:/Users/ed_workpro/Desktop/Edward PortFolio/../Images/';
+const LOCAL_IMAGES_PATH = '/Images/';
 const imageFileMap = new Map();
 let selectedImagesFolder = false;
 
@@ -891,7 +891,7 @@ const IMAGE_NAMES = {
   '07-live-chat': ['07-live-chat.png','07-live-chat.png.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
   '08-live-chat': ['08-live-chat.png','08-live-chat.png.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
   '08-customer-service': ['08-customer-service.png','08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png.png'],
-  'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
+  'pizzaoffice': ['pizzaoffice.png','Pizzaoffice.png','Piazzoffice.png','pizzaoffice.png.png','Pizzaoffice.png.png','Piazzoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp'],
   '09-Sf-case': ['09-Sf-case.png','09-Sf-case.png.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
   'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
 };
@@ -901,7 +901,9 @@ function encodeFileName(name){ return name.split('/').map(encodeURIComponent).jo
 function autoCandidates(baseName){
   const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
   const roots = [
-    '../Images/', './../Images/'
+    '/Images/',
+    '../Images/',
+    './Images/'
   ];
   return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
 }
@@ -938,7 +940,7 @@ function resolveImage(baseName, element, failure){
 function resolvePageImage(img, baseName){
   resolveImage(baseName,img,()=>{
     img.style.display='block';
-    img.alt = img.alt + ' — image not found. Use Load Images Folder.';
+    img.alt = img.alt + ' — image could not be loaded.';
   });
 }
 
@@ -946,37 +948,11 @@ function resolveModalImage(baseName){
   resolveImage(baseName,modalImage,()=>{
     modalImage.removeAttribute('src');
     modalImage.style.display='block';
-    modalTitle.textContent='Image not found — use Load Images Folder';
+    modalTitle.textContent='Image could not be loaded';
   });
 }
 
-/* Folder picker */
-const folderInput=document.createElement('input');
-folderInput.type='file';
-folderInput.webkitdirectory=true;
-folderInput.directory=true;
-folderInput.multiple=true;
-folderInput.style.display='none';
-document.body.appendChild(folderInput);
-
-const loadImagesButton=document.createElement('button');
-loadImagesButton.type='button';
-loadImagesButton.textContent='Load Images Folder';
-loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
-loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
-document.body.appendChild(loadImagesButton);
-
-loadImagesButton.addEventListener('click',()=>folderInput.click());
-folderInput.addEventListener('change',()=>{
-  imageFileMap.clear();
-  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
-  selectedImagesFolder=true;
-  loadImagesButton.textContent='Images Loaded ✓';
-  loadImagesButton.style.background='#4963ed';
-  loadImagesButton.style.color='#fff';
-  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
-  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
-});
+/* Hosted GitHub Pages version — no local folder picker required. */
 
 /* DARK MODE */
 const themeButton=document.getElementById('themeButton');
@@ -1031,13 +1007,13 @@ function openClaimsCaseStudy(){crmSourceWrap.style.display='none';
 
 function openClaimsInteractiveStudy(){crmSourceWrap.style.display='none';
   customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Case Review — Interactive Case Study';
-  const candidates=['../Images/Missing_Date_Case_Study_Improved.html','./../Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
+  const candidates=['/Images/Missing_Date_Case_Study_Improved.html','../Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
 
 function openCustomerSupportModal(){crmSourceWrap.style.display='none';
   claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
-  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='../Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
+  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
 function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';crmSourceWrap.style.display=(['02-about','03-crm-dashboard','04-customer-profile','05-email-support-1','05-email-support-2','05-email-support-3','07-live-chat','08-live-chat','08-customer-service'].includes(baseName)?'block':'none');claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
@@ -1065,4 +1041,8 @@ claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
 function closeModal(){modal.classList.remove('open');crmSourceWrap.style.display='none';document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+</script>
+
+</body>
+</html>
