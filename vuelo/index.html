@@ -33,12 +33,14 @@ header{
     display:flex;
     align-items:center;
 }
-.back-link{
-    font-size:.92rem;
-    font-weight:700;
-    color:#295f8f;
+.header-label{
+    margin:0;
+    color:#2d78b7;
+    font-size:.76rem;
+    font-weight:800;
+    letter-spacing:.1em;
+    text-transform:uppercase;
 }
-.back-link:hover{color:#173a61}
 
 .hero,.value-section,.resume-section,.work-inner,.cta-section{
     width:min(1180px,92%);
@@ -203,7 +205,11 @@ header{
 }
 .cta h2{margin:0 0 6px;font-size:1.75rem}
 .cta p{margin:0;color:#d9e6f2;max-width:680px}
-
+.cta a{
+    flex-shrink:0;
+    background:#fff;
+    color:#173a61;
+}
 
 footer{
     padding:24px 20px;
@@ -362,6 +368,35 @@ footer p+p{margin-top:4px;color:#aebdcb}
     font-size:.82rem;
 }
 
+
+.documentation-image-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:18px;
+}
+.documentation-image-card{
+    background:#f6f9fb;
+    border:1px solid #e0e7ed;
+    border-radius:12px;
+    padding:10px;
+}
+.documentation-image-title{
+    color:#173a61;
+    font-size:.82rem;
+    font-weight:800;
+    margin:2px 4px 9px;
+}
+.documentation-main-image{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:58vh;
+    object-fit:contain;
+    border-radius:8px;
+    background:#fff;
+}
+
 .claims-frame-wrap{
     overflow:hidden;
     margin-top:10px;
@@ -383,6 +418,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
     .cta{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:640px){
+    .documentation-image-grid{grid-template-columns:1fr;}
     .hero{padding-top:52px}
     .value-grid,.work-grid,.case-grid{grid-template-columns:1fr}
     .resume-card{padding:8px}
@@ -398,7 +434,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
 
 <header>
     <div class="header-inner">
-        <div class="eyebrow header-label">Customer Experience Specialist Application</div>
+        <div class="header-label">Customer Experience Specialist Application</div>
     </div>
 </header>
 
@@ -535,7 +571,7 @@ footer p+p{margin-top:4px;color:#aebdcb}
                 information accurate, and customers informed.
             </p>
         </div>
-
+        
     </div>
 </section>
 
@@ -647,23 +683,27 @@ footer p+p{margin-top:4px;color:#aebdcb}
         </p>
 
         <div class="documentation-image-grid">
+
             <div class="documentation-image-card">
                 <div class="documentation-image-title">Documentation Review</div>
                 <img
+                    class="documentation-main-image"
                     src="../Images/documentation-review.png"
-                    alt="Documentation Review portfolio example"
-                    onerror="this.onerror=null;this.src='../Images/documentation-review.png.png';"
+                    alt="Documentation Review"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='../Images/documentation-review.png.png';}else{this.alt='Documentation Review image not found';}"
                 >
             </div>
 
             <div class="documentation-image-card">
                 <div class="documentation-image-title">Claims / Receipt Review</div>
                 <img
+                    class="documentation-main-image"
                     src="../Images/claims-review.png"
-                    alt="Claims review and receipt portfolio example"
-                    onerror="this.onerror=null;this.src='../Images/claims-review.png.png';"
+                    alt="Claims Review"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='../Images/claims-review.png.png';}else{this.alt='Claims Review image not found';}"
                 >
             </div>
+
         </div>
 
         <div class="case-grid">
@@ -671,31 +711,18 @@ footer p+p{margin-top:4px;color:#aebdcb}
                 <h4>Information Reviewed</h4>
                 <p>Claim information, receipt, date of service, item details, amount, and supporting documentation.</p>
             </div>
-
             <div class="case-card">
                 <h4>Issue Identified</h4>
-                <p>Missing or incomplete information that needs to be clarified before processing.</p>
+                <p>Missing or incomplete information that needs clarification before processing.</p>
             </div>
-
             <div class="case-card">
                 <h4>Action Taken</h4>
-                <p>Identify the missing detail, explain the requirement, request the correct documentation, and record the follow-up.</p>
+                <p>Identify the missing detail, explain the requirement, request the correct documentation, and record follow-up.</p>
             </div>
-
             <div class="case-card">
                 <h4>Outcome</h4>
                 <p>Prepare the request for continued review once the required information is received.</p>
             </div>
-        </div>
-
-        <div class="claims-frame-wrap">
-            <div class="embedded-label">Interactive Case Study</div>
-            <iframe
-                class="claims-frame"
-                src="../Images/Missing_Date_Case_Study_Improved.html"
-                title="Documentation Review Interactive Case Study"
-                loading="lazy"
-            ></iframe>
         </div>
 
         <div class="note">
