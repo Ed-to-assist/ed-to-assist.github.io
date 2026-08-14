@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edward | Customer &amp; Phone Support Portfolio</title>
+<title>Edward | Customer Support Portfolio</title>
 <!-- Local image source: C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images -->
 
 <style>
@@ -582,9 +582,6 @@ footer p+p{opacity:.65}
 
 <style>
 .customer-support-wrap{padding:28px;background:#f7f8fb}.customer-support-heading{margin-bottom:22px}.customer-support-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:#4963ed}.customer-support-heading h3{font-size:25px;margin:5px 0 7px}.customer-support-heading p{font-size:13px;color:#68788f;max-width:760px}.customer-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.customer-support-card{background:#fff;border:1px solid #dfe4ea;border-radius:14px;padding:12px;box-shadow:0 8px 24px rgba(24,35,59,.06)}.customer-support-image{width:100%;height:360px;object-fit:contain;border-radius:9px;background:#f1f3f6;display:block}.customer-support-caption{padding:10px 4px 2px;font-size:12px;font-weight:700;color:#18233b}.customer-support-footer{margin-top:18px;padding:15px 16px;border:1px solid #dfe3eb;border-radius:12px;background:#fff;display:flex;align-items:center;gap:15px}.customer-support-footer strong{margin-right:auto;font-size:13px}.customer-support-footer a{padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}@media(max-width:700px){.customer-support-grid{grid-template-columns:1fr}.customer-support-image{height:300px}.customer-support-footer{flex-direction:column;align-items:flex-start}.customer-support-footer strong{margin-right:0}}</style>
-<style>
-.upwork-neutral-cta{color:#4963ed;font-size:12px;font-weight:700}
-</style>
 </head>
 
 <body>
@@ -792,19 +789,13 @@ footer p+p{opacity:.65}
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 <div id="crmSourceWrap" style="display:none; padding:12px 18px 18px; background:#fff; border-top:1px solid #e1e5ec;">
-    <div style="font-size:12px;color:#687286;margin-bottom:8px;">
-        <strong style="color:#18233b;">Design &amp; layout:</strong> Created by Edward in Canva.
+    <div style="font-size:12px;color:#687286;">
+        <strong style="color:#18233b;">Design &amp; Layout:</strong>
+        <a href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-weight:700;text-decoration:none;">Created by Edward in Canva</a>
     </div>
-    <a id="crmSourceLink"
-       href="https://canva.link/phyp86qtqgt0phj"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="display:inline-block;padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700;">
-       View Design Source →
-    </a>
 </div>
 
-        <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
+<div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
             <div class="customer-support-heading">
                 <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
                 <h3>Customer &amp; Phone Support</h3>
@@ -822,7 +813,8 @@ footer p+p{opacity:.65}
             </div>
             <div class="customer-support-footer">
                 <strong>I can help keep customers informed and operations moving.</strong>
-                <a href="mailto:">Let's connect →</a>
+                <a href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-size:12px;font-weight:700;text-decoration:none;">Created by Edward in Canva →</a>
+                <span class="upwork-neutral-cta">Let's connect →</span>
             </div>
         </div>
 
@@ -883,7 +875,7 @@ footer p+p{opacity:.65}
    Works with the user's Windows Images folder and also provides
    a folder-picker fallback for browsers that restrict file:// access.
 ========================================================= */
-const LOCAL_IMAGES_PATH = '../Images/';
+const LOCAL_IMAGES_PATH = 'C:/Users/ed_workpro/Desktop/Edward PortFolio/../Images/';
 const imageFileMap = new Map();
 let selectedImagesFolder = false;
 
@@ -1048,10 +1040,10 @@ function openCustomerSupportModal(){crmSourceWrap.style.display='none';
   customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='../Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';crmSourceWrap.style.display=(baseName==='03-crm-dashboard'?'block':'none');claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';crmSourceWrap.style.display=(['02-about','03-crm-dashboard','04-customer-profile','05-email-support-1','05-email-support-2','05-email-support-3','07-live-chat','08-live-chat','08-customer-service'].includes(baseName)?'block':'none');claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='block';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
-function openLiveChatModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openLiveChatModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='block';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
 portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
@@ -1073,8 +1065,4 @@ claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
 function closeModal(){modal.classList.remove('open');crmSourceWrap.style.display='none';document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
-</script>
-
-</body>
-</html>
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls
