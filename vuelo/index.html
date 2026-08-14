@@ -168,6 +168,18 @@ header{
 }
 .work-card a:hover{color:var(--navy)}
 
+.work-open{
+    border:0;
+    padding:0;
+    background:transparent;
+    color:var(--blue);
+    font-weight:800;
+    font-size:.9rem;
+    cursor:pointer;
+}
+.work-open:hover{color:var(--navy)}
+
+
 /* ROLE FIT */
 .fit-section{
     padding:60px 0 70px;
@@ -248,6 +260,164 @@ footer p+p{
     color:#afc0cf;
 }
 
+
+/* IN-PAGE WORK MODALS */
+body.modal-open{overflow:hidden}
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(8,22,38,.78);
+}
+.modal.open{display:flex}
+.modal-box{
+    position:relative;
+    width:min(1120px,96vw);
+    max-height:92vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:17px;
+    padding:30px;
+    box-shadow:0 30px 90px rgba(0,0,0,.32);
+}
+.modal-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:50%;
+    background:#eef3f7;
+    color:var(--navy);
+    font-size:22px;
+    cursor:pointer;
+}
+.modal-close:hover{background:#dfe9f0}
+.modal-label{
+    color:var(--blue);
+    font-size:.77rem;
+    font-weight:900;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+.modal-title{
+    margin:0 0 10px;
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    line-height:1.08;
+}
+.modal-intro{
+    margin:0 0 18px;
+    color:var(--muted);
+}
+.modal-image-frame{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:260px;
+    padding:12px;
+    background:#f5f8fa;
+    border:1px solid var(--line);
+    border-radius:12px;
+}
+.modal-image{
+    display:block;
+    max-width:100%;
+    max-height:64vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:8px;
+    background:#fff;
+}
+.modal-gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+.modal-gallery-card{
+    padding:10px;
+    background:#f7f9fb;
+    border:1px solid var(--line);
+    border-radius:11px;
+}
+.modal-gallery-card h4{
+    margin:2px 4px 9px;
+    font-size:.88rem;
+}
+.modal-gallery-card img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:56vh;
+    object-fit:contain;
+    border-radius:8px;
+    background:#fff;
+}
+.modal-cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:18px;
+}
+.modal-card{
+    padding:17px;
+    background:#f7f9fb;
+    border:1px solid var(--line);
+    border-radius:10px;
+}
+.modal-card h4{
+    margin:0 0 6px;
+    font-size:.98rem;
+}
+.modal-card p{
+    margin:0;
+    color:var(--muted);
+    font-size:.88rem;
+}
+.modal-note{
+    margin-top:16px;
+    padding:12px 14px;
+    border-left:3px solid var(--blue);
+    background:#f8fafc;
+    color:var(--muted);
+    font-size:.81rem;
+}
+.gallery-controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-top:12px;
+}
+.gallery-controls button{
+    border:1px solid #cbd8e3;
+    background:#fff;
+    color:var(--navy);
+    border-radius:8px;
+    padding:8px 13px;
+    font-weight:800;
+    cursor:pointer;
+}
+.gallery-counter{
+    min-width:48px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.84rem;
+    font-weight:800;
+}
+
+@media(max-width:700px){
+    .modal-gallery,
+    .modal-cards{grid-template-columns:1fr}
+    .modal-box{padding:23px 16px}
+}
+
 @media(max-width:900px){
     .value-grid,
     .work-grid{grid-template-columns:repeat(2,1fr)}
@@ -300,8 +470,8 @@ footer p+p{
 
     <div class="resume-card">
         <img
-            src="vuelo-background.png"
-            alt="Edward professional background and resume for Customer Experience Specialist application"
+            src="vuelio-resume.png"
+            alt="Edward professional resume for Customer Experience Specialist application"
         >
     </div>
 </section>
@@ -332,45 +502,45 @@ footer p+p{
         <div class="section-label">RELATED WORK</div>
         <h2 class="section-title">Evidence of How I Work</h2>
         <p class="section-intro">
-            Selected examples from my main portfolio showing CRM management,
-            customer support, documentation review, email support, and administrative workflow.
+            Selected examples from my main portfolio. Each project opens on this page
+            and uses the original images stored in the main portfolio's <strong>Images</strong> folder.
         </p>
 
         <div class="work-grid">
             <article class="work-card">
                 <h3>CRM Dashboard</h3>
                 <p>Customer cases, tasks, support activity, and administrative workflows.</p>
-                <a href="../index.html#portfolio">View Project →</a>
+                <button class="work-open" data-project="crm">View Project →</button>
             </article>
 
             <article class="work-card">
                 <h3>Customer Profile</h3>
                 <p>Customer information, case history, support activity, and record management.</p>
-                <a href="../index.html#portfolio">View Project →</a>
+                <button class="work-open" data-project="profile">View Project →</button>
             </article>
 
             <article class="work-card">
                 <h3>Documentation Review</h3>
                 <p>Review submitted information, identify gaps, verify evidence, and determine the next step.</p>
-                <a href="../index.html#portfolio">View Portfolio Example →</a>
+                <button class="work-open" data-project="documentation">View Investigation →</button>
             </article>
 
             <article class="work-card">
                 <h3>Administrative Workflow</h3>
                 <p>Request received → review → verification → data entry → quality check → follow-up.</p>
-                <a href="../index.html#portfolio">View Workflow →</a>
+                <button class="work-open" data-project="workflow">View Workflow →</button>
             </article>
 
             <article class="work-card">
                 <h3>Email Support</h3>
-                <p>Customer inquiries, professional responses, follow-up, and resolution.</p>
-                <a href="../index.html#portfolio">View Samples →</a>
+                <p>Customer inquiries, professional responses, follow-up, and resolution across three samples.</p>
+                <button class="work-open" data-project="email">View 3 Samples →</button>
             </article>
 
             <article class="work-card">
                 <h3>Live Chat Support</h3>
                 <p>One focused sample demonstrating clarification, verification, issue handling, and follow-through.</p>
-                <a href="../index.html#portfolio">View Sample →</a>
+                <button class="work-open" data-project="chat">View Sample →</button>
             </article>
         </div>
     </div>
@@ -458,12 +628,341 @@ footer p+p{
     </div>
 </section>
 
+
+<!-- CRM MODAL -->
+<div class="modal" id="crmModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-label">CRM</div>
+        <h2 class="modal-title">CRM Dashboard</h2>
+        <p class="modal-intro">
+            Customer cases, tasks, support activity, and administrative workflows.
+        </p>
+
+        <div class="modal-image-frame">
+            <img id="crmModalImage" class="modal-image" alt="CRM Dashboard">
+        </div>
+
+        <div class="modal-cards">
+            <div class="modal-card"><h4>Case Management</h4><p>Track incoming requests, status, assigned actions, and resolution progress.</p></div>
+            <div class="modal-card"><h4>Data Integrity</h4><p>Maintain accurate records and verify information before completing an update.</p></div>
+            <div class="modal-card"><h4>Follow-Up</h4><p>Monitor outstanding actions and keep requests moving toward completion.</p></div>
+            <div class="modal-card"><h4>Outcome</h4><p>Keep customer information organized so the next action is clear.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- CUSTOMER PROFILE MODAL -->
+<div class="modal" id="profileModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-label">CRM</div>
+        <h2 class="modal-title">Customer Profile</h2>
+        <p class="modal-intro">
+            Customer information, case history, support activity, and record management.
+        </p>
+
+        <div class="modal-image-frame">
+            <img id="profileModalImage" class="modal-image" alt="Customer Profile">
+        </div>
+
+        <div class="modal-cards">
+            <div class="modal-card"><h4>Customer Information</h4><p>Review and maintain account details.</p></div>
+            <div class="modal-card"><h4>Case History</h4><p>Review previous requests and document actions taken.</p></div>
+            <div class="modal-card"><h4>Support Activity</h4><p>Keep communication and case activity organized.</p></div>
+            <div class="modal-card"><h4>Data Integrity</h4><p>Verify details before completing a request.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- DOCUMENTATION REVIEW MODAL -->
+<div class="modal" id="documentationModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-label">DOCUMENTATION REVIEW</div>
+        <h2 class="modal-title">Investigation & Documentation Review</h2>
+        <p class="modal-intro">
+            This is the most investigation-focused example. It demonstrates reviewing evidence,
+            comparing information, identifying missing or inconsistent details, and determining the next action.
+        </p>
+
+        <div class="modal-gallery">
+            <div class="modal-gallery-card">
+                <h4>Claims / Case Review</h4>
+                <img id="documentationClaimsImage" alt="Claims and case review">
+            </div>
+
+            <div class="modal-gallery-card">
+                <h4>Receipt / Supporting Evidence</h4>
+                <img id="documentationReceiptImage" alt="Receipt and supporting evidence">
+            </div>
+        </div>
+
+        <div class="modal-cards">
+            <div class="modal-card"><h4>Information Reviewed</h4><p>Claim information, receipt, date of service, item details, amounts, and supporting documentation.</p></div>
+            <div class="modal-card"><h4>Issue Identified</h4><p>Missing or inconsistent information that requires clarification before processing.</p></div>
+            <div class="modal-card"><h4>Action Taken</h4><p>Identify the issue, explain what is needed, request documentation, and record follow-up.</p></div>
+            <div class="modal-card"><h4>Outcome</h4><p>Prepare the request for continued review once the required information is complete.</p></div>
+        </div>
+
+        <div class="modal-note">
+            Fictional portfolio demonstration — no real customer data.
+        </div>
+    </div>
+</div>
+
+<!-- WORKFLOW MODAL -->
+<div class="modal" id="workflowModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-label">ADMINISTRATIVE OPERATIONS</div>
+        <h2 class="modal-title">Administrative Workflow</h2>
+        <p class="modal-intro">
+            Request received → information review → verification → data entry → quality check → follow-up.
+        </p>
+
+        <div class="modal-image-frame">
+            <img id="workflowModalImage" class="modal-image" alt="Administrative Workflow">
+        </div>
+
+        <div class="modal-cards">
+            <div class="modal-card"><h4>Request Received</h4><p>Review the incoming request and determine the action required.</p></div>
+            <div class="modal-card"><h4>Verification</h4><p>Confirm required details are complete and accurate.</p></div>
+            <div class="modal-card"><h4>Data Entry</h4><p>Update the appropriate CRM or internal system.</p></div>
+            <div class="modal-card"><h4>Follow-Up</h4><p>Provide updates and make sure the request reaches completion.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- EMAIL MODAL -->
+<div class="modal" id="emailModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-label">CUSTOMER SUPPORT</div>
+        <h2 class="modal-title">Email Support</h2>
+        <p class="modal-intro">
+            Three supporting samples showing customer inquiry review, professional response,
+            follow-up, and resolution.
+        </p>
+
+        <div class="modal-image-frame">
+            <img id="emailModalImage" class="modal-image" alt="Email Support">
+        </div>
+
+        <div class="gallery-controls">
+            <button id="emailPrevious" type="button">← Previous</button>
+            <span class="gallery-counter" id="emailCounter">1 / 3</span>
+            <button id="emailNext" type="button">Next →</button>
+        </div>
+
+        <div class="modal-cards">
+            <div class="modal-card"><h4>Customer Inquiry</h4><p>Review the concern and identify the information needed.</p></div>
+            <div class="modal-card"><h4>Response</h4><p>Provide a clear and professional response using simple language.</p></div>
+            <div class="modal-card"><h4>Follow-Up</h4><p>Track outstanding information or actions until completed.</p></div>
+            <div class="modal-card"><h4>Resolution</h4><p>Document the outcome and close the request when complete.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- LIVE CHAT MODAL -->
+<div class="modal" id="chatModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-label">CUSTOMER SUPPORT</div>
+        <h2 class="modal-title">Live Chat Support</h2>
+        <p class="modal-intro">
+            One focused sample demonstrating clarification, verification, issue handling,
+            documentation, and follow-through.
+        </p>
+
+        <div class="modal-image-frame">
+            <img id="chatModalImage" class="modal-image" alt="Live Chat Support">
+        </div>
+
+        <div class="modal-cards">
+            <div class="modal-card"><h4>Clarification</h4><p>Ask focused questions to understand the customer's concern.</p></div>
+            <div class="modal-card"><h4>Verification</h4><p>Review account and supporting information before responding.</p></div>
+            <div class="modal-card"><h4>Issue Handling</h4><p>Explain the issue clearly and identify the appropriate next step.</p></div>
+            <div class="modal-card"><h4>Follow-Up</h4><p>Document the interaction and follow the case through the required action.</p></div>
+        </div>
+    </div>
+</div>
+
 </main>
 
 <footer>
     <p>Customer Experience • CRM • Data & Administrative Support</p>
     <p>Job-specific portfolio page • Fictional portfolio demonstrations only</p>
 </footer>
+
+
+<script>
+const imageSets = {
+    crm: [
+        "../Images/03-crm-dashboard.png.png",
+        "../Images/03-crm-dashboard.png"
+    ],
+    profile: [
+        "../Images/04-customer-profile.png.png",
+        "../Images/04-customer-profile.png"
+    ],
+    email: [
+        "../Images/05-email-support-1.png.png",
+        "../Images/05-email-support-1.png"
+    ],
+    email2: [
+        "../Images/05-email-support-2.png.png",
+        "../Images/05-email-support-2.png"
+    ],
+    email3: [
+        "../Images/05-email-support-3.png.png",
+        "../Images/05-email-support-3.png"
+    ],
+    chat: [
+        "../Images/06-live-chat.png.png",
+        "../Images/06-live-chat.png"
+    ],
+    claims: [
+        "../Images/09-Sf-case.png",
+        "../Images/09-Sf-case.png.png",
+        "../Images/09-Sf-case.jpg"
+    ],
+    receipt: [
+        "../Images/Receipts_Aug 9, 2026, 05_05_22 PM.png.png",
+        "../Images/Receipts_Aug 9, 2026, 05_05_22 PM.png",
+        "../Images/receiptAug_9.png.png",
+        "../Images/receiptAug_9.png"
+    ],
+    workflow: [
+        "../Images/Administrative Workflows Infographic.png",
+        "../Images/Administrative Workflow Process Map.png"
+    ]
+};
+
+function resolveImage(img, candidates){
+    let index = 0;
+
+    function tryNext(){
+        if(index >= candidates.length){
+            img.removeAttribute("src");
+            img.alt = img.alt + " — image not found.";
+            return;
+        }
+        const src = candidates[index++];
+        const probe = new Image();
+        probe.onload = function(){
+            img.src = src;
+        };
+        probe.onerror = tryNext;
+        probe.src = src;
+    }
+
+    tryNext();
+}
+
+const modalMap = {
+    crm: "crmModal",
+    profile: "profileModal",
+    documentation: "documentationModal",
+    workflow: "workflowModal",
+    email: "emailModal",
+    chat: "chatModal"
+};
+
+function openModal(name){
+    const modal = document.getElementById(modalMap[name]);
+    if(!modal) return;
+
+    document.body.classList.add("modal-open");
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+
+    if(name === "crm"){
+        resolveImage(document.getElementById("crmModalImage"), imageSets.crm);
+    }
+
+    if(name === "profile"){
+        resolveImage(document.getElementById("profileModalImage"), imageSets.profile);
+    }
+
+    if(name === "documentation"){
+        resolveImage(document.getElementById("documentationClaimsImage"), imageSets.claims);
+        resolveImage(document.getElementById("documentationReceiptImage"), imageSets.receipt);
+    }
+
+    if(name === "workflow"){
+        resolveImage(document.getElementById("workflowModalImage"), imageSets.workflow);
+    }
+
+    if(name === "email"){
+        emailIndex = 0;
+        showEmail();
+    }
+
+    if(name === "chat"){
+        resolveImage(document.getElementById("chatModalImage"), imageSets.chat);
+    }
+}
+
+function closeModal(modal){
+    if(!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+
+    const anyOpen = document.querySelector(".modal.open");
+    if(!anyOpen){
+        document.body.classList.remove("modal-open");
+    }
+}
+
+document.querySelectorAll(".work-open").forEach(button => {
+    button.addEventListener("click", () => openModal(button.dataset.project));
+});
+
+document.querySelectorAll(".modal-close").forEach(button => {
+    button.addEventListener("click", () => closeModal(button.closest(".modal")));
+});
+
+document.querySelectorAll(".modal").forEach(modal => {
+    modal.addEventListener("click", event => {
+        if(event.target === modal){
+            closeModal(modal);
+        }
+    });
+});
+
+document.addEventListener("keydown", event => {
+    const modal = document.querySelector(".modal.open");
+    if(!modal) return;
+
+    if(event.key === "Escape"){
+        closeModal(modal);
+    }
+});
+
+/* EMAIL GALLERY */
+let emailIndex = 0;
+const emailSources = [imageSets.email, imageSets.email2, imageSets.email3];
+
+function showEmail(){
+    const image = document.getElementById("emailModalImage");
+    resolveImage(image, emailSources[emailIndex]);
+    document.getElementById("emailCounter").textContent =
+        (emailIndex + 1) + " / " + emailSources.length;
+}
+
+document.getElementById("emailPrevious").addEventListener("click", event => {
+    event.stopPropagation();
+    emailIndex = (emailIndex - 1 + emailSources.length) % emailSources.length;
+    showEmail();
+});
+
+document.getElementById("emailNext").addEventListener("click", event => {
+    event.stopPropagation();
+    emailIndex = (emailIndex + 1) % emailSources.length;
+    showEmail();
+});
+</script>
 
 </body>
 </html>
