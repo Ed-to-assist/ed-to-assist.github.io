@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Let's Connect | Edward Portfolio</title>
 <!-- Local image source: C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images -->
 
@@ -605,7 +604,7 @@ footer p+p{opacity:.65}
 }
 .customer-support-media{
     display:grid;
-    grid-template-columns:minmax(0,1.18fr) minmax(270px,.82fr);
+    grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
     gap:18px;
     align-items:start;
 }
@@ -629,24 +628,70 @@ footer p+p{opacity:.65}
     line-height:1.45;
     color:#687286;
 }
-
-.customer-support-youtube-fallback{
-    margin-top:8px;
+.customer-support-watch-card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+}
+.video-thumb-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#11131a;
+    border-radius:10px;
+    overflow:hidden;
+}
+.video-thumb{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.video-play-button{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:72px;
+    height:52px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#ff0000;
+    color:#fff;
+    font-size:25px;
+    padding-left:3px;
+    box-shadow:0 8px 22px rgba(0,0,0,.28);
+}
+.watch-title{
+    display:block;
+    margin-top:10px;
+    font-size:17px;
+    font-weight:800;
+    color:#18233b;
+}
+.watch-subtitle{
+    display:block;
+    margin-top:4px;
     font-size:11px;
-    line-height:1.4;
     color:#687286;
 }
-.customer-support-youtube-fallback a{
-    color:#4963ed;
-    font-weight:700;
-    text-decoration:none;
+.customer-support-video-note{
+    margin-top:8px;
+    font-size:11px;
+    color:#687286;
 }
-.customer-support-image-card + .customer-support-image-card{
-    margin-top:14px;
+.customer-support-image-column{
+    display:grid;
+    gap:14px;
+}
+.customer-support-image-card h4{
+    font-size:14px;
 }
 .customer-support-image{
     width:100%;
-    height:180px;
+    height:210px;
     object-fit:contain;
     border-radius:9px;
     background:#f1f3f6;
@@ -666,7 +711,8 @@ footer p+p{opacity:.65}
     background:#fff;
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
+    flex-wrap:wrap;
 }
 .customer-support-footer strong{
     margin-right:auto;
@@ -675,76 +721,25 @@ footer p+p{opacity:.65}
 .customer-support-footer a{
     padding:9px 13px;
     background:#4963ed;
-    color:#fff;
+    color:#fff !important;
     border-radius:8px;
     text-decoration:none;
     font-size:12px;
     font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
 }
 @media(max-width:900px){
-    .customer-support-media{
-        grid-template-columns:1fr;
-    }
-    .customer-support-image{
-        height:auto;
-        max-height:280px;
-    }
+    .customer-support-media{grid-template-columns:1fr}
+    .customer-support-image{height:auto;max-height:280px}
 }
 @media(max-width:700px){
-    .customer-support-footer{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-    .customer-support-footer strong{
-        margin-right:0;
-    }
+    .customer-support-footer{flex-direction:column;align-items:flex-start}
+    .customer-support-footer strong{margin-right:0}
 }
 </style>
-<style>#loadImagesButton{display:none!important}
-.customer-support-watch-card{
-    min-height:320px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:28px;
-    border-radius:12px;
-    text-decoration:none;
-    background:linear-gradient(145deg,#111827,#27304a);
-    color:#fff;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
-    transition:transform .18s ease, box-shadow .18s ease;
-}
-.customer-support-watch-card:hover{
-    transform:translateY(-2px);
-    box-shadow:0 14px 30px rgba(15,23,42,.25);
-}
-.watch-play{
-    width:74px;
-    height:74px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:#4963ed;
-    color:#fff;
-    font-size:28px;
-    margin-bottom:18px;
-    padding-left:4px;
-}
-.watch-title{
-    font-size:20px;
-    font-weight:800;
-    line-height:1.25;
-    margin-bottom:8px;
-}
-.watch-subtitle{
-    font-size:12px;
-    color:rgba(255,255,255,.78);
-}
-
-</style>
+<style>#loadImagesButton{display:none!important}</style>
 </head>
 
 <body>
@@ -969,30 +964,29 @@ footer p+p{opacity:.65}
     <div class="customer-support-media">
         <div class="customer-support-video-card">
             <h4>Customer Support Portfolio Presentation</h4>
-            <p>Full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
+            <p>Full 5:48 presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
 
-            
-<div class="customer-support-video-card">
-    <h4>Customer Support Portfolio Presentation</h4>
-    <p>Full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
+            <a class="customer-support-watch-card"
+               href="https://youtu.be/Iv5GGvsLYjs"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Watch Customer Support Portfolio Presentation on YouTube">
+                <div class="video-thumb-wrap">
+                    <img class="video-thumb"
+                         src="Images/03-crm-dashboard.png"
+                         alt="Customer Support Portfolio Presentation preview">
+                    <span class="video-play-button">▶</span>
+                </div>
+                <span class="watch-title">Watch My Customer Support Presentation</span>
+                <span class="watch-subtitle">Full 5:48 presentation · Opens on YouTube</span>
+            </a>
 
-    <a class="customer-support-watch-card"
-       href="https://youtu.be/Iv5GGvsLYjs"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Watch Customer & Phone Support Portfolio Presentation on YouTube">
-        <span class="watch-play">▶</span>
-        <span class="watch-title">Watch My Customer Support Presentation</span>
-        <span class="watch-subtitle">Opens the full 5:48 presentation on YouTube</span>
-    </a>
-
-    <div class="customer-support-youtube-fallback">
-        Opens in a new tab so the presentation is not affected by embedded-player restrictions.
-    </div>
-</div>
+            <div class="customer-support-video-note">
+                The full presentation opens on YouTube to avoid embedded-player restrictions.
+            </div>
         </div>
 
-        <div>
+        <div class="customer-support-image-column">
             <div class="customer-support-image-card">
                 <h4>Customer support workflow</h4>
                 <img id="customerServiceImage"
@@ -1012,13 +1006,16 @@ footer p+p{opacity:.65}
     </div>
 
     <div class="customer-support-footer">
-                <strong>I can help keep customers informed and operations moving.</strong>
-                <a href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-size:12px;font-weight:700;text-decoration:none;">Created by Edward in Canva →</a>
-                <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
-            </div>
-        </div>
+        <strong>I can help keep customers informed and operations moving.</strong>
+        <a class="canva-attribution-link"
+           href="https://canva.link/phyp86qtqgt0phj"
+           target="_blank"
+           rel="noopener noreferrer">Created by Edward in Canva →</a>
+        <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
+    </div>
+</div>
 
-        <div id="claimsImagesWrap" class="claims-images-wrap" style="display:none;">
+<div id="claimsImagesWrap" class="claims-images-wrap" style="display:none;">
             <div class="claims-section-heading">
                 <span class="claims-step">01</span>
                 <div>
