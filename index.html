@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Let's Connect | Edward Portfolio</title>
 <!-- Local image source: C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images -->
 
@@ -581,60 +582,48 @@ footer p+p{opacity:.65}
 </style>
 
 <style>
-.customer-support-wrap{padding:28px;background:#f7f8fb}.customer-support-heading{margin-bottom:22px}.customer-support-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:#4963ed}.customer-support-heading h3{font-size:25px;margin:5px 0 7px}.customer-support-heading p{font-size:13px;color:#68788f;max-width:760px}.customer-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.customer-support-card{background:#fff;border:1px solid #dfe4ea;border-radius:14px;padding:12px;box-shadow:0 8px 24px rgba(24,35,59,.06)}.customer-support-image{width:100%;height:360px;object-fit:contain;border-radius:9px;background:#f1f3f6;display:block}.customer-support-caption{padding:10px 4px 2px;font-size:12px;font-weight:700;color:#18233b}.customer-support-footer{margin-top:18px;padding:15px 16px;border:1px solid #dfe3eb;border-radius:12px;background:#fff;display:flex;align-items:center;gap:15px}.customer-support-footer strong{margin-right:auto;font-size:13px}.customer-support-footer a{padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}.customer-support-footer .canva-attribution-link{color:#fff!important}@media(max-width:700px){.customer-support-grid{grid-template-columns:1fr}.customer-support-image{height:300px}.customer-support-footer{flex-direction:column;align-items:flex-start}.customer-support-footer strong{margin-right:0}}
-.customer-support-video-wrap{
-    margin-top:20px;
-    background:#fff;
-    border:1px solid #e0e5ed;
-    border-radius:13px;
-    padding:14px;
-    box-shadow:0 10px 26px rgba(20,35,60,.06);
+.customer-support-wrap{
+    padding:22px;
+    background:#f7f8fb;
 }
-.customer-support-video-heading{
-    margin-bottom:10px;
+.customer-support-heading{margin-bottom:18px}
+.customer-support-kicker{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.4px;
+    color:#4963ed;
 }
-.customer-support-video-heading h4{
-    font-size:15px;
-    margin:0 0 3px;
+.customer-support-heading h3{
+    font-size:25px;
+    margin:5px 0 7px;
 }
-.customer-support-video-heading p{
+.customer-support-heading p{
+    font-size:13px;
+    color:#68788f;
+    max-width:760px;
     margin:0;
-    color:#687286;
-    font-size:12px;
-    line-height:1.5;
 }
-.customer-support-video-fallback{margin-top:8px;color:#687286;font-size:11px}.customer-support-video-fallback a{color:#4963ed;font-weight:700;text-decoration:none}.customer-support-video{display:block;
-    width:100%;
-    aspect-ratio:16/9;
-    border:0;
-    border-radius:10px;
-    display:block;
-    background:#111827;
-}
-
-
 .customer-support-media{
     display:grid;
-    grid-template-columns:1.18fr .82fr;
+    grid-template-columns:minmax(0,1.18fr) minmax(270px,.82fr);
     gap:18px;
     align-items:start;
-    margin-top:18px;
 }
 .customer-support-video-card,
 .customer-support-image-card{
     background:#fff;
-    border:1px solid #dfe4ec;
-    border-radius:13px;
+    border:1px solid #dfe4ea;
+    border-radius:14px;
     padding:12px;
-    box-shadow:0 8px 24px rgba(20,35,60,.05);
+    box-shadow:0 8px 24px rgba(24,35,59,.06);
 }
 .customer-support-video-card h4,
 .customer-support-image-card h4{
-    margin:0 0 9px;
+    margin:0 0 8px;
     font-size:14px;
+    color:#18233b;
 }
-.customer-support-video-card p,
-.customer-support-image-card p{
+.customer-support-video-card p{
     margin:0 0 10px;
     font-size:11px;
     line-height:1.45;
@@ -648,28 +637,77 @@ footer p+p{opacity:.65}
     border-radius:9px;
     background:#11131a;
 }
-.customer-support-image{
-    display:block;
-    width:100%;
-    max-height:260px;
-    object-fit:contain;
-    border-radius:9px;
-    background:#eef1f5;
+.customer-support-youtube-fallback{
+    margin-top:8px;
+    font-size:11px;
+    line-height:1.4;
+    color:#687286;
+}
+.customer-support-youtube-fallback a{
+    color:#4963ed;
+    font-weight:700;
+    text-decoration:none;
 }
 .customer-support-image-card + .customer-support-image-card{
     margin-top:14px;
 }
-.customer-support-layout-note{
-    margin-top:10px;
-    font-size:11px;
-    color:#687286;
+.customer-support-image{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+    border-radius:9px;
+    background:#f1f3f6;
+    display:block;
+}
+.customer-support-caption{
+    padding:9px 4px 1px;
+    font-size:12px;
+    font-weight:700;
+    color:#18233b;
+}
+.customer-support-footer{
+    margin-top:18px;
+    padding:13px 16px;
+    border:1px solid #dfe3eb;
+    border-radius:12px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.customer-support-footer strong{
+    margin-right:auto;
+    font-size:13px;
+}
+.customer-support-footer a{
+    padding:9px 13px;
+    background:#4963ed;
+    color:#fff;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
 }
 @media(max-width:900px){
-    .customer-support-media{grid-template-columns:1fr;}
-    .customer-support-image{max-height:none;}
+    .customer-support-media{
+        grid-template-columns:1fr;
+    }
+    .customer-support-image{
+        height:auto;
+        max-height:280px;
+    }
 }
-
+@media(max-width:700px){
+    .customer-support-footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    .customer-support-footer strong{
+        margin-right:0;
+    }
+}
 </style>
+<style>#loadImagesButton{display:none!important}</style>
 </head>
 
 <body>
@@ -884,23 +922,30 @@ footer p+p{opacity:.65}
     </div>
 </div>
 
-<div id="customerSupportWrap" style="display:none;">
-    <div class="customer-support-media">
+<div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
+    <div class="customer-support-heading">
+        <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
+        <h3>Customer &amp; Phone Support</h3>
+        <p>Clear communication, active listening, accurate case handling, and dependable follow-through across customer interactions.</p>
+    </div>
 
+    <div class="customer-support-media">
         <div class="customer-support-video-card">
             <h4>Customer Support Portfolio Presentation</h4>
             <p>Full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
+
             <iframe
                 class="customer-support-youtube"
-                src="https://www.youtube.com/embed/Iv5GGvsLYjs?rel=0"
+                src="https://www.youtube-nocookie.com/embed/Iv5GGvsLYjs?rel=0&origin=https%3A%2F%2Fed-to-assist.github.io&widget_referrer=https%3A%2F%2Fed-to-assist.github.io%2F"
                 title="Customer & Phone Support Portfolio Presentation"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
             </iframe>
-            <div class="customer-support-layout-note">
-                Full presentation available directly on YouTube if playback is restricted in the embedded player.
-                <a href="https://youtu.be/Iv5GGvsLYjs" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-weight:700;text-decoration:none;">Open video →</a>
+
+            <div class="customer-support-youtube-fallback">
+                Having trouble with embedded playback?
+                <a href="https://youtu.be/Iv5GGvsLYjs" target="_blank" rel="noopener noreferrer">Watch the presentation on YouTube →</a>
             </div>
         </div>
 
@@ -909,25 +954,23 @@ footer p+p{opacity:.65}
                 <h4>Customer support workflow</h4>
                 <img id="customerServiceImage"
                      class="customer-support-image"
-                     src=""
-                     alt="Customer support workflow"
-                     loading="eager">
+                     alt="Customer support workflow">
+                <div class="customer-support-caption">Customer support workflow</div>
             </div>
 
             <div class="customer-support-image-card">
                 <h4>Professional phone support environment</h4>
                 <img id="pizzaOfficeImage"
                      class="customer-support-image"
-                     src=""
-                     alt="Professional phone support environment"
-                     loading="eager">
+                     alt="Professional phone support environment">
+                <div class="customer-support-caption">Professional phone support environment</div>
             </div>
         </div>
     </div>
-</div>
-<div class="customer-support-footer">
+
+    <div class="customer-support-footer">
                 <strong>I can help keep customers informed and operations moving.</strong>
-                <a class="canva-attribution-link" href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer">Created by Edward in Canva →</a>
+                <a href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-size:12px;font-weight:700;text-decoration:none;">Created by Edward in Canva →</a>
                 <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
             </div>
         </div>
@@ -1064,7 +1107,33 @@ function resolveModalImage(baseName){
   });
 }
 
-/* Hosted GitHub Pages version */
+/* Folder picker */
+const folderInput=document.createElement('input');
+folderInput.type='file';
+folderInput.webkitdirectory=true;
+folderInput.directory=true;
+folderInput.multiple=true;
+folderInput.style.display='none';
+document.body.appendChild(folderInput);
+
+const loadImagesButton=document.createElement('button');
+loadImagesButton.type='button';
+loadImagesButton.textContent='Load Images Folder';
+loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
+loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
+document.body.appendChild(loadImagesButton);
+
+loadImagesButton.addEventListener('click',()=>folderInput.click());
+folderInput.addEventListener('change',()=>{
+  imageFileMap.clear();
+  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
+  selectedImagesFolder=true;
+  loadImagesButton.textContent='Images Loaded ✓';
+  loadImagesButton.style.background='#4963ed';
+  loadImagesButton.style.color='#fff';
+  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
+  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
+});
 
 /* DARK MODE */
 const themeButton=document.getElementById('themeButton');
