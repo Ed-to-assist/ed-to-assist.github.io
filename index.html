@@ -612,6 +612,63 @@ footer p+p{opacity:.65}
     background:#111827;
 }
 
+
+.customer-support-media{
+    display:grid;
+    grid-template-columns:1.18fr .82fr;
+    gap:18px;
+    align-items:start;
+    margin-top:18px;
+}
+.customer-support-video-card,
+.customer-support-image-card{
+    background:#fff;
+    border:1px solid #dfe4ec;
+    border-radius:13px;
+    padding:12px;
+    box-shadow:0 8px 24px rgba(20,35,60,.05);
+}
+.customer-support-video-card h4,
+.customer-support-image-card h4{
+    margin:0 0 9px;
+    font-size:14px;
+}
+.customer-support-video-card p,
+.customer-support-image-card p{
+    margin:0 0 10px;
+    font-size:11px;
+    line-height:1.45;
+    color:#687286;
+}
+.customer-support-youtube{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    border-radius:9px;
+    background:#11131a;
+}
+.customer-support-image{
+    display:block;
+    width:100%;
+    max-height:260px;
+    object-fit:contain;
+    border-radius:9px;
+    background:#eef1f5;
+}
+.customer-support-image-card + .customer-support-image-card{
+    margin-top:14px;
+}
+.customer-support-layout-note{
+    margin-top:10px;
+    font-size:11px;
+    color:#687286;
+}
+@media(max-width:900px){
+    .customer-support-media{grid-template-columns:1fr;}
+    .customer-support-image{max-height:none;}
+}
+
 </style>
 </head>
 
@@ -827,40 +884,48 @@ footer p+p{opacity:.65}
     </div>
 </div>
 
-<div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
-            <div class="customer-support-heading">
-                <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
-                <h3>Customer &amp; Phone Support</h3>
-                <p>Clear communication, active listening, accurate case handling, and dependable follow-through across customer interactions.</p>
+<div id="customerSupportWrap" style="display:none;">
+    <div class="customer-support-media">
+
+        <div class="customer-support-video-card">
+            <h4>Customer Support Portfolio Presentation</h4>
+            <p>Full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
+            <iframe
+                class="customer-support-youtube"
+                src="https://www.youtube.com/embed/Iv5GGvsLYjs?rel=0"
+                title="Customer & Phone Support Portfolio Presentation"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+            <div class="customer-support-layout-note">
+                Full presentation available directly on YouTube if playback is restricted in the embedded player.
+                <a href="https://youtu.be/Iv5GGvsLYjs" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-weight:700;text-decoration:none;">Open video →</a>
             </div>
-            <div class="customer-support-grid">
-                <div class="customer-support-card">
-                    <img id="customerServiceImage" class="customer-support-image" alt="Customer service support example">
-                    <div class="customer-support-caption">Customer support workflow</div>
-                </div>
-                <div class="customer-support-card">
-                    <img id="pizzaOfficeImage" class="customer-support-image" alt="Customer and phone support office example">
-                    <div class="customer-support-caption">Professional phone support environment</div>
-                </div>
+        </div>
+
+        <div>
+            <div class="customer-support-image-card">
+                <h4>Customer support workflow</h4>
+                <img id="customerServiceImage"
+                     class="customer-support-image"
+                     src=""
+                     alt="Customer support workflow"
+                     loading="eager">
             </div>
-            <div class="customer-support-video-wrap">
-                <div class="customer-support-video-heading">
-                    <h4>Customer Support Portfolio Presentation</h4>
-                    <p>Watch the full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
-                </div>
-                <iframe
-                    class="customer-support-video"
-                    src="https://www.youtube.com/embed/Iv5GGvsLYjs?rel=0"
-                    title="Customer & Phone Support Portfolio Presentation"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
-                <div class="customer-support-video-fallback">
-                    Video playback is provided through YouTube. <a href="https://youtu.be/Iv5GGvsLYjs" target="_blank" rel="noopener noreferrer">Open the presentation directly →</a>
-                </div>
+
+            <div class="customer-support-image-card">
+                <h4>Professional phone support environment</h4>
+                <img id="pizzaOfficeImage"
+                     class="customer-support-image"
+                     src=""
+                     alt="Professional phone support environment"
+                     loading="eager">
             </div>
-            <div class="customer-support-footer">
+        </div>
+    </div>
+</div>
+<div class="customer-support-footer">
                 <strong>I can help keep customers informed and operations moving.</strong>
                 <a class="canva-attribution-link" href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer">Created by Edward in Canva →</a>
                 <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
@@ -999,33 +1064,7 @@ function resolveModalImage(baseName){
   });
 }
 
-/* Folder picker */
-const folderInput=document.createElement('input');
-folderInput.type='file';
-folderInput.webkitdirectory=true;
-folderInput.directory=true;
-folderInput.multiple=true;
-folderInput.style.display='none';
-document.body.appendChild(folderInput);
-
-const loadImagesButton=document.createElement('button');
-loadImagesButton.type='button';
-loadImagesButton.textContent='Load Images Folder';
-loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
-loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
-document.body.appendChild(loadImagesButton);
-
-loadImagesButton.addEventListener('click',()=>folderInput.click());
-folderInput.addEventListener('change',()=>{
-  imageFileMap.clear();
-  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
-  selectedImagesFolder=true;
-  loadImagesButton.textContent='Images Loaded ✓';
-  loadImagesButton.style.background='#4963ed';
-  loadImagesButton.style.color='#fff';
-  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
-  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
-});
+/* Hosted GitHub Pages version */
 
 /* DARK MODE */
 const themeButton=document.getElementById('themeButton');
