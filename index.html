@@ -686,9 +686,6 @@ footer p+p{opacity:.65}
     display:grid;
     gap:14px;
 }
-.customer-support-image-card h4{
-    font-size:14px;
-}
 .customer-support-image{
     width:100%;
     height:210px;
@@ -720,8 +717,6 @@ footer p+p{opacity:.65}
 }
 .customer-support-footer a{
     padding:9px 13px;
-    background:#4963ed;
-    color:#fff !important;
     border-radius:8px;
     text-decoration:none;
     font-size:12px;
@@ -730,12 +725,24 @@ footer p+p{opacity:.65}
     align-items:center;
     white-space:nowrap;
 }
+.customer-support-footer .canva-attribution-link{
+    background:#4963ed;
+    color:#fff !important;
+}
+.customer-support-footer .lets-connect-link{
+    background:#fff;
+    color:#18233b !important;
+    border:1px solid #cfd7e4;
+}
 @media(max-width:900px){
     .customer-support-media{grid-template-columns:1fr}
     .customer-support-image{height:auto;max-height:280px}
 }
 @media(max-width:700px){
-    .customer-support-footer{flex-direction:column;align-items:flex-start}
+    .customer-support-footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
     .customer-support-footer strong{margin-right:0}
 }
 </style>
@@ -947,13 +954,6 @@ footer p+p{opacity:.65}
         <div class="modal-title" id="modalTitle">Portfolio Preview</div>
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
-<div id="crmSourceWrap" style="display:none; padding:12px 18px 18px; background:#fff; border-top:1px solid #e1e5ec;">
-    <div style="font-size:12px;color:#687286;">
-        <strong style="color:#18233b;">Design &amp; Layout:</strong>
-        <a href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-weight:700;text-decoration:none;">Created by Edward in Canva</a>
-    </div>
-</div>
-
 <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
     <div class="customer-support-heading">
         <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
@@ -962,6 +962,7 @@ footer p+p{opacity:.65}
     </div>
 
     <div class="customer-support-media">
+        <!-- LEFT: video presentation -->
         <div class="customer-support-video-card">
             <h4>Customer Support Portfolio Presentation</h4>
             <p>Full 5:48 presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
@@ -982,10 +983,11 @@ footer p+p{opacity:.65}
             </a>
 
             <div class="customer-support-video-note">
-                The full presentation opens on YouTube to avoid embedded-player restrictions.
+                Opens the full presentation on YouTube.
             </div>
         </div>
 
+        <!-- RIGHT: stacked support images -->
         <div class="customer-support-image-column">
             <div class="customer-support-image-card">
                 <h4>Customer support workflow</h4>
@@ -1011,7 +1013,7 @@ footer p+p{opacity:.65}
            href="https://canva.link/phyp86qtqgt0phj"
            target="_blank"
            rel="noopener noreferrer">Created by Edward in Canva →</a>
-        <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
+        <a class="lets-connect-link" href="mailto:edapalla@zohomail.com">Let's connect →</a>
     </div>
 </div>
 
@@ -1196,7 +1198,7 @@ const modal=document.getElementById('portfolioModal');
 const modalImage=document.getElementById('modalImage');
 const modalClose=document.getElementById('modalClose');
 const modalTitle=document.getElementById('modalTitle');
-const crmSourceWrap=document.getElementById('crmSourceWrap');
+
 const claimsSiteWrap=document.getElementById('claimsSiteWrap');
 const claimsSiteFrame=document.getElementById('claimsSiteFrame');
 const claimsSiteStatus=document.getElementById('claimsSiteStatus');
@@ -1222,25 +1224,22 @@ function loadClaimsSupportImages(){
   resolveImage('receipt',claimsReceiptImage);
 }
 
-function openClaimsCaseStudy(){crmSourceWrap.style.display='none';
-  customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
+function openClaimsCaseStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){crmSourceWrap.style.display='none';
-  customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Case Review — Interactive Case Study';
+function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Case Review — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
 
-function openCustomerSupportModal(){crmSourceWrap.style.display='none';
-  claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
+function openCustomerSupportModal(){claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
   customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';crmSourceWrap.style.display=(['02-about','03-crm-dashboard','04-customer-profile','05-email-support-1','05-email-support-2','05-email-support-3','07-live-chat','08-live-chat','08-customer-service'].includes(baseName)?'block':'none');claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='block';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
-function openLiveChatModal(){customerSupportWrap.style.display='none';crmSourceWrap.style.display='block';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openLiveChatModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
 portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
@@ -1260,7 +1259,7 @@ previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.tex
 nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
 claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
-function closeModal(){modal.classList.remove('open');crmSourceWrap.style.display='none';document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
 </script>
