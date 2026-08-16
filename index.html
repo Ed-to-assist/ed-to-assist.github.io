@@ -876,7 +876,7 @@ footer p+p{opacity:.65}
         <div class="skill">Administrative Support</div>
 <div class="skill">Data Entry</div>
         <div class="skill clickable-skill" data-skill="claims">
-            Claims &amp; Documentation Review <span class="skill-arrow">→</span>
+            Claims &amp;  <span class="skill-arrow">→</span>
         </div>
         <div class="skill">Microsoft Office</div>
         <div class="skill">Google Workspace</div>
@@ -979,13 +979,14 @@ footer p+p{opacity:.65}
 
             <div class="customer-support-native-video">
     <video class="customer-support-native-player"
-           controls
-           playsinline
-           preload="metadata"
-           poster="Images/03-crm-dashboard.png">
-        <source src="Videos/customer-phone-support.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
+       controls
+       playsinline
+       preload="metadata"
+       poster="Images/03-crm-dashboard.png"
+       aria-label="Customer Support Portfolio Presentation">
+    <source src="Videos/customer-phone-support.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
     <div class="customer-support-video-note">
         Full 5:48 presentation · Plays directly in this portfolio.
     </div>
@@ -1232,7 +1233,7 @@ function loadClaimsSupportImages(){
 function openClaimsCaseStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Documentation Review — Interactive Case Study';
+function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
