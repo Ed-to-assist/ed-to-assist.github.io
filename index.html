@@ -581,7 +581,7 @@ footer p+p{opacity:.65}
 </style>
 
 <style>
-.customer-support-wrap{padding:28px;background:#f7f8fb}.customer-support-heading{margin-bottom:22px}.customer-support-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:#4963ed}.customer-support-heading h3{font-size:25px;margin:5px 0 7px}.customer-support-heading p{font-size:13px;color:#68788f;max-width:760px}.customer-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.customer-support-card{background:#fff;border:1px solid #dfe4ea;border-radius:14px;padding:12px;box-shadow:0 8px 24px rgba(24,35,59,.06)}.customer-support-image{width:100%;height:360px;object-fit:contain;border-radius:9px;background:#f1f3f6;display:block}.customer-support-caption{padding:10px 4px 2px;font-size:12px;font-weight:700;color:#18233b}.customer-support-footer{margin-top:18px;padding:15px 16px;border:1px solid #dfe3eb;border-radius:12px;background:#fff;display:flex;align-items:center;gap:15px}.customer-support-footer strong{margin-right:auto;font-size:13px}.customer-support-footer a{padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}@media(max-width:700px){.customer-support-grid{grid-template-columns:1fr}.customer-support-image{height:300px}.customer-support-footer{flex-direction:column;align-items:flex-start}.customer-support-footer strong{margin-right:0}}
+.customer-support-wrap{padding:28px;background:#f7f8fb}.customer-support-heading{margin-bottom:22px}.customer-support-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:#4963ed}.customer-support-heading h3{font-size:25px;margin:5px 0 7px}.customer-support-heading p{font-size:13px;color:#68788f;max-width:760px}.customer-support-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.customer-support-card{background:#fff;border:1px solid #dfe4ea;border-radius:14px;padding:12px;box-shadow:0 8px 24px rgba(24,35,59,.06)}.customer-support-image{width:100%;height:360px;object-fit:contain;border-radius:9px;background:#f1f3f6;display:block}.customer-support-caption{padding:10px 4px 2px;font-size:12px;font-weight:700;color:#18233b}.customer-support-footer{margin-top:18px;padding:15px 16px;border:1px solid #dfe3eb;border-radius:12px;background:#fff;display:flex;align-items:center;gap:15px}.customer-support-footer strong{margin-right:auto;font-size:13px}.customer-support-footer a{padding:9px 13px;background:#4963ed;color:#fff;border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}.customer-support-footer .canva-attribution-link{color:#fff!important}@media(max-width:700px){.customer-support-grid{grid-template-columns:1fr}.customer-support-image{height:300px}.customer-support-footer{flex-direction:column;align-items:flex-start}.customer-support-footer strong{margin-right:0}}
 .customer-support-video-wrap{
     margin-top:20px;
     background:#fff;
@@ -603,7 +603,7 @@ footer p+p{opacity:.65}
     font-size:12px;
     line-height:1.5;
 }
-.customer-support-video{
+.customer-support-video-fallback{margin-top:8px;color:#687286;font-size:11px}.customer-support-video-fallback a{color:#4963ed;font-weight:700;text-decoration:none}.customer-support-video{display:block;
     width:100%;
     aspect-ratio:16/9;
     border:0;
@@ -846,21 +846,23 @@ footer p+p{opacity:.65}
             <div class="customer-support-video-wrap">
                 <div class="customer-support-video-heading">
                     <h4>Customer Support Portfolio Presentation</h4>
-                    <p>Full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
+                    <p>Watch the full presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
                 </div>
                 <iframe
                     class="customer-support-video"
-                    src="https://www.youtube-nocookie.com/embed/Iv5GGvsLYjs"
+                    src="https://www.youtube.com/embed/Iv5GGvsLYjs?rel=0"
                     title="Customer & Phone Support Portfolio Presentation"
-                    loading="lazy"
                     referrerpolicy="strict-origin-when-cross-origin"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
+                <div class="customer-support-video-fallback">
+                    Video playback is provided through YouTube. <a href="https://youtu.be/Iv5GGvsLYjs" target="_blank" rel="noopener noreferrer">Open the presentation directly →</a>
+                </div>
             </div>
             <div class="customer-support-footer">
                 <strong>I can help keep customers informed and operations moving.</strong>
-                <a href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer" style="color:#4963ed;font-size:12px;font-weight:700;text-decoration:none;">Created by Edward in Canva →</a>
+                <a class="canva-attribution-link" href="https://canva.link/phyp86qtqgt0phj" target="_blank" rel="noopener noreferrer">Created by Edward in Canva →</a>
                 <a href="mailto:edapalla@zohomail.com">Let's connect →</a>
             </div>
         </div>
