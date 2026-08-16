@@ -746,7 +746,20 @@ footer p+p{opacity:.65}
     .customer-support-footer strong{margin-right:0}
 }
 </style>
-<style>#loadImagesButton{display:none!important}</style>
+<style>#loadImagesButton{display:none!important}
+.customer-support-native-video{
+    width:100%;
+}
+.customer-support-native-player{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    border-radius:10px;
+    background:#11131a;
+    object-fit:contain;
+}
+
+</style>
 </head>
 
 <body>
@@ -861,16 +874,13 @@ footer p+p{opacity:.65}
         </div>
 
         <div class="skill">Administrative Support</div>
-        <div class="skill">Documentation Review</div>
-        <div class="skill">Data Entry</div>
+<div class="skill">Data Entry</div>
         <div class="skill clickable-skill" data-skill="claims">
-            Claims &amp; Case Review <span class="skill-arrow">→</span>
+            Claims &amp; Documentation Review <span class="skill-arrow">→</span>
         </div>
         <div class="skill">Microsoft Office</div>
         <div class="skill">Google Workspace</div>
-        <div class="skill">Process Coordination</div>
-
-    </div>
+</div>
 </section>
 
 <section class="section" id="portfolio">
@@ -967,24 +977,19 @@ footer p+p{opacity:.65}
             <h4>Customer Support Portfolio Presentation</h4>
             <p>Full 5:48 presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
 
-            <a class="customer-support-watch-card"
-               href="https://youtu.be/Iv5GGvsLYjs"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Watch Customer Support Portfolio Presentation on YouTube">
-                <div class="video-thumb-wrap">
-                    <img class="video-thumb"
-                         src="Images/03-crm-dashboard.png"
-                         alt="Customer Support Portfolio Presentation preview">
-                    <span class="video-play-button">▶</span>
-                </div>
-                <span class="watch-title">Watch My Customer Support Presentation</span>
-                <span class="watch-subtitle">Full 5:48 presentation · Opens on YouTube</span>
-            </a>
-
-            <div class="customer-support-video-note">
-                Opens the full presentation on YouTube.
-            </div>
+            <div class="customer-support-native-video">
+    <video class="customer-support-native-player"
+           controls
+           playsinline
+           preload="metadata"
+           poster="Images/03-crm-dashboard.png">
+        <source src="Videos/customer-phone-support.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="customer-support-video-note">
+        Full 5:48 presentation · Plays directly in this portfolio.
+    </div>
+</div>
         </div>
 
         <!-- RIGHT: stacked support images -->
@@ -1227,7 +1232,7 @@ function loadClaimsSupportImages(){
 function openClaimsCaseStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Case Review — Interactive Case Study';
+function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims & Documentation Review — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
