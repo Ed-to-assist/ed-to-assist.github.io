@@ -876,7 +876,7 @@ footer p+p{opacity:.65}
         <div class="skill">Administrative Support</div>
 <div class="skill">Data Entry</div>
         <div class="skill clickable-skill" data-skill="claims">
-            Claims &amp;  <span class="skill-arrow">→</span>
+            Claims &amp; Documentation Review <span class="skill-arrow">→</span>
         </div>
         <div class="skill">Microsoft Office</div>
         <div class="skill">Google Workspace</div>
@@ -1027,7 +1027,7 @@ footer p+p{opacity:.65}
             <div class="claims-section-heading">
                 <span class="claims-step">01</span>
                 <div>
-                    <h3>Claims Review Evidence</h3>
+                    <h3>Claims &amp; Documentation Review Evidence</h3>
                     <p>Two supporting documents reviewed together before opening the interactive case study.</p>
                 </div>
             </div>
@@ -1080,7 +1080,7 @@ footer p+p{opacity:.65}
    Works with the user's Windows Images folder and also provides
    a folder-picker fallback for browsers that restrict file:// access.
 ========================================================= */
-const LOCAL_IMAGES_PATH = 'C:/Users/ed_workpro/Desktop/Edward PortFolio/Images/';
+const LOCAL_IMAGES_PATH = '/Images/';
 const imageFileMap = new Map();
 let selectedImagesFolder = false;
 
@@ -1106,7 +1106,9 @@ function encodeFileName(name){ return name.split('/').map(encodeURIComponent).jo
 function autoCandidates(baseName){
   const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
   const roots = [
-    'Images/', './Images/'
+    '/Images/',
+    './Images/',
+    '../Images/'
   ];
   return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
 }
@@ -1143,7 +1145,7 @@ function resolveImage(baseName, element, failure){
 function resolvePageImage(img, baseName){
   resolveImage(baseName,img,()=>{
     img.style.display='block';
-    img.alt = img.alt + ' — image not found. Use Load Images Folder.';
+    img.alt = img.alt + ' — image not found. Use .';
   });
 }
 
@@ -1151,7 +1153,7 @@ function resolveModalImage(baseName){
   resolveImage(baseName,modalImage,()=>{
     modalImage.removeAttribute('src');
     modalImage.style.display='block';
-    modalTitle.textContent='Image not found — use Load Images Folder';
+    modalTitle.textContent='Image not found — use ';
   });
 }
 
@@ -1166,7 +1168,7 @@ document.body.appendChild(folderInput);
 
 const loadImagesButton=document.createElement('button');
 loadImagesButton.type='button';
-loadImagesButton.textContent='Load Images Folder';
+loadImagesButton.textContent='';
 loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
 loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
 document.body.appendChild(loadImagesButton);
@@ -1230,7 +1232,7 @@ function loadClaimsSupportImages(){
   resolveImage('receipt',claimsReceiptImage);
 }
 
-function openClaimsCaseStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
+function openClaimsCaseStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
 function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
