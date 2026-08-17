@@ -173,7 +173,7 @@ body.dark .filter-button{background:#172235;color:white;border-color:#34445d}
 .filter-button.active{background:#4963ed;border-color:#4963ed;color:white}
 .portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
 .portfolio-card{
-    display:flex;flex-direction:column;overflow:hidden;background:white;
+    display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;background:white;
     border:1px solid #dfe4ea;border-radius:15px;cursor:pointer;
     transition:transform .2s ease,box-shadow .2s ease
 }
@@ -746,7 +746,7 @@ footer p+p{opacity:.65}
     .customer-support-footer strong{margin-right:0}
 }
 </style>
-<style>#loadImagesButton{display:none!important}
+<style>
 .customer-support-native-video{
     width:100%;
 }
@@ -760,18 +760,18 @@ footer p+p{opacity:.65}
 }
 
 
-<style>
 .email-support-wrap{display:none;padding:20px;background:#f7f8fb}
 .email-support-intro{margin-bottom:15px}
 .email-support-intro h3{margin:0 0 5px;font-size:22px;color:#18233b}
 .email-support-intro p{margin:0;color:#687286;font-size:12px;line-height:1.55}
-.email-support-video-card,.email-support-sample-card{background:#fff;border:1px solid #dfe4ea;border-radius:13px;padding:12px;margin-bottom:14px;box-shadow:0 8px 24px rgba(24,35,59,.05)}
+.email-support-video-card,.email-support-sample-card{
+  background:#fff;border:1px solid #dfe4ea;border-radius:13px;padding:12px;margin-bottom:14px;
+  box-shadow:0 8px 24px rgba(24,35,59,.05)
+}
 .email-support-video-card h4,.email-support-sample-card h4{margin:0 0 7px;font-size:14px;color:#18233b}
 .email-support-video-card p{margin:0 0 10px;color:#687286;font-size:11px;line-height:1.45}
 .email-support-player{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:9px;background:#11131a;object-fit:contain}
-.email-support-note{margin-top:8px;color:#687286;font-size:11px}
 .email-support-sample-card img{width:100%;height:auto;max-height:520px;object-fit:contain;display:block;border-radius:9px;background:#f1f3f6}
-</style>
 
 </style>
 </head>
@@ -843,7 +843,7 @@ footer p+p{opacity:.65}
 
         <div class="background-grid">
             <div>
-                <img src="" data-image-base="02-about" class="background-image" id="backgroundImage"
+                <img src="Images/02-about.png"  class="background-image" id="backgroundImage"
                      alt="Edward professional background">
             </div>
 
@@ -914,7 +914,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="crm" data-type="single" data-image-base="03-crm-dashboard">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="03-crm-dashboard" class="portfolio-image" alt="CRM Dashboard">
+                <img src="Images/03-crm-dashboard.png"  class="portfolio-image" alt="CRM Dashboard">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CRM</div>
@@ -926,7 +926,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="crm" data-type="single" data-image-base="04-customer-profile">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="04-customer-profile" class="portfolio-image" alt="Customer Profile">
+                <img src="Images/04-customer-profile.png"  class="portfolio-image" alt="Customer Profile">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CRM</div>
@@ -938,7 +938,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="support" data-type="email">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="05-email-support-1" class="portfolio-image" alt="Email Support Samples">
+                <img src="Images/05-email-support-1.png"  class="portfolio-image" alt="Email Support Samples">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CUSTOMER SUPPORT</div>
@@ -950,7 +950,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="support" data-type="single" data-image-base="08-live-chat">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="08-live-chat" class="portfolio-image" alt="Live Chat Samples">
+                <img src="Images/08-live-chat.png"  class="portfolio-image" alt="Live Chat Samples">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CUSTOMER SUPPORT</div>
@@ -977,12 +977,12 @@ footer p+p{opacity:.65}
     <div class="modal-box">
         <div class="modal-title" id="modalTitle">Portfolio Preview</div>
         <button class="modal-close" id="modalClose" type="button">×</button>
-        <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
+        <img class="modal-image" id="modalImage" alt="Portfolio Preview">
 
 <div id="emailSupportWrap" class="email-support-wrap" style="display:none;">
   <div class="email-support-intro">
     <div class="section-label">EMAIL SUPPORT</div>
-    <h3>Email Support Presentation</h3>
+    <h3>Email Support</h3>
     <p>Video first, followed by three email support samples demonstrating professional customer communication and follow-through.</p>
   </div>
 
@@ -994,25 +994,21 @@ footer p+p{opacity:.65}
       <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
-    <div class="email-support-note">Plays directly inside the portfolio.</div>
   </div>
 
   <div class="email-support-sample-card">
     <h4>Sample 1</h4>
     <img src="Images/05-email-support-1.png" alt="Email Support Sample 1">
   </div>
-
   <div class="email-support-sample-card">
     <h4>Sample 2</h4>
     <img src="Images/05-email-support-2.png" alt="Email Support Sample 2">
   </div>
-
   <div class="email-support-sample-card">
     <h4>Sample 3</h4>
     <img src="Images/05-email-support-3.png" alt="Email Support Sample 3">
   </div>
 </div>
-
 
 <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
     <div class="customer-support-heading">
@@ -1125,115 +1121,49 @@ footer p+p{opacity:.65}
 
 
 <script>
-/* =========================================================
-   ROBUST LOCAL IMAGE LOADER
-   Works with the user's Windows Images folder and also provides
-   a folder-picker fallback for browsers that restrict file:// access.
-========================================================= */
-const LOCAL_IMAGES_PATH = '/Images/';
-const imageFileMap = new Map();
-let selectedImagesFolder = false;
-
-const IMAGE_NAMES = {
-  '01-cover': ['01-cover.png.png','01-cover.png','01-cover.jpg','01-cover.jpeg','01-cover.webp'],
-  '02-about': ['02-about.png.png','02-about.png','02-about.jpg','02-about.jpeg','02-about.webp'],
-  '03-crm-dashboard': ['03-crm-dashboard.png','03-crm-dashboard.png.png','03-crm-dashboard.jpg','03-crm-dashboard.jpeg','03-crm-dashboard.webp'],
-  '04-customer-profile': ['04-customer-profile.png','04-customer-profile.png.png','04-customer-profile.jpg','04-customer-profile.jpeg','04-customer-profile.webp'],
-  '05-email-support-1': ['05-email-support-1.png','05-email-support-1.png.png','05-email-support-1.jpg','05-email-support-1.jpeg','05-email-support-1.webp'],
-  '05-email-support-2': ['05-email-support-2.png','05-email-support-2.png.png','05-email-support-2.jpg','05-email-support-2.jpeg','05-email-support-2.webp'],
-  '05-email-support-3': ['05-email-support-3.png','05-email-support-3.png.png','05-email-support-3.jpg','05-email-support-3.jpeg','05-email-support-3.webp'],
-  '06-live-chat': ['06-live-chat.png.png','06-live-chat.png','06-live-chat.jpg','06-live-chat.jpeg','06-live-chat.webp'],
-  '07-live-chat': ['07-live-chat.png','07-live-chat.png.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
-  '08-live-chat': ['08-live-chat.png','08-live-chat.png.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
-  '08-customer-service': ['08-customer-service.png','08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png.png'],
-  'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
-  '09-Sf-case': ['09-Sf-case.png','09-Sf-case.png.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
-  'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
+/* HOSTED GITHUB PAGES IMAGE HANDLING */
+const IMAGE_PATHS = {
+  '01-cover':'Images/01-cover.png',
+  '02-about':'Images/02-about.png',
+  '03-crm-dashboard':'Images/03-crm-dashboard.png',
+  '04-customer-profile':'Images/04-customer-profile.png',
+  '05-email-support-1':'Images/05-email-support-1.png',
+  '05-email-support-2':'Images/05-email-support-2.png',
+  '05-email-support-3':'Images/05-email-support-3.png',
+  '07-live-chat':'Images/07-live-chat.png',
+  '08-live-chat':'Images/08-live-chat.png',
+  '08-customer-service':'Images/08-customer-service.png',
+  '09-Sf-case':'Images/09-Sf-case.png',
+  'receipt':'Images/Receipts_Aug%209,%202026,%2005_05_22%20PM.png',
+  'pizzaoffice':'Images/pizzaoffice.png'
 };
 
-function encodeFileName(name){ return name.split('/').map(encodeURIComponent).join('/'); }
-
-function autoCandidates(baseName){
-  const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
-  const roots = [
-    '/Images/',
-    './Images/',
-    '../Images/'
-  ];
-  return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
+function imagePath(baseName){
+  return IMAGE_PATHS[baseName] || ('Images/' + encodeURIComponent(baseName) + '.png');
 }
-
-function setFromSelectedFolder(baseName, element){
-  const names = IMAGE_NAMES[baseName] || [];
-  for(const n of names){
-    const url = imageFileMap.get(n.toLowerCase());
-    if(url){ element.src=url; element.style.display='block'; return true; }
-  }
-  return false;
+function setImage(element, baseName){
+  if(!element) return;
+  const src=imagePath(baseName);
+  element.src=src;
+  element.style.display='block';
 }
-
 function resolveImage(baseName, element, failure){
   if(!element) return;
-  if(setFromSelectedFolder(baseName, element)) return;
-  const candidates = autoCandidates(baseName);
-  let i=0;
-  function next(){
-    if(i>=candidates.length){
-      if(failure) failure();
-      else { element.style.display='none'; }
-      return;
-    }
-    const src=candidates[i++];
-    const probe=new Image();
-    probe.onload=()=>{element.src=src; element.style.display='block';};
-    probe.onerror=next;
-    probe.src=src;
-  }
-  next();
+  const src=imagePath(baseName);
+  element.src=src;
+  element.style.display='block';
+  element.onerror=()=>{ if(failure) failure(); };
 }
-
-function resolvePageImage(img, baseName){
-  resolveImage(baseName,img,()=>{
-    img.style.display='block';
-    img.alt = img.alt + ' — image not found. Use .';
-  });
-}
-
+function resolvePageImage(img, baseName){ setImage(img, baseName); }
 function resolveModalImage(baseName){
-  resolveImage(baseName,modalImage,()=>{
-    modalImage.removeAttribute('src');
-    modalImage.style.display='block';
-    modalTitle.textContent='Image not found — use ';
-  });
+  modalImage.src=imagePath(baseName);
+  modalImage.style.display='block';
+  modalTitle.textContent='Portfolio Preview';
 }
-
-/* Folder picker */
-const folderInput=document.createElement('input');
-folderInput.type='file';
-folderInput.webkitdirectory=true;
-folderInput.directory=true;
-folderInput.multiple=true;
-folderInput.style.display='none';
-document.body.appendChild(folderInput);
-
-const loadImagesButton=document.createElement('button');
-loadImagesButton.type='button';
-loadImagesButton.textContent='';
-loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
-loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
-document.body.appendChild(loadImagesButton);
-
-loadImagesButton.addEventListener('click',()=>folderInput.click());
-folderInput.addEventListener('change',()=>{
-  imageFileMap.clear();
-  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
-  selectedImagesFolder=true;
-  loadImagesButton.textContent='Images Loaded ✓';
-  loadImagesButton.style.background='#4963ed';
-  loadImagesButton.style.color='#fff';
-  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
-  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
-});
+function loadClaimsSupportImages(){
+  setImage(claimsSfImage,'09-Sf-case');
+  setImage(claimsReceiptImage,'receipt');
+}
 
 /* DARK MODE */
 const themeButton=document.getElementById('themeButton');
@@ -1297,13 +1227,13 @@ function openCustomerSupportModal(){emailSupportWrap.style.display='none';claims
 
 function openModal(baseName,title='Portfolio Preview'){emailSupportWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
 function openEmailModal(){
+  emailSupportWrap.style.display='block';
   customerSupportWrap.style.display='none';
   claimsImagesWrap.style.display='none';
   claimsSiteWrap.style.display='none';
   claimsSiteStatus.style.display='none';
   modalImage.style.display='none';
   emailControls.classList.remove('show');
-  emailSupportWrap.style.display='block';
   modalTitle.textContent='Email Support';
   modal.classList.add('open');
   document.body.style.overflow='hidden';
