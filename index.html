@@ -1269,6 +1269,113 @@ button.skill.clickable-skill:hover{
     min-height:280px;
   }
 }
+
+<style>
+/* V37 — clean Email Support pages and complete Live Chat section */
+.email-support-wrap{
+  padding:10px 16px 10px !important;
+}
+.email-support-intro{
+  margin-bottom:6px !important;
+}
+.email-support-intro h3{
+  margin-bottom:0 !important;
+  font-size:22px !important;
+}
+.email-page-viewer{
+  height:calc(96vh - 100px) !important;
+  min-height:520px !important;
+}
+.email-page{
+  justify-content:center !important;
+}
+.email-video-frame,
+.email-image-frame{
+  height:100% !important;
+  min-height:0 !important;
+  max-height:none !important;
+  padding:2px !important;
+  border-radius:10px !important;
+}
+.email-support-player{
+  max-width:100% !important;
+  max-height:100% !important;
+  width:auto !important;
+  height:auto !important;
+  object-fit:contain !important;
+}
+.email-image-frame img{
+  max-width:100% !important;
+  max-height:100% !important;
+  width:auto !important;
+  height:auto !important;
+  object-fit:contain !important;
+}
+.email-page-nav{
+  padding-top:6px !important;
+}
+
+/* Live Chat: show both samples one at a time with clear navigation */
+.live-chat-support-wrap{
+  padding:14px 18px;
+  background:#f7f8fb;
+}
+.live-chat-page-viewer{
+  width:100%;
+  height:calc(96vh - 150px);
+  min-height:460px;
+}
+.live-chat-page{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+.live-chat-page-frame{
+  flex:1;
+  min-height:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  overflow:hidden;
+  padding:4px;
+}
+.live-chat-page-frame img{
+  display:block;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:7px;
+}
+.live-chat-page-nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding-top:8px;
+}
+.live-chat-page-nav button{
+  border:1px solid #ccd5e1;
+  border-radius:8px;
+  padding:8px 12px;
+  background:#fff;
+  color:#18233b;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:800;
+}
+.live-chat-page-nav span{
+  min-width:50px;
+  text-align:center;
+  font-size:11px;
+  font-weight:800;
+  color:#18233b;
+}
 </style>
 </head>
 
@@ -1468,13 +1575,13 @@ button.skill.clickable-skill:hover{
     <div class="email-support-intro">
         <div class="section-label">EMAIL SUPPORT</div>
         <h3>Email Support</h3>
-        <p>View the presentation first, then review each email example one page at a time.</p>
+        
     </div>
 
     <div class="email-page-viewer">
         <section class="email-page" id="emailPageVideo">
             <div class="email-page-title">Page 1 — Presentation Video</div>
-            <div class="email-page-subtitle">Full 3:55 Email Support presentation</div>
+            
             <div class="email-video-frame">
                 <video class="email-support-player"
                        controls
@@ -1490,7 +1597,7 @@ button.skill.clickable-skill:hover{
 
         <section class="email-page" id="emailPage1" style="display:none;">
             <div class="email-page-title">Page 2 — Email Sample 1</div>
-            <div class="email-page-subtitle">Customer response and follow-up example</div>
+            
             <div class="email-image-frame">
                 <img src="Images/05-email-support-1.png" alt="Email Support Sample 1">
             </div>
@@ -1498,7 +1605,7 @@ button.skill.clickable-skill:hover{
 
         <section class="email-page" id="emailPage2" style="display:none;">
             <div class="email-page-title">Page 3 — Email Sample 2</div>
-            <div class="email-page-subtitle">Coverage inquiry and customer communication example</div>
+            
             <div class="email-image-frame">
                 <img src="Images/05-email-support-2.png" alt="Email Support Sample 2">
             </div>
@@ -1506,7 +1613,7 @@ button.skill.clickable-skill:hover{
 
         <section class="email-page" id="emailPage3" style="display:none;">
             <div class="email-page-title">Page 4 — Email Sample 3</div>
-            <div class="email-page-subtitle">Issue resolution and professional follow-through example</div>
+            
             <div class="email-image-frame">
                 <img src="Images/05-email-support-3.png" alt="Email Support Sample 3">
             </div>
@@ -1577,6 +1684,32 @@ button.skill.clickable-skill:hover{
            rel="noopener noreferrer">Created by Edward in Canva →</a>
         <a class="lets-connect-link" href="mailto:edapalla@zohomail.com">Let's connect →</a>
     </div>
+</div>
+
+
+<div id="liveChatSupportWrap" class="live-chat-support-wrap" style="display:none;">
+  <div class="section-label">LIVE CHAT SUPPORT</div>
+  <h3 style="margin:0 0 5px;color:#18233b;font-size:22px;">Live Chat Samples</h3>
+
+  <div class="live-chat-page-viewer">
+    <section class="live-chat-page" id="liveChatPage1">
+      <div class="live-chat-page-frame">
+        <img src="Images/07-live-chat.png" alt="Live Chat Sample 1">
+      </div>
+    </section>
+
+    <section class="live-chat-page" id="liveChatPage2" style="display:none;">
+      <div class="live-chat-page-frame">
+        <img src="Images/08-live-chat.png" alt="Live Chat Sample 2">
+      </div>
+    </section>
+  </div>
+
+  <div class="live-chat-page-nav">
+    <button type="button" onclick="showLiveChatPage(-1)">← Previous</button>
+    <span id="liveChatPageCounter">1 / 2</span>
+    <button type="button" onclick="showLiveChatPage(1)">Next →</button>
+  </div>
 </div>
 
 <div id="claimsImagesWrap" class="claims-images-wrap" style="display:none;">
@@ -1704,6 +1837,7 @@ function hideAllPanels(){
   if(emailSupportWrap) emailSupportWrap.style.display="none";
   if(customerSupportWrap) customerSupportWrap.style.display="none";
   if(claimsImagesWrap) claimsImagesWrap.style.display="none";
+  const liveChatWrap=document.getElementById("liveChatSupportWrap"); if(liveChatWrap) liveChatWrap.style.display="none";
   if(claimsSiteWrap) claimsSiteWrap.style.display="none";
   if(claimsSiteStatus) claimsSiteStatus.style.display="none";
   if(modalImage) modalImage.style.display="none";
@@ -1779,13 +1913,35 @@ function openEmailModal(){
   document.body.style.overflow="hidden";
 }
 
+function showLiveChatPage(direction){
+  const pages=[
+    document.getElementById("liveChatPage1"),
+    document.getElementById("liveChatPage2")
+  ].filter(Boolean);
+  if(!pages.length) return;
+
+  if(typeof window.liveChatPageIndex!=="number") window.liveChatPageIndex=0;
+  window.liveChatPageIndex += direction;
+  if(window.liveChatPageIndex<0) window.liveChatPageIndex=0;
+  if(window.liveChatPageIndex>pages.length-1) window.liveChatPageIndex=pages.length-1;
+
+  pages.forEach((page,i)=>{
+    page.style.display=(i===window.liveChatPageIndex) ? "flex" : "none";
+  });
+
+  const counter=document.getElementById("liveChatPageCounter");
+  if(counter) counter.textContent=`${window.liveChatPageIndex+1} / ${pages.length}`;
+}
+
 function openLiveChatModal(){
   hideAllPanels();
   if(!modal) return;
   if(modalTitle) modalTitle.textContent="Live Chat Support Samples";
-  if(modalImage){
-    modalImage.style.display="block";
-    setHostedImage(modalImage,"07-live-chat");
+  const wrap=document.getElementById("liveChatSupportWrap");
+  if(wrap){
+    wrap.style.display="block";
+    window.liveChatPageIndex=0;
+    showLiveChatPage(0);
   }
   modal.classList.add("open");
   document.body.style.overflow="hidden";
@@ -1916,6 +2072,7 @@ window.openEmailModal = openEmailModal;
 window.openLiveChatModal = openLiveChatModal;
 window.openClaimsCaseStudy = openClaimsCaseStudy;
 window.openClaimsInteractiveStudy = openClaimsInteractiveStudy;
+window.showLiveChatPage = showLiveChatPage;
 window.closeModal = closeModal;
 
 window.showEmailPage=showEmailPage;
