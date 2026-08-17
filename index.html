@@ -173,7 +173,7 @@ body.dark .filter-button{background:#172235;color:white;border-color:#34445d}
 .filter-button.active{background:#4963ed;border-color:#4963ed;color:white}
 .portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
 .portfolio-card{
-    display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;background:white;
+    display:flex;flex-direction:column;overflow:hidden;background:white;
     border:1px solid #dfe4ea;border-radius:15px;cursor:pointer;
     transition:transform .2s ease,box-shadow .2s ease
 }
@@ -358,7 +358,7 @@ body.dark .portfolio-info p{color:#aebbd0}
     display:none;align-items:center;gap:8px;padding:7px;background:rgba(0,0,0,.78);
     border-radius:9px
 }
-.email-controls.show{display:none}
+.email-controls.show{display:flex}
 .email-controls button{
     padding:8px 12px;border:none;border-radius:6px;background:rgba(255,255,255,.15);
     color:white;cursor:pointer;font-size:12px;font-weight:700
@@ -746,7 +746,7 @@ footer p+p{opacity:.65}
     .customer-support-footer strong{margin-right:0}
 }
 </style>
-<style>
+<style>#loadImagesButton{display:none!important}
 .customer-support-native-video{
     width:100%;
 }
@@ -760,339 +760,44 @@ footer p+p{opacity:.65}
 }
 
 
-.email-support-wrap{
-    display:none;
-    padding:20px;
-    background:#f7f8fb;
-}
-.email-support-intro{
-    margin-bottom:15px;
-}
-.email-support-intro h3{
-    margin:0 0 5px;
-    font-size:22px;
-    color:#18233b;
-}
-.email-support-intro p{
-    margin:0;
-    color:#687286;
-    font-size:12px;
-    line-height:1.55;
-}
-.email-support-video-card,
-.email-support-sample-card{
+<style>
+/* V42 — only addition: Email Support video above existing sample carousel */
+.email-video-card{
+    margin:0 24px 14px;
+    padding:12px;
     background:#fff;
     border:1px solid #dfe4ea;
     border-radius:13px;
-    padding:12px;
-    margin-bottom:14px;
     box-shadow:0 8px 24px rgba(24,35,59,.05);
 }
-.email-support-video-card h4,
-.email-support-sample-card h4{
-    margin:0 0 7px;
+.email-video-card h4{
+    margin:0 0 5px;
     color:#18233b;
     font-size:14px;
 }
-.email-support-video-card p{
-    margin:0 0 10px;
+.email-video-card p{
+    margin:0 0 9px;
     color:#687286;
     font-size:11px;
-    line-height:1.45;
+    line-height:1.4;
 }
-.email-support-player{
-    width:100%;
-    display:block;
-    aspect-ratio:16/9;
-    border-radius:9px;
-    background:#11131a;
-    object-fit:contain;
-}
-.email-support-note{
-    margin-top:8px;
-    color:#687286;
-    font-size:11px;
-}
-.email-support-sample-card img{
-    width:100%;
-    height:auto;
-    max-height:520px;
-    object-fit:contain;
-    display:block;
-    border-radius:9px;
-    background:#f1f3f6;
-}
-.email-support-sample-caption{
-    margin-top:8px;
-    font-size:11px;
-    color:#687286;
-}
-
-
-<style>
-/* V29 layout: video first, then arrow, then samples */
-.modal-box{
-  max-height:94vh !important;
-  overflow-y:auto !important;
-  overflow-x:hidden !important;
-}
-.email-support-wrap{
-  display:none;
-  padding:20px 22px 30px;
-  background:#f7f8fb;
-}
-.email-support-intro{margin-bottom:14px}
-.email-support-intro h3{margin:0 0 5px;font-size:23px;color:#18233b}
-.email-support-intro p{margin:0;color:#687286;font-size:12px;line-height:1.55}
-.email-support-video-card,
-.email-support-sample-card{
-  background:#fff;
-  border:1px solid #dfe4ea;
-  border-radius:13px;
-  padding:12px;
-  margin-bottom:14px;
-  box-shadow:0 8px 24px rgba(24,35,59,.05);
-}
-.email-support-video-card h4,
-.email-support-sample-card h4{
-  margin:0 0 7px;
-  font-size:14px;
-  color:#18233b;
-}
-.email-support-video-card p{
-  margin:0 0 10px;
-  color:#687286;
-  font-size:11px;
-  line-height:1.45;
-}
-.email-support-player{
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio:16/9;
-  max-height:68vh;
-  min-height:240px;
-  border:0;
-  border-radius:9px;
-  background:#11131a;
-  object-fit:contain;
-}
-.email-support-next{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  margin:0 0 16px;
-  padding:7px 0 1px;
-  text-align:center;
-  color:#4963ed;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.45px;
-}
-.email-support-next .arrow{
-  font-size:30px;
-  line-height:1;
-}
-.email-support-sample-card img{
-  display:block;
-  width:100%;
-  height:auto;
-  object-fit:contain;
-  border-radius:9px;
-  background:#f1f3f6;
-}
-.email-support-sample-caption{
-  margin-top:8px;
-  color:#687286;
-  font-size:11px;
-}
-@media(max-width:700px){
-  .email-support-wrap{padding:14px}
-  .email-support-player{min-height:200px;max-height:55vh}
-}
-</style>
-
-
-<style>
-/* V31 — Email Support: full square video + horizontal samples */
-.modal-box{
-    max-height:94vh !important;
-    overflow-y:auto !important;
-    overflow-x:hidden !important;
-}
-.email-support-wrap{
-    display:none;
-    padding:18px 20px 24px;
-    background:#f7f8fb;
-}
-.email-support-intro{
-    margin-bottom:10px;
-}
-.email-support-intro h3{
-    margin:0 0 4px;
-    font-size:22px;
-    color:#18233b;
-}
-.email-support-intro p{
-    margin:0;
-    color:#687286;
-    font-size:11px;
-    line-height:1.45;
-}
-.email-support-sequence-label{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    margin:8px 0 11px;
-    color:#4963ed;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:.5px;
-    white-space:nowrap;
-}
-.email-support-sequence-label b{
-    font-size:15px;
-    line-height:1;
-}
-.email-support-horizontal{
-    display:flex;
-    gap:12px;
-    width:100%;
-    overflow-x:auto;
-    overflow-y:hidden;
-    padding:2px 2px 8px;
-    scroll-snap-type:x proximity;
-}
-.email-support-panel{
-    flex:1 1 0;
-    min-width:0;
-    background:#fff;
-    border:1px solid #dfe4ea;
-    border-radius:12px;
-    padding:9px;
-    box-shadow:0 7px 20px rgba(24,35,59,.05);
-    display:flex;
-    flex-direction:column;
-    scroll-snap-align:start;
-}
-.email-support-panel-title{
-    font-size:12px;
-    font-weight:800;
-    color:#18233b;
-    margin-bottom:4px;
-}
-.email-support-panel-subtitle{
-    font-size:9px;
-    color:#687286;
-    margin-bottom:7px;
-    line-height:1.35;
-}
-.email-support-player{
+.email-video-player{
     display:block;
     width:100%;
-    height:auto;
+    max-width:100%;
     aspect-ratio:1 / 1;
-    max-height:320px;
-    min-height:220px;
-    border:0;
-    border-radius:8px;
+    height:auto;
+    border-radius:9px;
     background:#11131a;
     object-fit:contain;
 }
-.email-support-sample-image{
-    display:block;
-    width:100%;
-    height:320px;
-    max-height:320px;
-    min-height:220px;
-    border-radius:8px;
-    background:#f1f3f6;
-    object-fit:contain;
-}
-.email-support-panel-caption{
-    margin-top:6px;
-    color:#687286;
-    font-size:9px;
-    line-height:1.35;
-}
-.email-support-scroll-hint{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
+.email-video-note{
     margin-top:7px;
     color:#687286;
-    font-size:9px;
-    font-weight:700;
-}
-.email-support-hint-arrow{
-    color:#4963ed;
-    font-size:17px;
-    line-height:1;
-}
-@media(max-width:1200px){
-    .email-support-panel{
-        flex:0 0 calc((100% - 36px) / 4);
-    }
-}
-@media(max-width:900px){
-    .email-support-panel{
-        flex:0 0 260px;
-    }
-}
-@media(max-width:600px){
-    .email-support-wrap{
-        padding:12px;
-    }
-    .email-support-panel{
-        flex:0 0 245px;
-    }
-    .email-support-sequence-label{
-        justify-content:flex-start;
-        overflow-x:auto;
-        padding-bottom:3px;
-    }
-}
-
-<style>
-button.skill.clickable-skill{
-    width:100%;
-    text-align:left;
-    font-family:inherit;
-    color:inherit;
-    cursor:pointer;
-}
-button.skill.clickable-skill:hover{
-    transform:translateY(-3px);
-    border-color:#4963ed;
-    box-shadow:0 8px 20px rgba(73,99,237,.12);
-    color:#4963ed;
+    font-size:10px;
 }
 </style>
 
-
-<style>
-/* V41 — stable PNG assets, large readable media, reliable controls */
-.modal-box{width:min(96vw,1680px)!important;max-width:1680px!important;max-height:96vh!important;overflow:hidden!important}
-.email-support-wrap,.live-chat-support-wrap{display:none;padding:12px 18px 10px;background:#f7f8fb}
-.email-support-intro{margin-bottom:6px}.email-support-intro h3,.live-chat-title{margin:0 0 5px;color:#18233b;font-size:22px}
-.email-page-viewer,.live-chat-viewer{width:100%;height:calc(96vh - 150px);min-height:430px}
-.email-page,.live-chat-page{width:100%;height:100%;display:flex;flex-direction:column}
-.email-page-title{font-size:13px;font-weight:800;color:#18233b;margin:0 0 5px}
-.email-video-frame,.email-image-frame,.live-chat-page-frame{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dfe4ea;border-radius:10px;overflow:hidden;padding:2px}
-.email-support-player{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;aspect-ratio:1/1;object-fit:contain!important;background:#11131a}
-.email-image-frame img,.live-chat-page-frame img{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;border-radius:7px}
-.email-page-nav,.live-chat-page-nav{display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 0;border-top:1px solid #dfe4ea;background:#f7f8fb}
-.email-page-nav span,.live-chat-page-nav span{min-width:48px;text-align:center;color:#18233b;font-size:11px;font-weight:800}
-.email-page-button,.live-chat-page-nav button{border:1px solid #ccd5e1;border-radius:8px;padding:8px 12px;background:#fff;color:#18233b;cursor:pointer;font-size:11px;font-weight:800}
-.email-page-button:hover,.live-chat-page-nav button:hover{border-color:#4963ed;color:#4963ed}
-button.skill.clickable-skill{width:100%;text-align:left;font-family:inherit;color:inherit;cursor:pointer}
-button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963ed;box-shadow:0 8px 20px rgba(73,99,237,.12);color:#4963ed}
-@media(max-height:800px) and (min-width:800px){.email-page-viewer,.live-chat-viewer{height:calc(94vh - 145px);min-height:350px}}
-@media(max-width:700px){.modal-box{width:98vw!important;max-height:96vh!important}.email-page-viewer,.live-chat-viewer{height:calc(96vh - 150px);min-height:300px}}
 </style>
 </head>
 
@@ -1187,19 +892,31 @@ button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963
 
     <div class="skills-grid">
 
-        <button type="button" class="skill clickable-skill" data-skill="customer-service" onclick="openCustomerSupportModal()">Customer &amp; Phone Support <span class="skill-arrow">→</span></button>
+        <div class="skill clickable-skill" data-skill="customer-service">
+            Customer &amp; Phone Support <span class="skill-arrow">→</span>
+        </div>
 
-        <button type="button" class="skill clickable-skill" data-skill="benefits" onclick="openModal('04-customer-profile','Benefits Administration')">Benefits Administration <span class="skill-arrow">→</span></button>
+        <div class="skill clickable-skill" data-skill="benefits">
+            Benefits Administration <span class="skill-arrow">→</span>
+        </div>
 
-        <button type="button" class="skill clickable-skill" data-skill="crm" onclick="openModal('03-crm-dashboard','CRM Management')">CRM Management <span class="skill-arrow">→</span></button>
+        <div class="skill clickable-skill" data-skill="crm">
+            CRM Management <span class="skill-arrow">→</span>
+        </div>
 
-        <button type="button" class="skill clickable-skill" data-skill="email" onclick="openEmailModal()">Email Support <span class="skill-arrow">→</span></button>
+        <div class="skill clickable-skill" data-skill="email">
+            Email Support <span class="skill-arrow">→</span>
+        </div>
 
-        <button type="button" class="skill clickable-skill" data-skill="chat" onclick="openLiveChatModal()">Live Chat Support <span class="skill-arrow">→</span></button>
+        <div class="skill clickable-skill" data-skill="chat">
+            Live Chat Support <span class="skill-arrow">→</span>
+        </div>
 
         <div class="skill">Administrative Support</div>
 <div class="skill">Data Entry</div>
-        <button type="button" class="skill clickable-skill" data-skill="claims" onclick="openClaimsCaseStudy()">Claims &amp; Documentation Review <span class="skill-arrow">→</span></button>
+        <div class="skill clickable-skill" data-skill="claims">
+            Claims &amp; Documentation Review <span class="skill-arrow">→</span>
+        </div>
         <div class="skill">Microsoft Office</div>
         <div class="skill">Google Workspace</div>
 </div>
@@ -1287,40 +1004,19 @@ button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
-
-<div id="emailSupportWrap" class="email-support-wrap" style="display:none;">
-  <div class="email-support-intro">
-    <div class="section-label">EMAIL SUPPORT</div>
-    <h3>Email Support</h3>
-  </div>
-  <div class="email-page-viewer">
-    <section class="email-page" id="emailPageVideo">
-      <div class="email-page-title">Page 1 — Presentation Video</div>
-      <div class="email-video-frame">
-        <video class="email-support-player" controls playsinline preload="metadata"
-               poster="Images/05-email-support-1.png">
-          <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
-        </video>
-      </div>
-    </section>
-    <section class="email-page" id="emailPage1" style="display:none;">
-      <div class="email-page-title">Page 2 — Email Sample 1</div>
-      <div class="email-image-frame"><img src="Images/05-email-support-1.png" alt="Email Support Sample 1"></div>
-    </section>
-    <section class="email-page" id="emailPage2" style="display:none;">
-      <div class="email-page-title">Page 3 — Email Sample 2</div>
-      <div class="email-image-frame"><img src="Images/05-email-support-2.png" alt="Email Support Sample 2"></div>
-    </section>
-    <section class="email-page" id="emailPage3" style="display:none;">
-      <div class="email-page-title">Page 4 — Email Sample 3</div>
-      <div class="email-image-frame"><img src="Images/05-email-support-3.png" alt="Email Support Sample 3"></div>
-    </section>
-  </div>
-  <div class="email-page-nav">
-    <button type="button" class="email-page-button" onclick="showEmailPage(-1)">← Previous</button>
-    <span id="emailPageCounter">1 / 4</span>
-    <button type="button" class="email-page-button" onclick="showEmailPage(1)">Next →</button>
-  </div>
+<div id="emailVideoCard" class="email-video-card" style="display:none;">
+    <h4>Email Support Portfolio Presentation</h4>
+    <p>Full 3:55 Email Support presentation.</p>
+    <video class="email-video-player"
+           controls
+           playsinline
+           preload="metadata"
+           poster="Images/05-email-support-1.png"
+           aria-label="Email Support Portfolio Presentation">
+        <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="email-video-note">Plays directly in the portfolio.</div>
 </div>
 
 <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
@@ -1382,29 +1078,6 @@ button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963
     </div>
 </div>
 
-
-<div id="liveChatSupportWrap" class="live-chat-support-wrap" style="display:none;">
-  <div class="section-label">LIVE CHAT SUPPORT</div>
-  <h3 class="live-chat-title">Live Chat Samples</h3>
-  <div class="live-chat-viewer">
-    <section class="live-chat-page" id="liveChatPage1">
-      <div class="live-chat-page-frame">
-        <img src="Images/07-live-chat.png" alt="Live Chat Sample 1">
-      </div>
-    </section>
-    <section class="live-chat-page" id="liveChatPage2" style="display:none;">
-      <div class="live-chat-page-frame">
-        <img src="Images/08-live-chat.png" alt="Live Chat Sample 2">
-      </div>
-    </section>
-  </div>
-  <div class="live-chat-page-nav">
-    <button type="button" onclick="showLiveChatPage(-1)">← Previous</button>
-    <span id="liveChatPageCounter">1 / 2</span>
-    <button type="button" onclick="showLiveChatPage(1)">Next →</button>
-  </div>
-</div>
-
 <div id="claimsImagesWrap" class="claims-images-wrap" style="display:none;">
             <div class="claims-section-heading">
                 <span class="claims-step">01</span>
@@ -1442,7 +1115,11 @@ button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963
             <div id="claimsSiteStatus" class="claims-site-status">The interactive case study could not be loaded. Make sure the case-study HTML file is uploaded inside the Images folder.</div>
         </div>
 
-        <div class="email-controls" id="emailControls" style="display:none;"></div>
+        <div class="email-controls" id="emailControls">
+            <button id="previousEmail" type="button">← Previous</button>
+            <span class="counter" id="emailCounter">1 / 3</span>
+            <button id="nextEmail" type="button">Next →</button>
+        </div>
     </div>
 </div>
 
@@ -1453,288 +1130,203 @@ button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963
 
 
 <script>
-
-
 /* =========================================================
-   V32 — STABLE GITHUB PAGES SCRIPT
-   Direct hosted images, no folder picker, all buttons wired.
+   ROBUST LOCAL IMAGE LOADER
+   Works with the user's Windows Images folder and also provides
+   a folder-picker fallback for browsers that restrict file:// access.
 ========================================================= */
-const IMAGE_PATHS = {
-  "01-cover":"Images/01-cover.png",
-  "02-about":"Images/02-about.png",
-  "03-crm-dashboard":"Images/03-crm-dashboard.png",
-  "04-customer-profile":"Images/04-customer-profile.png",
-  "05-email-support-1":"Images/05-email-support-1.png",
-  "05-email-support-2":"Images/05-email-support-2.png",
-  "05-email-support-3":"Images/05-email-support-3.png",
-  "07-live-chat":"Images/07-live-chat.png",
-  "08-live-chat":"Images/08-live-chat.png",
-  "08-customer-service":"Images/08-customer-service.png",
-  "09-Sf-case":"Images/09-Sf-case.png",
-  "receipt":"Images/Receipts_Aug%209,%202026,%2005_05_22%20PM.png",
-  "pizzaoffice":"Images/pizzaoffice.png"
+const LOCAL_IMAGES_PATH = '/Images/';
+const imageFileMap = new Map();
+let selectedImagesFolder = false;
+
+const IMAGE_NAMES = {
+  '01-cover': ['01-cover.png.png','01-cover.png','01-cover.jpg','01-cover.jpeg','01-cover.webp'],
+  '02-about': ['02-about.png.png','02-about.png','02-about.jpg','02-about.jpeg','02-about.webp'],
+  '03-crm-dashboard': ['03-crm-dashboard.png','03-crm-dashboard.png.png','03-crm-dashboard.jpg','03-crm-dashboard.jpeg','03-crm-dashboard.webp'],
+  '04-customer-profile': ['04-customer-profile.png','04-customer-profile.png.png','04-customer-profile.jpg','04-customer-profile.jpeg','04-customer-profile.webp'],
+  '05-email-support-1': ['05-email-support-1.png','05-email-support-1.png.png','05-email-support-1.jpg','05-email-support-1.jpeg','05-email-support-1.webp'],
+  '05-email-support-2': ['05-email-support-2.png','05-email-support-2.png.png','05-email-support-2.jpg','05-email-support-2.jpeg','05-email-support-2.webp'],
+  '05-email-support-3': ['05-email-support-3.png','05-email-support-3.png.png','05-email-support-3.jpg','05-email-support-3.jpeg','05-email-support-3.webp'],
+  '06-live-chat': ['06-live-chat.png.png','06-live-chat.png','06-live-chat.jpg','06-live-chat.jpeg','06-live-chat.webp'],
+  '07-live-chat': ['07-live-chat.png','07-live-chat.png.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
+  '08-live-chat': ['08-live-chat.png','08-live-chat.png.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
+  '08-customer-service': ['08-customer-service.png','08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png.png'],
+  'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
+  '09-Sf-case': ['09-Sf-case.png','09-Sf-case.png.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
+  'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
 };
 
-function imagePath(name){
-  return IMAGE_PATHS[name] || ("Images/" + encodeURIComponent(name) + ".png");
-}
-function setHostedImage(el,name,fallback){
-  if(!el) return;
-  const primary=imagePath(name);
-  const secondary=fallback || null;
-  el.onerror=()=>{
-    if(secondary && el.src.indexOf(secondary)===-1){
-      el.onerror=null;
-      el.src=secondary;
-    }
-  };
-  el.src=primary;
-  el.style.display="block";
-}
-function loadPageImages(){
-  document.querySelectorAll("img[data-image-base]").forEach(img=>{
-    setHostedImage(img,img.dataset.imageBase);
-  });
-  if(backgroundImage) setHostedImage(backgroundImage,"02-about");
-}
+function encodeFileName(name){ return name.split('/').map(encodeURIComponent).join('/'); }
 
-const themeButton=document.getElementById("themeButton");
-if(themeButton){
-  themeButton.addEventListener("click",()=>{
-    document.body.classList.toggle("dark");
-    themeButton.textContent=document.body.classList.contains("dark") ? "☀" : "☾";
-  });
-}
-
-const modal=document.getElementById("portfolioModal");
-const modalImage=document.getElementById("modalImage");
-const modalClose=document.getElementById("modalClose");
-const modalTitle=document.getElementById("modalTitle");
-
-const claimsSiteWrap=document.getElementById("claimsSiteWrap");
-const claimsSiteFrame=document.getElementById("claimsSiteFrame");
-const claimsSiteStatus=document.getElementById("claimsSiteStatus");
-const claimsImagesWrap=document.getElementById("claimsImagesWrap");
-const claimsSfImage=document.getElementById("claimsSfImage");
-const claimsReceiptImage=document.getElementById("claimsReceiptImage");
-const claimsOpenCaseStudy=document.getElementById("claimsOpenCaseStudy");
-
-const customerSupportWrap=document.getElementById("customerSupportWrap");
-const customerServiceImage=document.getElementById("customerServiceImage");
-const pizzaOfficeImage=document.getElementById("pizzaOfficeImage");
-
-const emailSupportWrap=document.getElementById("emailSupportWrap");
-const emailControls=document.getElementById("emailControls");
-const backgroundImage=document.getElementById("backgroundImage");
-
-function hideAllPanels(){
-  const liveChatWrap=document.getElementById("liveChatSupportWrap"); if(liveChatWrap) liveChatWrap.style.display="none";
-  if(emailSupportWrap) emailSupportWrap.style.display="none";
-  if(customerSupportWrap) customerSupportWrap.style.display="none";
-  if(claimsImagesWrap) claimsImagesWrap.style.display="none";
-  if(claimsSiteWrap) claimsSiteWrap.style.display="none";
-  if(claimsSiteStatus) claimsSiteStatus.style.display="none";
-  if(modalImage) modalImage.style.display="none";
-  if(emailControls) emailControls.classList.remove("show");
-}
-
-function openModal(baseName,title){
-  hideAllPanels();
-  if(!modal) return;
-  if(modalTitle) modalTitle.textContent=title || "Portfolio Preview";
-  if(modalImage){
-    modalImage.style.display="block";
-    setHostedImage(modalImage,baseName);
-  }
-  modal.classList.add("open");
-  document.body.style.overflow="hidden";
-}
-
-function openCustomerSupportModal(){
-  hideAllPanels();
-  if(!modal || !customerSupportWrap) return;
-  if(modalTitle) modalTitle.textContent="Customer & Phone Support";
-  customerSupportWrap.style.display="block";
-  setHostedImage(customerServiceImage,"08-customer-service");
-  setHostedImage(
-    pizzaOfficeImage,
-    "pizzaoffice",
-    "Images/Piazzoffice.png"
-  );
-  modal.classList.add("open");
-  document.body.style.overflow="hidden";
-}
-
-
-function showEmailPage(direction){
-  const pages=[document.getElementById("emailPageVideo"),document.getElementById("emailPage1"),document.getElementById("emailPage2"),document.getElementById("emailPage3")].filter(Boolean);
-  if(!pages.length)return;
-  if(typeof window.emailPageIndex!=="number")window.emailPageIndex=0;
-  window.emailPageIndex=Math.max(0,Math.min(pages.length-1,window.emailPageIndex+direction));
-  pages.forEach((p,i)=>p.style.display=i===window.emailPageIndex?"flex":"none");
-  const c=document.getElementById("emailPageCounter");if(c)c.textContent=`${window.emailPageIndex+1} / ${pages.length}`;
-}
-function showLiveChatPage(direction){
-  const pages=[document.getElementById("liveChatPage1"),document.getElementById("liveChatPage2")].filter(Boolean);
-  if(!pages.length)return;
-  if(typeof window.liveChatPageIndex!=="number")window.liveChatPageIndex=0;
-  window.liveChatPageIndex=Math.max(0,Math.min(pages.length-1,window.liveChatPageIndex+direction));
-  pages.forEach((p,i)=>p.style.display=i===window.liveChatPageIndex?"flex":"none");
-  const c=document.getElementById("liveChatPageCounter");if(c)c.textContent=`${window.liveChatPageIndex+1} / ${pages.length}`;
-}
-function openEmailModal(){
-  hideAllPanels(); if(!modal||!emailSupportWrap)return;
-  modalTitle.textContent="Email Support"; emailSupportWrap.style.display="block";
-  window.emailPageIndex=0; showEmailPage(0);
-  modal.classList.add("open"); document.body.style.overflow="hidden";
-}
-
-function openLiveChatModal(){
-  hideAllPanels(); if(!modal)return;
-  modalTitle.textContent="Live Chat Support Samples";
-  const wrap=document.getElementById("liveChatSupportWrap");
-  if(wrap){wrap.style.display="block";window.liveChatPageIndex=0;showLiveChatPage(0);}
-  modal.classList.add("open"); document.body.style.overflow="hidden";
-}
-
-function openClaimsCaseStudy(){
-  hideAllPanels();
-  if(!modal) return;
-  if(modalTitle) modalTitle.textContent="Claims & Documentation Review Evidence";
-  if(claimsImagesWrap) claimsImagesWrap.style.display="block";
-  setHostedImage(claimsSfImage,"09-Sf-case");
-  setHostedImage(claimsReceiptImage,"receipt");
-  modal.classList.add("open");
-  document.body.style.overflow="hidden";
-}
-
-function openClaimsInteractiveStudy(){
-  hideAllPanels();
-  if(!modal) return;
-  if(modalTitle) modalTitle.textContent="Claims & Documentation Review";
-  if(claimsSiteWrap) claimsSiteWrap.style.display="block";
-  if(claimsSiteStatus) claimsSiteStatus.style.display="none";
-
-  const candidates=[
-    "Images/Missing_Date_Case_Study_Improved.html",
-    "./Images/Missing_Date_Case_Study_Improved.html"
+function autoCandidates(baseName){
+  const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
+  const roots = [
+    '/Images/',
+    './Images/',
+    '../Images/'
   ];
-  let index=0;
-  function tryNext(){
-    if(index >= candidates.length){
-      if(claimsSiteStatus) claimsSiteStatus.style.display="block";
+  return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
+}
+
+function setFromSelectedFolder(baseName, element){
+  const names = IMAGE_NAMES[baseName] || [];
+  for(const n of names){
+    const url = imageFileMap.get(n.toLowerCase());
+    if(url){ element.src=url; element.style.display='block'; return true; }
+  }
+  return false;
+}
+
+function resolveImage(baseName, element, failure){
+  if(!element) return;
+  if(setFromSelectedFolder(baseName, element)) return;
+  const candidates = autoCandidates(baseName);
+  let i=0;
+  function next(){
+    if(i>=candidates.length){
+      if(failure) failure();
+      else { element.style.display='none'; }
       return;
     }
-    if(claimsSiteFrame) claimsSiteFrame.src=candidates[index++];
+    const src=candidates[i++];
+    const probe=new Image();
+    probe.onload=()=>{element.src=src; element.style.display='block';};
+    probe.onerror=next;
+    probe.src=src;
   }
-  if(claimsSiteFrame){
-    claimsSiteFrame.onload=()=>{
-      if(claimsSiteStatus) claimsSiteStatus.style.display="none";
-    };
-    claimsSiteFrame.onerror=tryNext;
-  }
-  tryNext();
-
-  modal.classList.add("open");
-  document.body.style.overflow="hidden";
+  next();
 }
 
-function closeModal(){
-  hideAllPanels();
-  if(modal) modal.classList.remove("open");
-  document.body.style.overflow="";
-  if(modalImage) modalImage.removeAttribute("src");
-  if(claimsSiteFrame) claimsSiteFrame.removeAttribute("src");
-}
-
-/* Core Skills buttons */
-document.querySelectorAll(".clickable-skill").forEach(skill=>{
-  skill.addEventListener("click",()=>{
-    const type=skill.dataset.skill;
-    switch(type){
-      case "customer-service": openCustomerSupportModal(); break;
-      case "benefits": openModal("04-customer-profile","Benefits Administration"); break;
-      case "crm": openModal("03-crm-dashboard","CRM Management"); break;
-      case "email": openEmailModal(); break;
-      case "chat": openLiveChatModal(); break;
-      case "claims": openClaimsCaseStudy(); break;
-    }
+function resolvePageImage(img, baseName){
+  resolveImage(baseName,img,()=>{
+    img.style.display='block';
+    img.alt = img.alt + ' — image not found. Use .';
   });
+}
+
+function resolveModalImage(baseName){
+  resolveImage(baseName,modalImage,()=>{
+    modalImage.removeAttribute('src');
+    modalImage.style.display='block';
+    modalTitle.textContent='Image not found — use ';
+  });
+}
+
+/* Folder picker */
+const folderInput=document.createElement('input');
+folderInput.type='file';
+folderInput.webkitdirectory=true;
+folderInput.directory=true;
+folderInput.multiple=true;
+folderInput.style.display='none';
+document.body.appendChild(folderInput);
+
+const loadImagesButton=document.createElement('button');
+loadImagesButton.type='button';
+loadImagesButton.textContent='';
+loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
+loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
+document.body.appendChild(loadImagesButton);
+
+loadImagesButton.addEventListener('click',()=>folderInput.click());
+folderInput.addEventListener('change',()=>{
+  imageFileMap.clear();
+  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
+  selectedImagesFolder=true;
+  loadImagesButton.textContent='Images Loaded ✓';
+  loadImagesButton.style.background='#4963ed';
+  loadImagesButton.style.color='#fff';
+  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
+emailVideoCard.style.display='none';
+  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
 });
 
-/* Portfolio cards */
-document.querySelectorAll(".portfolio-card").forEach(card=>{
-  card.addEventListener("click",()=>{
-    const type=card.dataset.type;
-    const image=card.dataset.imageBase;
-    const title=card.querySelector("h3")?.textContent || "Portfolio Preview";
+/* DARK MODE */
+const themeButton=document.getElementById('themeButton');
+themeButton.addEventListener('click',()=>{document.body.classList.toggle('dark');themeButton.textContent=document.body.classList.contains('dark')?'☀':'☾';});
 
-    if(type==="email"){
-      openEmailModal();
-    }else{
-      openModal(image,title);
-    }
-  });
-});
+/* PAGE IMAGES — only actual IMG elements */
+document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
 
-/* Portfolio filters */
-document.querySelectorAll(".filter-button").forEach(button=>{
-  button.addEventListener("click",()=>{
-    document.querySelectorAll(".filter-button").forEach(item=>item.classList.remove("active"));
-    button.classList.add("active");
-    const filter=button.dataset.filter;
-    document.querySelectorAll(".portfolio-card").forEach(card=>{
-      card.style.display=(filter==="all" || card.dataset.category===filter) ? "flex" : "none";
-    });
-  });
-});
+/* FILTERS */
+const filterButtons=document.querySelectorAll('.filter-button');
+const portfolioCards=document.querySelectorAll('.portfolio-card');
+filterButtons.forEach(button=>button.addEventListener('click',()=>{
+  filterButtons.forEach(item=>item.classList.remove('active')); button.classList.add('active');
+  const filter=button.dataset.filter;
+  portfolioCards.forEach(card=>card.style.display=(filter==='all'||card.dataset.category===filter)?'flex':'none');
+}));
 
-/* Background image */
-if(backgroundImage){
-  backgroundImage.addEventListener("click",()=>{
-    openModal("02-about","Professional Background");
-  });
+/* MODAL */
+const modal=document.getElementById('portfolioModal');
+const modalImage=document.getElementById('modalImage');
+const modalClose=document.getElementById('modalClose');
+const modalTitle=document.getElementById('modalTitle');
+
+const claimsSiteWrap=document.getElementById('claimsSiteWrap');
+const claimsSiteFrame=document.getElementById('claimsSiteFrame');
+const claimsSiteStatus=document.getElementById('claimsSiteStatus');
+const claimsImagesWrap=document.getElementById('claimsImagesWrap');
+const claimsSfImage=document.getElementById('claimsSfImage');
+const claimsReceiptImage=document.getElementById('claimsReceiptImage');
+const claimsOpenCaseStudy=document.getElementById('claimsOpenCaseStudy');
+const customerSupportWrap=document.getElementById('customerSupportWrap');
+const customerServiceImage=document.getElementById('customerServiceImage');
+const pizzaOfficeImage=document.getElementById('pizzaOfficeImage');
+const emailControls=document.getElementById('emailControls');
+const emailVideoCard=document.getElementById('emailVideoCard');
+const previousEmail=document.getElementById('previousEmail');
+const nextEmail=document.getElementById('nextEmail');
+const emailCounter=document.getElementById('emailCounter');
+const backgroundImage=document.getElementById('backgroundImage');
+
+const emailSamples=['05-email-support-1','05-email-support-2','05-email-support-3'];
+const liveChatSamples=['07-live-chat','08-live-chat'];
+let currentEmail=0,currentLiveChat=0;
+
+function loadClaimsSupportImages(){
+  resolveImage('09-Sf-case',claimsSfImage);
+  resolveImage('receipt',claimsReceiptImage);
 }
 
-/* Claims next button */
-if(claimsOpenCaseStudy){
-  claimsOpenCaseStudy.addEventListener("click",openClaimsInteractiveStudy);
+function openClaimsCaseStudy(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-/* Modal controls */
-if(modalClose) modalClose.addEventListener("click",closeModal);
-if(modal){
-  modal.addEventListener("click",event=>{
-    if(event.target===modal) closeModal();
-  });
+function openClaimsInteractiveStudy(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
+  const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
+  let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
-document.addEventListener("keydown",event=>{
-  if(event.key==="Escape") closeModal();
-});
 
-/* Load hosted images after all DOM nodes exist */
-loadPageImages();
+function openCustomerSupportModal(){emailVideoCard.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
+  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
+}
 
+function openModal(baseName,title='Portfolio Preview'){emailVideoCard.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){emailVideoCard.style.display='block';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
+function openLiveChatModal(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
-window.openCustomerSupportModal = openCustomerSupportModal;
-window.openModal = openModal;
-window.openEmailModal = openEmailModal;
-window.openLiveChatModal = openLiveChatModal;
-window.openClaimsCaseStudy = openClaimsCaseStudy;
-window.openClaimsInteractiveStudy = openClaimsInteractiveStudy;
-window.closeModal = closeModal;
+portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
+backgroundImage.addEventListener('click',()=>openModal('02-about','Professional Background'));
 
+document.querySelectorAll('.clickable-skill').forEach(skill=>skill.addEventListener('click',()=>{
+  const type=skill.dataset.skill;
+  if(type==='customer-service') openCustomerSupportModal();
+  else if(type==='benefits') openModal('04-customer-profile','Benefits Administration');
+  else if(type==='crm') openModal('03-crm-dashboard','CRM Management');
+  else if(type==='email') openEmailModal();
+  else if(type==='chat') openLiveChatModal();
+  else if(type==='claims') openClaimsCaseStudy();
+}));
 
-window.openCustomerSupportModal=openCustomerSupportModal;
-window.openModal=openModal;
-window.openEmailModal=openEmailModal;
-window.openLiveChatModal=openLiveChatModal;
-window.openClaimsCaseStudy=openClaimsCaseStudy;
-window.openClaimsInteractiveStudy=openClaimsInteractiveStudy;
-window.closeModal=closeModal;
-window.showEmailPage=showEmailPage;
-window.showLiveChatPage=showLiveChatPage;
+previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail-1+emailSamples.length)%emailSamples.length;showEmail();}});
+nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
+claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
+function closeModal(){emailVideoCard.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
 </script>
 
 </body>
