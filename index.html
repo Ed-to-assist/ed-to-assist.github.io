@@ -1448,6 +1448,57 @@ button.skill.clickable-skill:hover{
     min-height:300px;
   }
 }
+
+<style>
+/* V40 — web-ready assets + always-visible page navigation */
+.modal-box{
+  max-height:96vh !important;
+  overflow:auto !important;
+  scrollbar-gutter:stable;
+}
+.email-support-wrap,
+.live-chat-support-wrap{
+  position:relative;
+}
+.email-page-viewer,
+.live-chat-viewer{
+  height:calc(96vh - 205px) !important;
+  min-height:430px !important;
+  max-height:760px !important;
+}
+.email-page-nav,
+.live-chat-page-nav{
+  position:sticky !important;
+  bottom:0 !important;
+  z-index:20 !important;
+  background:rgba(247,248,251,.97) !important;
+  padding:9px 0 !important;
+  border-top:1px solid #dfe4ea !important;
+  backdrop-filter:blur(4px);
+}
+.email-image-frame img,
+.live-chat-page-frame img{
+  max-width:100% !important;
+  max-height:100% !important;
+  width:auto !important;
+  height:auto !important;
+  object-fit:contain !important;
+}
+.portfolio-image-box img,
+.customer-support-image,
+.claims-support-image,
+.modal-image{
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media (max-height:800px) and (min-width:800px){
+  .email-page-viewer,
+  .live-chat-viewer{
+    height:calc(94vh - 190px) !important;
+    min-height:360px !important;
+  }
+}
 </style>
 </head>
 
@@ -1643,123 +1694,48 @@ button.skill.clickable-skill:hover{
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
 
+
 <div id="emailSupportWrap" class="email-support-wrap" style="display:none;">
-    <div class="email-support-intro">
-        <div class="section-label">EMAIL SUPPORT</div>
-        <h3>Email Support</h3>
-        
-    </div>
-
-    <div class="email-page-viewer">
-        <section class="email-page" id="emailPageVideo">
-            <div class="email-page-title">Page 1 — Presentation Video</div>
-            
-            <div class="email-video-frame">
-                <video class="email-support-player"
-                       controls
-                       playsinline
-                       preload="metadata"
-                       poster="Images/05-email-support-1.png"
-                       aria-label="Email Support Portfolio Presentation">
-                    <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </section>
-
-        <section class="email-page" id="emailPage1" style="display:none;">
-            <div class="email-page-title">Page 2 — Email Sample 1</div>
-            
-            <div class="email-image-frame">
-                <img src="Images/05-email-support-1.png" alt="Email Support Sample 1">
-            </div>
-        </section>
-
-        <section class="email-page" id="emailPage2" style="display:none;">
-            <div class="email-page-title">Page 3 — Email Sample 2</div>
-            
-            <div class="email-image-frame">
-                <img src="Images/05-email-support-2.png" alt="Email Support Sample 2">
-            </div>
-        </section>
-
-        <section class="email-page" id="emailPage3" style="display:none;">
-            <div class="email-page-title">Page 4 — Email Sample 3</div>
-            
-            <div class="email-image-frame">
-                <img src="Images/05-email-support-3.png" alt="Email Support Sample 3">
-            </div>
-        </section>
-    </div>
-
-    <div class="email-page-nav" aria-label="Email Support page navigation">
-        <button type="button" class="email-page-button" onclick="showEmailPage(-1)">← Previous</button>
-        <span id="emailPageCounter">1 / 4</span>
-        <button type="button" class="email-page-button" onclick="showEmailPage(1)">Next →</button>
-    </div>
+  <div class="email-support-intro">
+    <div class="section-label">EMAIL SUPPORT</div>
+    <h3>Email Support</h3>
+  </div>
+  <div class="email-page-viewer">
+    <section class="email-page" id="emailPageVideo">
+      <div class="email-page-title">Page 1 — Presentation Video</div>
+      <div class="email-video-frame">
+        <video class="email-support-player" controls playsinline preload="metadata"
+               poster="Images/05-email-support-1.webp"
+               aria-label="Email Support Portfolio Presentation">
+          <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+    <section class="email-page" id="emailPage1" style="display:none;">
+      <div class="email-page-title">Page 2 — Email Sample 1</div>
+      <div class="email-image-frame">
+        <img src="Images/05-email-support-1.webp" alt="Email Support Sample 1">
+      </div>
+    </section>
+    <section class="email-page" id="emailPage2" style="display:none;">
+      <div class="email-page-title">Page 3 — Email Sample 2</div>
+      <div class="email-image-frame">
+        <img src="Images/05-email-support-2.webp" alt="Email Support Sample 2">
+      </div>
+    </section>
+    <section class="email-page" id="emailPage3" style="display:none;">
+      <div class="email-page-title">Page 4 — Email Sample 3</div>
+      <div class="email-image-frame">
+        <img src="Images/05-email-support-3.webp" alt="Email Support Sample 3">
+      </div>
+    </section>
+  </div>
+  <div class="email-page-nav">
+    <button type="button" class="email-page-button" onclick="showEmailPage(-1)">← Previous</button>
+    <span id="emailPageCounter">1 / 4</span>
+    <button type="button" class="email-page-button" onclick="showEmailPage(1)">Next →</button>
+  </div>
 </div>
-
-<div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
-    <div class="customer-support-heading">
-        <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
-        <h3>Customer &amp; Phone Support</h3>
-        <p>Clear communication, active listening, accurate case handling, and dependable follow-through across customer interactions.</p>
-    </div>
-
-    <div class="customer-support-media">
-        <!-- LEFT: video presentation -->
-        <div class="customer-support-video-card">
-            <h4>Customer Support Portfolio Presentation</h4>
-            <p>Full 5:48 presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
-
-            <div class="customer-support-native-video">
-    <video class="customer-support-native-player"
-       controls
-       playsinline
-       preload="metadata"
-       poster="Images/03-crm-dashboard.png"
-       aria-label="Customer Support Portfolio Presentation">
-    <source src="Videos/customer-phone-support.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-</video>
-    <div class="customer-support-video-note">
-        Full 5:48 presentation · Plays directly in this portfolio.
-    </div>
-</div>
-        </div>
-
-        <!-- RIGHT: stacked support images -->
-        <div class="customer-support-image-column">
-            <div class="customer-support-image-card">
-                <h4>Customer support workflow</h4>
-                <img id="customerServiceImage"
-                     class="customer-support-image"
-                     alt="Customer support workflow">
-                <div class="customer-support-caption">Customer support workflow</div>
-            </div>
-
-            <div class="customer-support-image-card">
-                <h4>Professional phone support environment</h4>
-                <img id="pizzaOfficeImage"
-                     class="customer-support-image"
-                     alt="Professional phone support environment">
-                <div class="customer-support-caption">Professional phone support environment</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="customer-support-footer">
-        <strong>I can help keep customers informed and operations moving.</strong>
-        <a class="canva-attribution-link"
-           href="https://canva.link/phyp86qtqgt0phj"
-           target="_blank"
-           rel="noopener noreferrer">Created by Edward in Canva →</a>
-        <a class="lets-connect-link" href="mailto:edapalla@zohomail.com">Let's connect →</a>
-    </div>
-</div>
-
-
-
 <div id="liveChatSupportWrap" class="live-chat-support-wrap" style="display:none;">
   <div class="section-label">LIVE CHAT SUPPORT</div>
   <h3 class="live-chat-title">Live Chat Samples</h3>
@@ -1767,13 +1743,13 @@ button.skill.clickable-skill:hover{
   <div class="live-chat-viewer">
     <section class="live-chat-page" id="liveChatPage1">
       <div class="live-chat-page-frame">
-        <img src="Images/07-live-chat.png" alt="Live Chat Sample 1">
+        <img src="Images/07-live-chat.webp" alt="Live Chat Sample 1">
       </div>
     </section>
 
     <section class="live-chat-page" id="liveChatPage2" style="display:none;">
       <div class="live-chat-page-frame">
-        <img src="Images/08-live-chat.png" alt="Live Chat Sample 2">
+        <img src="Images/08-live-chat.webp" alt="Live Chat Sample 2">
       </div>
     </section>
   </div>
@@ -1841,15 +1817,15 @@ button.skill.clickable-skill:hover{
 const IMAGE_PATHS = {
   "01-cover":"Images/01-cover.png",
   "02-about":"Images/02-about.png",
-  "03-crm-dashboard":"Images/03-crm-dashboard.png",
-  "04-customer-profile":"Images/04-customer-profile.png",
-  "05-email-support-1":"Images/05-email-support-1.png",
-  "05-email-support-2":"Images/05-email-support-2.png",
-  "05-email-support-3":"Images/05-email-support-3.png",
-  "07-live-chat":"Images/07-live-chat.png",
-  "08-live-chat":"Images/08-live-chat.png",
+  "03-crm-dashboard":"Images/03-crm-dashboard.webp",
+  "04-customer-profile":"Images/04-customer-profile.webp",
+  "05-email-support-1":"Images/05-email-support-1.webp",
+  "05-email-support-2":"Images/05-email-support-2.webp",
+  "05-email-support-3":"Images/05-email-support-3.webp",
+  "07-live-chat":"Images/07-live-chat.webp",
+  "08-live-chat":"Images/08-live-chat.webp",
   "08-customer-service":"Images/08-customer-service.png",
-  "09-Sf-case":"Images/09-Sf-case.png",
+  "09-Sf-case":"Images/09-Sf-case.webp",
   "receipt":"Images/Receipts_Aug%209,%202026,%2005_05_22%20PM.png",
   "pizzaoffice":"Images/pizzaoffice.png"
 };
@@ -2153,6 +2129,7 @@ window.closeModal = closeModal;
 
 window.showEmailPage=showEmailPage;
 window.showLiveChatPage=showLiveChatPage;
+window.showEmailPage=showEmailPage;
 </script>
 
 </body>
