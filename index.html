@@ -746,7 +746,7 @@ footer p+p{opacity:.65}
     .customer-support-footer strong{margin-right:0}
 }
 </style>
-<style>#loadImagesButton{display:none!important}
+<style>
 .customer-support-native-video{
     width:100%;
 }
@@ -1426,206 +1426,255 @@ footer p+p{opacity:.65}
 
 
 <script>
-/* =========================================================
-   ROBUST LOCAL IMAGE LOADER
-   Works with the user's Windows Images folder and also provides
-   a folder-picker fallback for browsers that restrict file:// access.
-========================================================= */
-const LOCAL_IMAGES_PATH = '/Images/';
-const imageFileMap = new Map();
-let selectedImagesFolder = false;
 
-const IMAGE_NAMES = {
-  '01-cover': ['01-cover.png.png','01-cover.png','01-cover.jpg','01-cover.jpeg','01-cover.webp'],
-  '02-about': ['02-about.png.png','02-about.png','02-about.jpg','02-about.jpeg','02-about.webp'],
-  '03-crm-dashboard': ['03-crm-dashboard.png','03-crm-dashboard.png.png','03-crm-dashboard.jpg','03-crm-dashboard.jpeg','03-crm-dashboard.webp'],
-  '04-customer-profile': ['04-customer-profile.png','04-customer-profile.png.png','04-customer-profile.jpg','04-customer-profile.jpeg','04-customer-profile.webp'],
-  '05-email-support-1': ['05-email-support-1.png','05-email-support-1.png.png','05-email-support-1.jpg','05-email-support-1.jpeg','05-email-support-1.webp'],
-  '05-email-support-2': ['05-email-support-2.png','05-email-support-2.png.png','05-email-support-2.jpg','05-email-support-2.jpeg','05-email-support-2.webp'],
-  '05-email-support-3': ['05-email-support-3.png','05-email-support-3.png.png','05-email-support-3.jpg','05-email-support-3.jpeg','05-email-support-3.webp'],
-  '06-live-chat': ['06-live-chat.png.png','06-live-chat.png','06-live-chat.jpg','06-live-chat.jpeg','06-live-chat.webp'],
-  '07-live-chat': ['07-live-chat.png','07-live-chat.png.png','07-live-chat.jpg','07-live-chat.jpeg','07-live-chat.webp'],
-  '08-live-chat': ['08-live-chat.png','08-live-chat.png.png','08-live-chat.jpg','08-live-chat.jpeg','08-live-chat.webp'],
-  '08-customer-service': ['08-customer-service.png','08-customer-service(1).png','08-customer-service(2).png','08-customer-service(3).png','08-customer-service.png.png'],
-  'pizzaoffice': ['Piazzoffice.png','Piazzoffice.png.png','Pizzaoffice.png','Pizzaoffice.png.png','pizzaoffice.png','pizzaoffice.png.png','pizzaoffice.jpg','pizzaoffice.jpeg','pizzaoffice.webp','Office Pizza Party Gathering(1).png','Office Pizza Party Gathering.png','Office Pizza Party Group Photo.png','Office Pizza Party Group Photos.png'],
-  '09-Sf-case': ['09-Sf-case.png','09-Sf-case.png.png','09-Sf-case.jpg','09-Sf-case.jpeg','09-Sf-case.webp'],
-  'receipt': ['Receipts_Aug 9, 2026, 05_05_22 PM.png.png','Receipts_Aug 9, 2026, 05_05_22 PM.png','Receipts_Aug 9, 2026, 05_05_22 PM.jpg','Receipts_Aug 9, 2026, 05_05_22 PM.jpeg','receiptAug_9.png.png','receiptAug_9.png','receiptAug_9.jpg','receiptAug_9.jpeg']
+/* =========================================================
+   V32 — STABLE GITHUB PAGES SCRIPT
+   Direct hosted images, no folder picker, all buttons wired.
+========================================================= */
+const IMAGE_PATHS = {
+  "01-cover":"Images/01-cover.png",
+  "02-about":"Images/02-about.png",
+  "03-crm-dashboard":"Images/03-crm-dashboard.png",
+  "04-customer-profile":"Images/04-customer-profile.png",
+  "05-email-support-1":"Images/05-email-support-1.png",
+  "05-email-support-2":"Images/05-email-support-2.png",
+  "05-email-support-3":"Images/05-email-support-3.png",
+  "07-live-chat":"Images/07-live-chat.png",
+  "08-live-chat":"Images/08-live-chat.png",
+  "08-customer-service":"Images/08-customer-service.png",
+  "09-Sf-case":"Images/09-Sf-case.png",
+  "receipt":"Images/Receipts_Aug%209,%202026,%2005_05_22%20PM.png",
+  "pizzaoffice":"Images/pizzaoffice.png"
 };
 
-function encodeFileName(name){ return name.split('/').map(encodeURIComponent).join('/'); }
-
-function autoCandidates(baseName){
-  const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
-  const roots = [
-    '/Images/',
-    './Images/',
-    '../Images/'
-  ];
-  return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
+function imagePath(name){
+  return IMAGE_PATHS[name] || ("Images/" + encodeURIComponent(name) + ".png");
+}
+function setHostedImage(el,name,fallback){
+  if(!el) return;
+  const primary=imagePath(name);
+  const secondary=fallback || null;
+  el.onerror=()=>{
+    if(secondary && el.src.indexOf(secondary)===-1){
+      el.onerror=null;
+      el.src=secondary;
+    }
+  };
+  el.src=primary;
+  el.style.display="block";
+}
+function loadPageImages(){
+  document.querySelectorAll("img[data-image-base]").forEach(img=>{
+    setHostedImage(img,img.dataset.imageBase);
+  });
+  if(backgroundImage) setHostedImage(backgroundImage,"02-about");
 }
 
-function setFromSelectedFolder(baseName, element){
-  const names = IMAGE_NAMES[baseName] || [];
-  for(const n of names){
-    const url = imageFileMap.get(n.toLowerCase());
-    if(url){ element.src=url; element.style.display='block'; return true; }
+const themeButton=document.getElementById("themeButton");
+if(themeButton){
+  themeButton.addEventListener("click",()=>{
+    document.body.classList.toggle("dark");
+    themeButton.textContent=document.body.classList.contains("dark") ? "☀" : "☾";
+  });
+}
+
+const modal=document.getElementById("portfolioModal");
+const modalImage=document.getElementById("modalImage");
+const modalClose=document.getElementById("modalClose");
+const modalTitle=document.getElementById("modalTitle");
+
+const claimsSiteWrap=document.getElementById("claimsSiteWrap");
+const claimsSiteFrame=document.getElementById("claimsSiteFrame");
+const claimsSiteStatus=document.getElementById("claimsSiteStatus");
+const claimsImagesWrap=document.getElementById("claimsImagesWrap");
+const claimsSfImage=document.getElementById("claimsSfImage");
+const claimsReceiptImage=document.getElementById("claimsReceiptImage");
+const claimsOpenCaseStudy=document.getElementById("claimsOpenCaseStudy");
+
+const customerSupportWrap=document.getElementById("customerSupportWrap");
+const customerServiceImage=document.getElementById("customerServiceImage");
+const pizzaOfficeImage=document.getElementById("pizzaOfficeImage");
+
+const emailSupportWrap=document.getElementById("emailSupportWrap");
+const emailControls=document.getElementById("emailControls");
+const backgroundImage=document.getElementById("backgroundImage");
+
+function hideAllPanels(){
+  if(emailSupportWrap) emailSupportWrap.style.display="none";
+  if(customerSupportWrap) customerSupportWrap.style.display="none";
+  if(claimsImagesWrap) claimsImagesWrap.style.display="none";
+  if(claimsSiteWrap) claimsSiteWrap.style.display="none";
+  if(claimsSiteStatus) claimsSiteStatus.style.display="none";
+  if(modalImage) modalImage.style.display="none";
+  if(emailControls) emailControls.classList.remove("show");
+}
+
+function openModal(baseName,title){
+  hideAllPanels();
+  if(!modal) return;
+  if(modalTitle) modalTitle.textContent=title || "Portfolio Preview";
+  if(modalImage){
+    modalImage.style.display="block";
+    setHostedImage(modalImage,baseName);
   }
-  return false;
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
 }
 
-function resolveImage(baseName, element, failure){
-  if(!element) return;
-  if(setFromSelectedFolder(baseName, element)) return;
-  const candidates = autoCandidates(baseName);
-  let i=0;
-  function next(){
-    if(i>=candidates.length){
-      if(failure) failure();
-      else { element.style.display='none'; }
+function openCustomerSupportModal(){
+  hideAllPanels();
+  if(!modal || !customerSupportWrap) return;
+  if(modalTitle) modalTitle.textContent="Customer & Phone Support";
+  customerSupportWrap.style.display="block";
+  setHostedImage(customerServiceImage,"08-customer-service");
+  setHostedImage(
+    pizzaOfficeImage,
+    "pizzaoffice",
+    "Images/Piazzoffice.png"
+  );
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+
+function openEmailModal(){
+  hideAllPanels();
+  if(!modal || !emailSupportWrap) return;
+  if(modalTitle) modalTitle.textContent="Email Support";
+  emailSupportWrap.style.display="block";
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+
+function openLiveChatModal(){
+  hideAllPanels();
+  if(!modal) return;
+  if(modalTitle) modalTitle.textContent="Live Chat Support Samples";
+  if(modalImage){
+    modalImage.style.display="block";
+    setHostedImage(modalImage,"07-live-chat");
+  }
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+
+function openClaimsCaseStudy(){
+  hideAllPanels();
+  if(!modal) return;
+  if(modalTitle) modalTitle.textContent="Claims & Documentation Review Evidence";
+  if(claimsImagesWrap) claimsImagesWrap.style.display="block";
+  setHostedImage(claimsSfImage,"09-Sf-case");
+  setHostedImage(claimsReceiptImage,"receipt");
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+
+function openClaimsInteractiveStudy(){
+  hideAllPanels();
+  if(!modal) return;
+  if(modalTitle) modalTitle.textContent="Claims & Documentation Review";
+  if(claimsSiteWrap) claimsSiteWrap.style.display="block";
+  if(claimsSiteStatus) claimsSiteStatus.style.display="none";
+
+  const candidates=[
+    "Images/Missing_Date_Case_Study_Improved.html",
+    "./Images/Missing_Date_Case_Study_Improved.html"
+  ];
+  let index=0;
+  function tryNext(){
+    if(index >= candidates.length){
+      if(claimsSiteStatus) claimsSiteStatus.style.display="block";
       return;
     }
-    const src=candidates[i++];
-    const probe=new Image();
-    probe.onload=()=>{element.src=src; element.style.display='block';};
-    probe.onerror=next;
-    probe.src=src;
+    if(claimsSiteFrame) claimsSiteFrame.src=candidates[index++];
   }
-  next();
+  if(claimsSiteFrame){
+    claimsSiteFrame.onload=()=>{
+      if(claimsSiteStatus) claimsSiteStatus.style.display="none";
+    };
+    claimsSiteFrame.onerror=tryNext;
+  }
+  tryNext();
+
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
 }
-
-function resolvePageImage(img, baseName){
-  resolveImage(baseName,img,()=>{
-    img.style.display='block';
-    img.alt = img.alt + ' — image not found. Use .';
-  });
-}
-
-function resolveModalImage(baseName){
-  resolveImage(baseName,modalImage,()=>{
-    modalImage.removeAttribute('src');
-    modalImage.style.display='block';
-    modalTitle.textContent='Image not found — use ';
-  });
-}
-
-/* Folder picker */
-const folderInput=document.createElement('input');
-folderInput.type='file';
-folderInput.webkitdirectory=true;
-folderInput.directory=true;
-folderInput.multiple=true;
-folderInput.style.display='none';
-document.body.appendChild(folderInput);
-
-const loadImagesButton=document.createElement('button');
-loadImagesButton.type='button';
-loadImagesButton.textContent='';
-loadImagesButton.title='Select C:\\Users\\ed_workpro\\Desktop\\Edward PortFolio\\Images if your browser blocks local images';
-loadImagesButton.style.cssText='position:fixed;right:18px;bottom:18px;z-index:5000;padding:11px 15px;border:1px solid #ccd5e1;border-radius:9px;background:#fff;color:#172033;font:700 12px Arial;box-shadow:0 8px 24px rgba(20,35,60,.14);cursor:pointer';
-document.body.appendChild(loadImagesButton);
-
-loadImagesButton.addEventListener('click',()=>folderInput.click());
-folderInput.addEventListener('change',()=>{
-  imageFileMap.clear();
-  [...folderInput.files].forEach(file=>imageFileMap.set(file.name.toLowerCase(),URL.createObjectURL(file)));
-  selectedImagesFolder=true;
-  loadImagesButton.textContent='Images Loaded ✓';
-  loadImagesButton.style.background='#4963ed';
-  loadImagesButton.style.color='#fff';
-  document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
-  if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
-});
-
-/* DARK MODE */
-const themeButton=document.getElementById('themeButton');
-themeButton.addEventListener('click',()=>{document.body.classList.toggle('dark');themeButton.textContent=document.body.classList.contains('dark')?'☀':'☾';});
-
-/* PAGE IMAGES — only actual IMG elements */
-document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
-
-/* FILTERS */
-const filterButtons=document.querySelectorAll('.filter-button');
-const portfolioCards=document.querySelectorAll('.portfolio-card');
-filterButtons.forEach(button=>button.addEventListener('click',()=>{
-  filterButtons.forEach(item=>item.classList.remove('active')); button.classList.add('active');
-  const filter=button.dataset.filter;
-  portfolioCards.forEach(card=>card.style.display=(filter==='all'||card.dataset.category===filter)?'flex':'none');
-}));
-
-/* MODAL */
-const modal=document.getElementById('portfolioModal');
-const modalImage=document.getElementById('modalImage');
-const modalClose=document.getElementById('modalClose');
-const modalTitle=document.getElementById('modalTitle');
-
-const claimsSiteWrap=document.getElementById('claimsSiteWrap');
-const claimsSiteFrame=document.getElementById('claimsSiteFrame');
-const claimsSiteStatus=document.getElementById('claimsSiteStatus');
-const claimsImagesWrap=document.getElementById('claimsImagesWrap');
-const claimsSfImage=document.getElementById('claimsSfImage');
-const claimsReceiptImage=document.getElementById('claimsReceiptImage');
-const claimsOpenCaseStudy=document.getElementById('claimsOpenCaseStudy');
-const customerSupportWrap=document.getElementById('customerSupportWrap');
-const customerServiceImage=document.getElementById('customerServiceImage');
-const pizzaOfficeImage=document.getElementById('pizzaOfficeImage');
-const emailControls=document.getElementById('emailControls');
-const emailSupportWrap=document.getElementById('emailSupportWrap');
-const previousEmail=document.getElementById('previousEmail');
-const nextEmail=document.getElementById('nextEmail');
-const emailCounter=document.getElementById('emailCounter');
-const backgroundImage=document.getElementById('backgroundImage');
-
-const emailSamples=['05-email-support-1','05-email-support-2','05-email-support-3'];
-const liveChatSamples=['07-live-chat','08-live-chat'];
-let currentEmail=0,currentLiveChat=0;
-
-function loadClaimsSupportImages(){
-  resolveImage('09-Sf-case',claimsSfImage);
-  resolveImage('receipt',claimsReceiptImage);
-}
-
-function openClaimsCaseStudy(){emailSupportWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
-}
-
-function openClaimsInteractiveStudy(){emailSupportWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
-  const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
-  let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
-}
-
-function openCustomerSupportModal(){emailSupportWrap.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
-  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
-}
-
-function openModal(baseName,title='Portfolio Preview'){emailSupportWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){
-  customerSupportWrap.style.display='none';
-  claimsImagesWrap.style.display='none';
-  claimsSiteWrap.style.display='none';
-  claimsSiteStatus.style.display='none';
-  modalImage.style.display='none';
-  emailControls.classList.remove('show');
-  emailSupportWrap.style.display='block';
-  modalTitle.textContent='Email Support';
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail-1+emailSamples.length)%emailSamples.length;showEmail();}});
-nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
-claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
 function closeModal(){
-  emailSupportWrap.style.display='none';
-  modal.classList.remove('open');
-  document.body.style.overflow='';
-  modalImage.removeAttribute('src');
-  claimsSiteFrame.removeAttribute('src');
-  claimsSiteWrap.style.display='none';
-  claimsImagesWrap.style.display='none';
-  customerSupportWrap.style.display='none';
-  emailControls.classList.remove('show');
+  hideAllPanels();
+  if(modal) modal.classList.remove("open");
+  document.body.style.overflow="";
+  if(modalImage) modalImage.removeAttribute("src");
+  if(claimsSiteFrame) claimsSiteFrame.removeAttribute("src");
 }
-modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+
+/* Core Skills buttons */
+document.querySelectorAll(".clickable-skill").forEach(skill=>{
+  skill.addEventListener("click",()=>{
+    const type=skill.dataset.skill;
+    switch(type){
+      case "customer-service": openCustomerSupportModal(); break;
+      case "benefits": openModal("04-customer-profile","Benefits Administration"); break;
+      case "crm": openModal("03-crm-dashboard","CRM Management"); break;
+      case "email": openEmailModal(); break;
+      case "chat": openLiveChatModal(); break;
+      case "claims": openClaimsCaseStudy(); break;
+    }
+  });
+});
+
+/* Portfolio cards */
+document.querySelectorAll(".portfolio-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const type=card.dataset.type;
+    const image=card.dataset.imageBase;
+    const title=card.querySelector("h3")?.textContent || "Portfolio Preview";
+
+    if(type==="email"){
+      openEmailModal();
+    }else{
+      openModal(image,title);
+    }
+  });
+});
+
+/* Portfolio filters */
+document.querySelectorAll(".filter-button").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".filter-button").forEach(item=>item.classList.remove("active"));
+    button.classList.add("active");
+    const filter=button.dataset.filter;
+    document.querySelectorAll(".portfolio-card").forEach(card=>{
+      card.style.display=(filter==="all" || card.dataset.category===filter) ? "flex" : "none";
+    });
+  });
+});
+
+/* Background image */
+if(backgroundImage){
+  backgroundImage.addEventListener("click",()=>{
+    openModal("02-about","Professional Background");
+  });
+}
+
+/* Claims next button */
+if(claimsOpenCaseStudy){
+  claimsOpenCaseStudy.addEventListener("click",openClaimsInteractiveStudy);
+}
+
+/* Modal controls */
+if(modalClose) modalClose.addEventListener("click",closeModal);
+if(modal){
+  modal.addEventListener("click",event=>{
+    if(event.target===modal) closeModal();
+  });
+}
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape") closeModal();
+});
+
+/* Load hosted images after all DOM nodes exist */
+loadPageImages();
+
 </script>
 
 </body>
