@@ -791,6 +791,69 @@ footer p+p{opacity:.65}
     font-size:11px;
 }
 
+
+.email-support-modal-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);
+    gap:16px;
+    padding:16px 18px 20px;
+    background:#f7f8fb;
+}
+.email-support-video-panel,
+.email-support-sample-panel{
+    background:#fff;
+    border:1px solid #dfe4ea;
+    border-radius:13px;
+    padding:12px;
+    box-shadow:0 8px 24px rgba(24,35,59,.06);
+}
+.email-support-video-panel h4,
+.email-support-sample-panel h4{
+    margin:0 0 6px;
+    font-size:14px;
+    color:#18233b;
+}
+.email-support-video-panel p,
+.email-support-sample-panel p{
+    margin:0 0 10px;
+    color:#687286;
+    font-size:11px;
+    line-height:1.45;
+}
+.email-support-native-player{
+    width:100%;
+    aspect-ratio:16/9;
+    display:block;
+    border:0;
+    border-radius:9px;
+    background:#11131a;
+    object-fit:contain;
+}
+.email-support-video-note{
+    margin-top:8px;
+    color:#687286;
+    font-size:11px;
+}
+.email-support-sample-image{
+    width:100%;
+    max-height:290px;
+    object-fit:contain;
+    display:block;
+    border-radius:9px;
+    background:#f1f3f6;
+}
+.email-support-sample-panel .email-sample-caption{
+    margin-top:8px;
+    font-size:11px;
+    font-weight:700;
+    color:#18233b;
+}
+@media(max-width:900px){
+    .email-support-modal-layout{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 </head>
 
@@ -995,24 +1058,36 @@ footer p+p{opacity:.65}
     <div class="modal-box">
         <div class="modal-title" id="modalTitle">Portfolio Preview</div>
         <button class="modal-close" id="modalClose" type="button">×</button>
-        <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
-
-<div id="emailVideoWrap" class="email-video-wrap" style="display:none;">
-    <div class="email-video-heading">
+        
+<div id="emailSupportModalWrap" class="email-support-modal-layout" style="display:none;">
+    <div class="email-support-video-panel">
         <h4>Email Support Portfolio Presentation</h4>
-        <p>Video presentation demonstrating professional email handling, customer communication, and follow-through.</p>
+        <p>Full 3:55 presentation demonstrating professional email handling, customer communication, and follow-through.</p>
+        <video class="email-support-native-player"
+               controls
+               playsinline
+               preload="metadata"
+               poster="Images/05-email-support-1.png"
+               aria-label="Email Support Portfolio Presentation">
+            <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="email-support-video-note">Plays directly inside the portfolio.</div>
     </div>
-    <video class="email-support-native-player"
-           controls
-           playsinline
-           preload="metadata"
-           poster="Images/05-email-support-1.png"
-           aria-label="Email Support Portfolio Presentation">
-        <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    <div class="email-video-note">Full 3:55 presentation · Plays directly in this portfolio.</div>
+
+    <div class="email-support-sample-panel">
+        <h4>Email Support Sample</h4>
+        <p>Example of professional customer communication and follow-through.</p>
+        <img class="email-support-sample-image"
+             src="Images/05-email-support-1.png"
+             alt="Email Support Sample">
+        <div class="email-sample-caption">Sample 1 of 3</div>
+    </div>
 </div>
+
+<div id="emailVideoWrap" style="display:none;"></div>
+
+<img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
 <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
     <div class="customer-support-heading">
@@ -1269,6 +1344,7 @@ const customerServiceImage=document.getElementById('customerServiceImage');
 const pizzaOfficeImage=document.getElementById('pizzaOfficeImage');
 const emailControls=document.getElementById('emailControls');
 const emailVideoWrap=document.getElementById('emailVideoWrap');
+const emailSupportModalWrap=document.getElementById('emailSupportModalWrap');
 const previousEmail=document.getElementById('previousEmail');
 const nextEmail=document.getElementById('nextEmail');
 const emailCounter=document.getElementById('emailCounter');
@@ -1283,22 +1359,33 @@ function loadClaimsSupportImages(){
   resolveImage('receipt',claimsReceiptImage);
 }
 
-function openClaimsCaseStudy(){emailVideoWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
+function openClaimsCaseStudy(){emailSupportModalWrap.style.display='none';emailVideoWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){emailVideoWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
+function openClaimsInteractiveStudy(){emailSupportModalWrap.style.display='none';emailVideoWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
 
-function openCustomerSupportModal(){emailVideoWrap.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
+function openCustomerSupportModal(){emailSupportModalWrap.style.display='none';emailVideoWrap.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
   customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){emailVideoWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){emailVideoWrap.style.display='block';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
-function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
-function openLiveChatModal(){emailVideoWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openModal(baseName,title='Portfolio Preview'){emailSupportModalWrap.style.display='none';emailVideoWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){
+  emailSupportModalWrap.style.display='grid';
+  emailVideoWrap.style.display='none';
+  customerSupportWrap.style.display='none';
+  claimsImagesWrap.style.display='none';
+  claimsSiteWrap.style.display='none';
+  claimsSiteStatus.style.display='none';
+  modalImage.style.display='none';
+  currentEmail=0;
+  modalTitle.textContent='Email Support';
+  emailControls.classList.add('show');
+  modal.classList.add('open');document.body.style.overflow='hidden';}
+function showEmail(){emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;} / ${emailSamples.length}`;}
+function openLiveChatModal(){emailSupportModalWrap.style.display='none';emailVideoWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
 portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
@@ -1318,7 +1405,7 @@ previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.tex
 nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
 claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
-function closeModal(){emailVideoWrap.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+function closeModal(){emailSupportModalWrap.style.display='none';emailVideoWrap.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
 </script>
