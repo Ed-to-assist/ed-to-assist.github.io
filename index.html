@@ -1075,430 +1075,24 @@ button.skill.clickable-skill:hover{
 
 
 <style>
-/* V36 — Email Support responsive desktop/monitor fit */
-.modal-box{
-  width:min(96vw,1680px) !important;
-  max-width:1680px !important;
-  max-height:96vh !important;
-  overflow:hidden !important;
-}
-
-/* Email Support page area */
-.email-support-wrap{
-  display:none;
-  padding:14px 18px 12px;
-  background:#f7f8fb;
-}
-
-.email-support-intro{
-  margin-bottom:8px;
-}
-.email-support-intro h3{
-  margin:0 0 3px;
-  font-size:22px;
-  color:#18233b;
-}
-.email-support-intro p{
-  margin:0;
-  color:#687286;
-  font-size:11px;
-}
-
-/* Give the page viewer almost all remaining vertical space */
-.email-page-viewer{
-  width:100%;
-  height:calc(96vh - 138px);
-  min-height:500px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.email-page{
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-
-/* Titles stay small so the media gets most of the screen */
-.email-page-title{
-  align-self:flex-start;
-  font-size:13px;
-  font-weight:800;
-  color:#18233b;
-  margin-bottom:2px;
-}
-.email-page-subtitle{
-  align-self:flex-start;
-  color:#687286;
-  font-size:10px;
-  margin-bottom:5px;
-}
-
-/* VIDEO: use maximum laptop/monitor height without cropping */
-.email-video-frame{
-  width:100%;
-  height:calc(100% - 34px);
-  min-height:400px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#11131a;
-  border:1px solid #dfe4ea;
-  border-radius:10px;
-  overflow:hidden;
-  padding:0;
-}
-.email-support-player{
-  display:block;
-  width:auto !important;
-  height:auto !important;
-  max-width:100% !important;
-  max-height:100% !important;
-  aspect-ratio:1 / 1;
-  object-fit:contain;
-  background:#11131a;
-  border-radius:0;
-}
-
-/* EMAIL IMAGE: enlarge to occupy the page while keeping the whole image */
-.email-image-frame{
-  width:100%;
-  height:calc(100% - 34px);
-  min-height:400px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  border:1px solid #dfe4ea;
-  border-radius:10px;
-  overflow:hidden;
-  padding:4px;
-}
-.email-image-frame img{
-  display:block;
-  width:auto !important;
-  height:auto !important;
-  max-width:100% !important;
-  max-height:100% !important;
-  object-fit:contain;
-  border-radius:6px;
-}
-
-/* Navigation stays visible and compact */
-.email-page-nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding-top:7px;
-}
-.email-page-nav span{
-  min-width:48px;
-  text-align:center;
-  color:#18233b;
-  font-size:11px;
-  font-weight:800;
-}
-.email-page-button{
-  border:1px solid #ccd5e1;
-  border-radius:8px;
-  padding:7px 11px;
-  background:#fff;
-  color:#18233b;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:800;
-}
-.email-page-button:hover{
-  border-color:#4963ed;
-  color:#4963ed;
-}
-.email-page-button:disabled{
-  cursor:default;
-  opacity:.4;
-}
-
-/* Laptop screens */
-@media (max-height:900px) and (min-width:900px){
-  .modal-box{
-    max-height:94vh !important;
-  }
-  .email-page-viewer{
-    height:calc(94vh - 136px);
-    min-height:460px;
-  }
-}
-
-/* Larger desktop monitors */
-@media (min-width:1400px) and (min-height:900px){
-  .email-page-viewer{
-    height:calc(96vh - 140px);
-  }
-}
-
-/* Smaller laptop widths */
-@media (max-width:1000px){
-  .modal-box{
-    width:97vw !important;
-  }
-  .email-page-viewer{
-    height:calc(94vh - 145px);
-    min-height:420px;
-  }
-}
-
-/* Phones / narrow screens */
-@media(max-width:700px){
-  .modal-box{
-    width:98vw !important;
-    max-height:96vh !important;
-  }
-  .email-support-wrap{
-    padding:11px;
-  }
-  .email-page-viewer{
-    height:calc(96vh - 150px);
-    min-height:300px;
-  }
-  .email-video-frame,
-  .email-image-frame{
-    min-height:280px;
-  }
-}
-
-<style>
-/* V37 — clean Email Support pages and complete Live Chat section */
-.email-support-wrap{
-  padding:10px 16px 10px !important;
-}
-.email-support-intro{
-  margin-bottom:6px !important;
-}
-.email-support-intro h3{
-  margin-bottom:0 !important;
-  font-size:22px !important;
-}
-.email-page-viewer{
-  height:calc(96vh - 100px) !important;
-  min-height:520px !important;
-}
-.email-page{
-  justify-content:center !important;
-}
-.email-video-frame,
-.email-image-frame{
-  height:100% !important;
-  min-height:0 !important;
-  max-height:none !important;
-  padding:2px !important;
-  border-radius:10px !important;
-}
-.email-support-player{
-  max-width:100% !important;
-  max-height:100% !important;
-  width:auto !important;
-  height:auto !important;
-  object-fit:contain !important;
-}
-.email-image-frame img{
-  max-width:100% !important;
-  max-height:100% !important;
-  width:auto !important;
-  height:auto !important;
-  object-fit:contain !important;
-}
-.email-page-nav{
-  padding-top:6px !important;
-}
-
-/* Live Chat: show both samples one at a time with clear navigation */
-.live-chat-support-wrap{
-  padding:14px 18px;
-  background:#f7f8fb;
-}
-.live-chat-page-viewer{
-  width:100%;
-  height:calc(96vh - 150px);
-  min-height:460px;
-}
-.live-chat-page{
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-.live-chat-page-frame{
-  flex:1;
-  min-height:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  border:1px solid #dfe4ea;
-  border-radius:10px;
-  overflow:hidden;
-  padding:4px;
-}
-.live-chat-page-frame img{
-  display:block;
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  border-radius:7px;
-}
-.live-chat-page-nav{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  padding-top:8px;
-}
-.live-chat-page-nav button{
-  border:1px solid #ccd5e1;
-  border-radius:8px;
-  padding:8px 12px;
-  background:#fff;
-  color:#18233b;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:800;
-}
-.live-chat-page-nav span{
-  min-width:50px;
-  text-align:center;
-  font-size:11px;
-  font-weight:800;
-  color:#18233b;
-}
-
-<style>
-/* V39 — Live Chat: two large readable samples */
-.live-chat-support-wrap{
-  padding:12px 18px 10px;
-  background:#f7f8fb;
-}
-.live-chat-title{
-  margin:0 0 8px;
-  font-size:22px;
-  color:#18233b;
-}
-.live-chat-viewer{
-  width:100%;
-  height:calc(96vh - 145px);
-  min-height:500px;
-}
-.live-chat-page{
-  width:100%;
-  height:100%;
-}
-.live-chat-page-frame{
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  background:#fff;
-  border:1px solid #dfe4ea;
-  border-radius:10px;
-  padding:2px;
-}
-.live-chat-page-frame img{
-  display:block;
-  width:auto !important;
-  height:auto !important;
-  max-width:100% !important;
-  max-height:100% !important;
-  object-fit:contain !important;
-  border-radius:7px;
-}
-.live-chat-page-nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding-top:8px;
-}
-.live-chat-page-nav button{
-  border:1px solid #ccd5e1;
-  border-radius:8px;
-  padding:8px 12px;
-  background:#fff;
-  color:#18233b;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:800;
-}
-.live-chat-page-nav span{
-  min-width:50px;
-  text-align:center;
-  color:#18233b;
-  font-size:11px;
-  font-weight:800;
-}
-@media(max-width:700px){
-  .live-chat-viewer{
-    height:calc(96vh - 150px);
-    min-height:300px;
-  }
-}
-
-<style>
-/* V40 — web-ready assets + always-visible page navigation */
-.modal-box{
-  max-height:96vh !important;
-  overflow:auto !important;
-  scrollbar-gutter:stable;
-}
-.email-support-wrap,
-.live-chat-support-wrap{
-  position:relative;
-}
-.email-page-viewer,
-.live-chat-viewer{
-  height:calc(96vh - 205px) !important;
-  min-height:430px !important;
-  max-height:760px !important;
-}
-.email-page-nav,
-.live-chat-page-nav{
-  position:sticky !important;
-  bottom:0 !important;
-  z-index:20 !important;
-  background:rgba(247,248,251,.97) !important;
-  padding:9px 0 !important;
-  border-top:1px solid #dfe4ea !important;
-  backdrop-filter:blur(4px);
-}
-.email-image-frame img,
-.live-chat-page-frame img{
-  max-width:100% !important;
-  max-height:100% !important;
-  width:auto !important;
-  height:auto !important;
-  object-fit:contain !important;
-}
-.portfolio-image-box img,
-.customer-support-image,
-.claims-support-image,
-.modal-image{
-  max-width:100%;
-  height:auto;
-  object-fit:contain;
-}
-@media (max-height:800px) and (min-width:800px){
-  .email-page-viewer,
-  .live-chat-viewer{
-    height:calc(94vh - 190px) !important;
-    min-height:360px !important;
-  }
-}
+/* V41 — stable PNG assets, large readable media, reliable controls */
+.modal-box{width:min(96vw,1680px)!important;max-width:1680px!important;max-height:96vh!important;overflow:hidden!important}
+.email-support-wrap,.live-chat-support-wrap{display:none;padding:12px 18px 10px;background:#f7f8fb}
+.email-support-intro{margin-bottom:6px}.email-support-intro h3,.live-chat-title{margin:0 0 5px;color:#18233b;font-size:22px}
+.email-page-viewer,.live-chat-viewer{width:100%;height:calc(96vh - 150px);min-height:430px}
+.email-page,.live-chat-page{width:100%;height:100%;display:flex;flex-direction:column}
+.email-page-title{font-size:13px;font-weight:800;color:#18233b;margin:0 0 5px}
+.email-video-frame,.email-image-frame,.live-chat-page-frame{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dfe4ea;border-radius:10px;overflow:hidden;padding:2px}
+.email-support-player{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;aspect-ratio:1/1;object-fit:contain!important;background:#11131a}
+.email-image-frame img,.live-chat-page-frame img{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;border-radius:7px}
+.email-page-nav,.live-chat-page-nav{display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 0;border-top:1px solid #dfe4ea;background:#f7f8fb}
+.email-page-nav span,.live-chat-page-nav span{min-width:48px;text-align:center;color:#18233b;font-size:11px;font-weight:800}
+.email-page-button,.live-chat-page-nav button{border:1px solid #ccd5e1;border-radius:8px;padding:8px 12px;background:#fff;color:#18233b;cursor:pointer;font-size:11px;font-weight:800}
+.email-page-button:hover,.live-chat-page-nav button:hover{border-color:#4963ed;color:#4963ed}
+button.skill.clickable-skill{width:100%;text-align:left;font-family:inherit;color:inherit;cursor:pointer}
+button.skill.clickable-skill:hover{transform:translateY(-3px);border-color:#4963ed;box-shadow:0 8px 20px rgba(73,99,237,.12);color:#4963ed}
+@media(max-height:800px) and (min-width:800px){.email-page-viewer,.live-chat-viewer{height:calc(94vh - 145px);min-height:350px}}
+@media(max-width:700px){.modal-box{width:98vw!important;max-height:96vh!important}.email-page-viewer,.live-chat-viewer{height:calc(96vh - 150px);min-height:300px}}
 </style>
 </head>
 
@@ -1694,7 +1288,6 @@ button.skill.clickable-skill:hover{
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
 
-
 <div id="emailSupportWrap" class="email-support-wrap" style="display:none;">
   <div class="email-support-intro">
     <div class="section-label">EMAIL SUPPORT</div>
@@ -1705,29 +1298,22 @@ button.skill.clickable-skill:hover{
       <div class="email-page-title">Page 1 — Presentation Video</div>
       <div class="email-video-frame">
         <video class="email-support-player" controls playsinline preload="metadata"
-               poster="Images/05-email-support-1.webp"
-               aria-label="Email Support Portfolio Presentation">
+               poster="Images/05-email-support-1.png">
           <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
         </video>
       </div>
     </section>
     <section class="email-page" id="emailPage1" style="display:none;">
       <div class="email-page-title">Page 2 — Email Sample 1</div>
-      <div class="email-image-frame">
-        <img src="Images/05-email-support-1.webp" alt="Email Support Sample 1">
-      </div>
+      <div class="email-image-frame"><img src="Images/05-email-support-1.png" alt="Email Support Sample 1"></div>
     </section>
     <section class="email-page" id="emailPage2" style="display:none;">
       <div class="email-page-title">Page 3 — Email Sample 2</div>
-      <div class="email-image-frame">
-        <img src="Images/05-email-support-2.webp" alt="Email Support Sample 2">
-      </div>
+      <div class="email-image-frame"><img src="Images/05-email-support-2.png" alt="Email Support Sample 2"></div>
     </section>
     <section class="email-page" id="emailPage3" style="display:none;">
       <div class="email-page-title">Page 4 — Email Sample 3</div>
-      <div class="email-image-frame">
-        <img src="Images/05-email-support-3.webp" alt="Email Support Sample 3">
-      </div>
+      <div class="email-image-frame"><img src="Images/05-email-support-3.png" alt="Email Support Sample 3"></div>
     </section>
   </div>
   <div class="email-page-nav">
@@ -1736,24 +1322,82 @@ button.skill.clickable-skill:hover{
     <button type="button" class="email-page-button" onclick="showEmailPage(1)">Next →</button>
   </div>
 </div>
+
+<div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
+    <div class="customer-support-heading">
+        <span class="customer-support-kicker">CUSTOMER EXPERIENCE</span>
+        <h3>Customer &amp; Phone Support</h3>
+        <p>Clear communication, active listening, accurate case handling, and dependable follow-through across customer interactions.</p>
+    </div>
+
+    <div class="customer-support-media">
+        <!-- LEFT: video presentation -->
+        <div class="customer-support-video-card">
+            <h4>Customer Support Portfolio Presentation</h4>
+            <p>Full 5:48 presentation demonstrating customer support, phone support, CRM workflows, and communication examples.</p>
+
+            <div class="customer-support-native-video">
+    <video class="customer-support-native-player"
+       controls
+       playsinline
+       preload="metadata"
+       poster="Images/03-crm-dashboard.png"
+       aria-label="Customer Support Portfolio Presentation">
+    <source src="Videos/customer-phone-support.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+    <div class="customer-support-video-note">
+        Full 5:48 presentation · Plays directly in this portfolio.
+    </div>
+</div>
+        </div>
+
+        <!-- RIGHT: stacked support images -->
+        <div class="customer-support-image-column">
+            <div class="customer-support-image-card">
+                <h4>Customer support workflow</h4>
+                <img id="customerServiceImage"
+                     class="customer-support-image"
+                     alt="Customer support workflow">
+                <div class="customer-support-caption">Customer support workflow</div>
+            </div>
+
+            <div class="customer-support-image-card">
+                <h4>Professional phone support environment</h4>
+                <img id="pizzaOfficeImage"
+                     class="customer-support-image"
+                     alt="Professional phone support environment">
+                <div class="customer-support-caption">Professional phone support environment</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="customer-support-footer">
+        <strong>I can help keep customers informed and operations moving.</strong>
+        <a class="canva-attribution-link"
+           href="https://canva.link/phyp86qtqgt0phj"
+           target="_blank"
+           rel="noopener noreferrer">Created by Edward in Canva →</a>
+        <a class="lets-connect-link" href="mailto:edapalla@zohomail.com">Let's connect →</a>
+    </div>
+</div>
+
+
 <div id="liveChatSupportWrap" class="live-chat-support-wrap" style="display:none;">
   <div class="section-label">LIVE CHAT SUPPORT</div>
   <h3 class="live-chat-title">Live Chat Samples</h3>
-
   <div class="live-chat-viewer">
     <section class="live-chat-page" id="liveChatPage1">
       <div class="live-chat-page-frame">
-        <img src="Images/07-live-chat.webp" alt="Live Chat Sample 1">
+        <img src="Images/07-live-chat.png" alt="Live Chat Sample 1">
       </div>
     </section>
-
     <section class="live-chat-page" id="liveChatPage2" style="display:none;">
       <div class="live-chat-page-frame">
-        <img src="Images/08-live-chat.webp" alt="Live Chat Sample 2">
+        <img src="Images/08-live-chat.png" alt="Live Chat Sample 2">
       </div>
     </section>
   </div>
-
   <div class="live-chat-page-nav">
     <button type="button" onclick="showLiveChatPage(-1)">← Previous</button>
     <span id="liveChatPageCounter">1 / 2</span>
@@ -1810,6 +1454,7 @@ button.skill.clickable-skill:hover{
 
 <script>
 
+
 /* =========================================================
    V32 — STABLE GITHUB PAGES SCRIPT
    Direct hosted images, no folder picker, all buttons wired.
@@ -1817,15 +1462,15 @@ button.skill.clickable-skill:hover{
 const IMAGE_PATHS = {
   "01-cover":"Images/01-cover.png",
   "02-about":"Images/02-about.png",
-  "03-crm-dashboard":"Images/03-crm-dashboard.webp",
-  "04-customer-profile":"Images/04-customer-profile.webp",
-  "05-email-support-1":"Images/05-email-support-1.webp",
-  "05-email-support-2":"Images/05-email-support-2.webp",
-  "05-email-support-3":"Images/05-email-support-3.webp",
-  "07-live-chat":"Images/07-live-chat.webp",
-  "08-live-chat":"Images/08-live-chat.webp",
+  "03-crm-dashboard":"Images/03-crm-dashboard.png",
+  "04-customer-profile":"Images/04-customer-profile.png",
+  "05-email-support-1":"Images/05-email-support-1.png",
+  "05-email-support-2":"Images/05-email-support-2.png",
+  "05-email-support-3":"Images/05-email-support-3.png",
+  "07-live-chat":"Images/07-live-chat.png",
+  "08-live-chat":"Images/08-live-chat.png",
   "08-customer-service":"Images/08-customer-service.png",
-  "09-Sf-case":"Images/09-Sf-case.webp",
+  "09-Sf-case":"Images/09-Sf-case.png",
   "receipt":"Images/Receipts_Aug%209,%202026,%2005_05_22%20PM.png",
   "pizzaoffice":"Images/pizzaoffice.png"
 };
@@ -1883,10 +1528,10 @@ const emailControls=document.getElementById("emailControls");
 const backgroundImage=document.getElementById("backgroundImage");
 
 function hideAllPanels(){
+  const liveChatWrap=document.getElementById("liveChatSupportWrap"); if(liveChatWrap) liveChatWrap.style.display="none";
   if(emailSupportWrap) emailSupportWrap.style.display="none";
   if(customerSupportWrap) customerSupportWrap.style.display="none";
   if(claimsImagesWrap) claimsImagesWrap.style.display="none";
-  const liveChatWrap=document.getElementById("liveChatSupportWrap"); if(liveChatWrap) liveChatWrap.style.display="none";
   if(claimsSiteWrap) claimsSiteWrap.style.display="none";
   if(claimsSiteStatus) claimsSiteStatus.style.display="none";
   if(modalImage) modalImage.style.display="none";
@@ -1920,83 +1565,36 @@ function openCustomerSupportModal(){
   document.body.style.overflow="hidden";
 }
 
+
 function showEmailPage(direction){
-  const pages=[
-    document.getElementById("emailPageVideo"),
-    document.getElementById("emailPage1"),
-    document.getElementById("emailPage2"),
-    document.getElementById("emailPage3")
-  ].filter(Boolean);
-
-  if(!pages.length) return;
-  if(typeof window.emailPageIndex!=="number") window.emailPageIndex=0;
-
-  window.emailPageIndex += direction;
-  if(window.emailPageIndex<0) window.emailPageIndex=0;
-  if(window.emailPageIndex>pages.length-1) window.emailPageIndex=pages.length-1;
-
-  pages.forEach((page,i)=>{
-    page.style.display=(i===window.emailPageIndex) ? "block" : "none";
-  });
-
-  const counter=document.getElementById("emailPageCounter");
-  if(counter) counter.textContent=`${window.emailPageIndex+1} / ${pages.length}`;
-
-  const buttons=document.querySelectorAll(".email-page-button");
-  if(buttons.length>=2){
-    buttons[0].disabled=(window.emailPageIndex===0);
-    buttons[1].disabled=(window.emailPageIndex===pages.length-1);
-    buttons[0].style.opacity=buttons[0].disabled ? ".45" : "1";
-    buttons[1].style.opacity=buttons[1].disabled ? ".45" : "1";
-  }
+  const pages=[document.getElementById("emailPageVideo"),document.getElementById("emailPage1"),document.getElementById("emailPage2"),document.getElementById("emailPage3")].filter(Boolean);
+  if(!pages.length)return;
+  if(typeof window.emailPageIndex!=="number")window.emailPageIndex=0;
+  window.emailPageIndex=Math.max(0,Math.min(pages.length-1,window.emailPageIndex+direction));
+  pages.forEach((p,i)=>p.style.display=i===window.emailPageIndex?"flex":"none");
+  const c=document.getElementById("emailPageCounter");if(c)c.textContent=`${window.emailPageIndex+1} / ${pages.length}`;
 }
-
-function openEmailModal(){
-  hideAllPanels();
-  if(!modal || !emailSupportWrap) return;
-  if(modalTitle) modalTitle.textContent="Email Support";
-  emailSupportWrap.style.display="block";
-  window.emailPageIndex=0;
-  showEmailPage(0);
-  modal.classList.add("open");
-  document.body.style.overflow="hidden";
-}
-
 function showLiveChatPage(direction){
-  const pages=[
-    document.getElementById("liveChatPage1"),
-    document.getElementById("liveChatPage2")
-  ].filter(Boolean);
-
-  if(!pages.length) return;
-  if(typeof window.liveChatPageIndex!=="number") window.liveChatPageIndex=0;
-
-  window.liveChatPageIndex += direction;
-  if(window.liveChatPageIndex < 0) window.liveChatPageIndex=0;
-  if(window.liveChatPageIndex > pages.length-1) window.liveChatPageIndex=pages.length-1;
-
-  pages.forEach((page,i)=>{
-    page.style.display=(i===window.liveChatPageIndex) ? "block" : "none";
-  });
-
-  const counter=document.getElementById("liveChatPageCounter");
-  if(counter) counter.textContent=`${window.liveChatPageIndex+1} / ${pages.length}`;
+  const pages=[document.getElementById("liveChatPage1"),document.getElementById("liveChatPage2")].filter(Boolean);
+  if(!pages.length)return;
+  if(typeof window.liveChatPageIndex!=="number")window.liveChatPageIndex=0;
+  window.liveChatPageIndex=Math.max(0,Math.min(pages.length-1,window.liveChatPageIndex+direction));
+  pages.forEach((p,i)=>p.style.display=i===window.liveChatPageIndex?"flex":"none");
+  const c=document.getElementById("liveChatPageCounter");if(c)c.textContent=`${window.liveChatPageIndex+1} / ${pages.length}`;
+}
+function openEmailModal(){
+  hideAllPanels(); if(!modal||!emailSupportWrap)return;
+  modalTitle.textContent="Email Support"; emailSupportWrap.style.display="block";
+  window.emailPageIndex=0; showEmailPage(0);
+  modal.classList.add("open"); document.body.style.overflow="hidden";
 }
 
 function openLiveChatModal(){
-  hideAllPanels();
-  if(!modal) return;
-  if(modalTitle) modalTitle.textContent="Live Chat Support Samples";
-
+  hideAllPanels(); if(!modal)return;
+  modalTitle.textContent="Live Chat Support Samples";
   const wrap=document.getElementById("liveChatSupportWrap");
-  if(wrap){
-    wrap.style.display="block";
-    window.liveChatPageIndex=0;
-    showLiveChatPage(0);
-  }
-
-  modal.classList.add("open");
-  document.body.style.overflow="hidden";
+  if(wrap){wrap.style.display="block";window.liveChatPageIndex=0;showLiveChatPage(0);}
+  modal.classList.add("open"); document.body.style.overflow="hidden";
 }
 
 function openClaimsCaseStudy(){
@@ -2124,12 +1722,19 @@ window.openEmailModal = openEmailModal;
 window.openLiveChatModal = openLiveChatModal;
 window.openClaimsCaseStudy = openClaimsCaseStudy;
 window.openClaimsInteractiveStudy = openClaimsInteractiveStudy;
-window.showLiveChatPage = showLiveChatPage;
 window.closeModal = closeModal;
 
+
+window.openCustomerSupportModal=openCustomerSupportModal;
+window.openModal=openModal;
+window.openEmailModal=openEmailModal;
+window.openLiveChatModal=openLiveChatModal;
+window.openClaimsCaseStudy=openClaimsCaseStudy;
+window.openClaimsInteractiveStudy=openClaimsInteractiveStudy;
+window.closeModal=closeModal;
 window.showEmailPage=showEmailPage;
 window.showLiveChatPage=showLiveChatPage;
-window.showEmailPage=showEmailPage;
+
 </script>
 
 </body>
