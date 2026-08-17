@@ -1056,6 +1056,23 @@ footer p+p{opacity:.65}
         padding-bottom:3px;
     }
 }
+
+<style>
+button.skill.clickable-skill{
+    width:100%;
+    text-align:left;
+    font-family:inherit;
+    color:inherit;
+    cursor:pointer;
+}
+button.skill.clickable-skill:hover{
+    transform:translateY(-3px);
+    border-color:#4963ed;
+    box-shadow:0 8px 20px rgba(73,99,237,.12);
+    color:#4963ed;
+}
+</style>
+
 </style>
 </head>
 
@@ -1150,31 +1167,19 @@ footer p+p{opacity:.65}
 
     <div class="skills-grid">
 
-        <div class="skill clickable-skill" data-skill="customer-service">
-            Customer &amp; Phone Support <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="customer-service" onclick="openCustomerSupportModal()">Customer &amp; Phone Support <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="benefits">
-            Benefits Administration <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="benefits" onclick="openModal('04-customer-profile','Benefits Administration')">Benefits Administration <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="crm">
-            CRM Management <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="crm" onclick="openModal('03-crm-dashboard','CRM Management')">CRM Management <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="email">
-            Email Support <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="email" onclick="openEmailModal()">Email Support <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="chat">
-            Live Chat Support <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="chat" onclick="openLiveChatModal()">Live Chat Support <span class="skill-arrow">→</span></button>
 
         <div class="skill">Administrative Support</div>
 <div class="skill">Data Entry</div>
-        <div class="skill clickable-skill" data-skill="claims">
-            Claims &amp; Documentation Review <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="claims" onclick="openClaimsCaseStudy()">Claims &amp; Documentation Review <span class="skill-arrow">→</span></button>
         <div class="skill">Microsoft Office</div>
         <div class="skill">Google Workspace</div>
 </div>
@@ -1674,6 +1679,15 @@ document.addEventListener("keydown",event=>{
 
 /* Load hosted images after all DOM nodes exist */
 loadPageImages();
+
+
+window.openCustomerSupportModal = openCustomerSupportModal;
+window.openModal = openModal;
+window.openEmailModal = openEmailModal;
+window.openLiveChatModal = openLiveChatModal;
+window.openClaimsCaseStudy = openClaimsCaseStudy;
+window.openClaimsInteractiveStudy = openClaimsInteractiveStudy;
+window.closeModal = closeModal;
 
 </script>
 
