@@ -1376,6 +1376,78 @@ button.skill.clickable-skill:hover{
   font-weight:800;
   color:#18233b;
 }
+
+<style>
+/* V39 — Live Chat: two large readable samples */
+.live-chat-support-wrap{
+  padding:12px 18px 10px;
+  background:#f7f8fb;
+}
+.live-chat-title{
+  margin:0 0 8px;
+  font-size:22px;
+  color:#18233b;
+}
+.live-chat-viewer{
+  width:100%;
+  height:calc(96vh - 145px);
+  min-height:500px;
+}
+.live-chat-page{
+  width:100%;
+  height:100%;
+}
+.live-chat-page-frame{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  padding:2px;
+}
+.live-chat-page-frame img{
+  display:block;
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  border-radius:7px;
+}
+.live-chat-page-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding-top:8px;
+}
+.live-chat-page-nav button{
+  border:1px solid #ccd5e1;
+  border-radius:8px;
+  padding:8px 12px;
+  background:#fff;
+  color:#18233b;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:800;
+}
+.live-chat-page-nav span{
+  min-width:50px;
+  text-align:center;
+  color:#18233b;
+  font-size:11px;
+  font-weight:800;
+}
+@media(max-width:700px){
+  .live-chat-viewer{
+    height:calc(96vh - 150px);
+    min-height:300px;
+  }
+}
 </style>
 </head>
 
@@ -1687,11 +1759,12 @@ button.skill.clickable-skill:hover{
 </div>
 
 
+
 <div id="liveChatSupportWrap" class="live-chat-support-wrap" style="display:none;">
   <div class="section-label">LIVE CHAT SUPPORT</div>
-  <h3 style="margin:0 0 5px;color:#18233b;font-size:22px;">Live Chat Samples</h3>
+  <h3 class="live-chat-title">Live Chat Samples</h3>
 
-  <div class="live-chat-page-viewer">
+  <div class="live-chat-viewer">
     <section class="live-chat-page" id="liveChatPage1">
       <div class="live-chat-page-frame">
         <img src="Images/07-live-chat.png" alt="Live Chat Sample 1">
@@ -1918,15 +1991,16 @@ function showLiveChatPage(direction){
     document.getElementById("liveChatPage1"),
     document.getElementById("liveChatPage2")
   ].filter(Boolean);
-  if(!pages.length) return;
 
+  if(!pages.length) return;
   if(typeof window.liveChatPageIndex!=="number") window.liveChatPageIndex=0;
+
   window.liveChatPageIndex += direction;
-  if(window.liveChatPageIndex<0) window.liveChatPageIndex=0;
-  if(window.liveChatPageIndex>pages.length-1) window.liveChatPageIndex=pages.length-1;
+  if(window.liveChatPageIndex < 0) window.liveChatPageIndex=0;
+  if(window.liveChatPageIndex > pages.length-1) window.liveChatPageIndex=pages.length-1;
 
   pages.forEach((page,i)=>{
-    page.style.display=(i===window.liveChatPageIndex) ? "flex" : "none";
+    page.style.display=(i===window.liveChatPageIndex) ? "block" : "none";
   });
 
   const counter=document.getElementById("liveChatPageCounter");
@@ -1937,12 +2011,14 @@ function openLiveChatModal(){
   hideAllPanels();
   if(!modal) return;
   if(modalTitle) modalTitle.textContent="Live Chat Support Samples";
+
   const wrap=document.getElementById("liveChatSupportWrap");
   if(wrap){
     wrap.style.display="block";
     window.liveChatPageIndex=0;
     showLiveChatPage(0);
   }
+
   modal.classList.add("open");
   document.body.style.overflow="hidden";
 }
@@ -2076,6 +2152,7 @@ window.showLiveChatPage = showLiveChatPage;
 window.closeModal = closeModal;
 
 window.showEmailPage=showEmailPage;
+window.showLiveChatPage=showLiveChatPage;
 </script>
 
 </body>
