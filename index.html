@@ -914,6 +914,135 @@ footer p+p{opacity:.65}
 }
 </style>
 
+
+<style>
+/* V30 — Email Support horizontal sequence */
+.modal-box{
+    max-height:94vh !important;
+    overflow:auto !important;
+}
+.email-support-wrap{
+    display:none;
+    padding:20px 22px 26px;
+    background:#f7f8fb;
+}
+.email-support-intro{
+    margin-bottom:10px;
+}
+.email-support-intro h3{
+    margin:0 0 4px;
+    font-size:23px;
+    color:#18233b;
+}
+.email-support-intro p{
+    margin:0;
+    color:#687286;
+    font-size:12px;
+}
+.email-support-sequence-label{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin:8px 0 14px;
+    color:#4963ed;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.5px;
+    white-space:nowrap;
+}
+.email-support-sequence-label b{
+    font-size:16px;
+    font-weight:800;
+}
+.email-support-horizontal{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    align-items:stretch;
+}
+.email-support-panel{
+    min-width:0;
+    background:#fff;
+    border:1px solid #dfe4ea;
+    border-radius:12px;
+    padding:10px;
+    box-shadow:0 8px 24px rgba(24,35,59,.05);
+    display:flex;
+    flex-direction:column;
+}
+.email-support-panel-title{
+    font-size:13px;
+    font-weight:800;
+    color:#18233b;
+    margin-bottom:4px;
+}
+.email-support-panel-subtitle{
+    font-size:10px;
+    color:#687286;
+    margin-bottom:8px;
+    line-height:1.4;
+}
+.email-support-player{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+    border:0;
+    border-radius:8px;
+    background:#11131a;
+    object-fit:contain;
+}
+.email-support-sample-image{
+    width:100%;
+    height:clamp(240px,38vh,420px);
+    display:block;
+    border-radius:8px;
+    background:#f1f3f6;
+    object-fit:contain;
+}
+.email-support-panel-caption{
+    margin-top:7px;
+    color:#687286;
+    font-size:10px;
+    line-height:1.4;
+}
+.email-support-scroll-hint{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin-top:12px;
+    color:#687286;
+    font-size:10px;
+    font-weight:700;
+}
+.email-support-hint-arrow{
+    color:#4963ed;
+    font-size:18px;
+    line-height:1;
+}
+@media(max-width:1050px){
+    .email-support-horizontal{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+@media(max-width:700px){
+    .email-support-horizontal{
+        grid-template-columns:1fr;
+    }
+    .email-support-sequence-label{
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding-bottom:4px;
+    }
+    .email-support-sample-image{
+        height:auto;
+        max-height:70vh;
+    }
+}
+</style>
+
 </style>
 </head>
 
@@ -1120,50 +1249,60 @@ footer p+p{opacity:.65}
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
-<div id="emailSupportWrap" class="email-support-wrap">
+<div id="emailSupportWrap" class="email-support-wrap" style="display:none;">
     <div class="email-support-intro">
         <div class="section-label">EMAIL SUPPORT</div>
-        <h3>Email Support Presentation</h3>
-        <p>Video first, followed by three email support samples demonstrating professional customer communication and follow-through.</p>
+        <h3>Email Support</h3>
+        <p>Review the presentation and email examples from left to right.</p>
     </div>
 
-    <div class="email-support-video-card">
-        <h4>Presentation Video</h4>
-        <p>Full 3:55 Email Support presentation.</p>
-        <video class="email-support-player"
-               controls
-               playsinline
-               preload="metadata"
-               poster="Images/05-email-support-1.png"
-               aria-label="Email Support Portfolio Presentation">
-            <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-        <div class="email-support-note">Plays directly inside the portfolio.</div>
-    </div>
-<div class="email-support-next" aria-label="Email Support samples">
-  <div>EMAIL SUPPORT SAMPLES</div>
-  <div class="arrow">↓</div>
-  <div>Scroll down to view Samples 1–3</div>
-</div>
-
-
-    <div class="email-support-sample-card">
-        <h4>Sample 1</h4>
-        <img src="Images/05-email-support-1.png" alt="Email Support Sample 1">
-        <div class="email-support-sample-caption">Professional customer response and follow-up example.</div>
+    <div class="email-support-sequence-label" aria-hidden="true">
+        <span>VIDEO</span><b>→</b><span>SAMPLE 1</span><b>→</b><span>SAMPLE 2</span><b>→</b><span>SAMPLE 3</span>
     </div>
 
-    <div class="email-support-sample-card">
-        <h4>Sample 2</h4>
-        <img src="Images/05-email-support-2.png" alt="Email Support Sample 2">
-        <div class="email-support-sample-caption">Coverage inquiry and customer communication example.</div>
+    <div class="email-support-horizontal">
+        <article class="email-support-panel email-video-panel">
+            <div class="email-support-panel-title">Presentation Video</div>
+            <div class="email-support-panel-subtitle">Full 3:55 Email Support presentation</div>
+            <video class="email-support-player"
+                   controls
+                   playsinline
+                   preload="metadata"
+                   poster="Images/05-email-support-1.png"
+                   aria-label="Email Support Portfolio Presentation">
+                <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </article>
+
+        <article class="email-support-panel">
+            <div class="email-support-panel-title">Sample 1</div>
+            <img src="Images/05-email-support-1.png"
+                 alt="Email Support Sample 1"
+                 class="email-support-sample-image">
+            <div class="email-support-panel-caption">Customer response and follow-up example.</div>
+        </article>
+
+        <article class="email-support-panel">
+            <div class="email-support-panel-title">Sample 2</div>
+            <img src="Images/05-email-support-2.png"
+                 alt="Email Support Sample 2"
+                 class="email-support-sample-image">
+            <div class="email-support-panel-caption">Coverage inquiry and customer communication example.</div>
+        </article>
+
+        <article class="email-support-panel">
+            <div class="email-support-panel-title">Sample 3</div>
+            <img src="Images/05-email-support-3.png"
+                 alt="Email Support Sample 3"
+                 class="email-support-sample-image">
+            <div class="email-support-panel-caption">Issue resolution and professional follow-through example.</div>
+        </article>
     </div>
 
-    <div class="email-support-sample-card">
-        <h4>Sample 3</h4>
-        <img src="Images/05-email-support-3.png" alt="Email Support Sample 3">
-        <div class="email-support-sample-caption">Professional issue-resolution and follow-through example.</div>
+    <div class="email-support-scroll-hint">
+        <span class="email-support-hint-arrow">→</span>
+        <span>Move left / right to view the full sequence</span>
     </div>
 </div>
 
