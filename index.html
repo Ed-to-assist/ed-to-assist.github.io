@@ -1075,18 +1075,21 @@ button.skill.clickable-skill:hover{
 
 
 <style>
-/* V35 — Email Support: fit complete video/images on screen */
+/* V36 — Email Support responsive desktop/monitor fit */
 .modal-box{
-  width:min(96vw,1600px) !important;
-  max-width:1600px !important;
-  max-height:94vh !important;
+  width:min(96vw,1680px) !important;
+  max-width:1680px !important;
+  max-height:96vh !important;
   overflow:hidden !important;
 }
+
+/* Email Support page area */
 .email-support-wrap{
   display:none;
-  padding:16px 20px 14px;
+  padding:14px 18px 12px;
   background:#f7f8fb;
 }
+
 .email-support-intro{
   margin-bottom:8px;
 }
@@ -1099,16 +1102,18 @@ button.skill.clickable-skill:hover{
   margin:0;
   color:#687286;
   font-size:11px;
-  line-height:1.35;
 }
+
+/* Give the page viewer almost all remaining vertical space */
 .email-page-viewer{
   width:100%;
-  height:calc(94vh - 155px);
-  min-height:420px;
+  height:calc(96vh - 138px);
+  min-height:500px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
+
 .email-page{
   width:100%;
   height:100%;
@@ -1117,9 +1122,11 @@ button.skill.clickable-skill:hover{
   align-items:center;
   justify-content:center;
 }
+
+/* Titles stay small so the media gets most of the screen */
 .email-page-title{
   align-self:flex-start;
-  font-size:14px;
+  font-size:13px;
   font-weight:800;
   color:#18233b;
   margin-bottom:2px;
@@ -1128,51 +1135,69 @@ button.skill.clickable-skill:hover{
   align-self:flex-start;
   color:#687286;
   font-size:10px;
-  margin-bottom:6px;
+  margin-bottom:5px;
 }
-.email-video-frame,
-.email-image-frame{
+
+/* VIDEO: use maximum laptop/monitor height without cropping */
+.email-video-frame{
   width:100%;
-  height:calc(100% - 42px);
-  min-height:320px;
+  height:calc(100% - 34px);
+  min-height:400px;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#11131a;
   border:1px solid #dfe4ea;
   border-radius:10px;
-  background:#eef1f5;
   overflow:hidden;
-  padding:8px;
+  padding:0;
 }
 .email-support-player{
   display:block;
   width:auto !important;
   height:auto !important;
-  max-width:72vw !important;
-  max-height:calc(100% - 4px) !important;
+  max-width:100% !important;
+  max-height:100% !important;
   aspect-ratio:1 / 1;
   object-fit:contain;
   background:#11131a;
-  border-radius:8px;
+  border-radius:0;
+}
+
+/* EMAIL IMAGE: enlarge to occupy the page while keeping the whole image */
+.email-image-frame{
+  width:100%;
+  height:calc(100% - 34px);
+  min-height:400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  overflow:hidden;
+  padding:4px;
 }
 .email-image-frame img{
   display:block;
   width:auto !important;
   height:auto !important;
-  max-width:94% !important;
-  max-height:94% !important;
+  max-width:100% !important;
+  max-height:100% !important;
   object-fit:contain;
-  border-radius:8px;
+  border-radius:6px;
 }
+
+/* Navigation stays visible and compact */
 .email-page-nav{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding-top:9px;
+  padding-top:7px;
 }
 .email-page-nav span{
-  min-width:50px;
+  min-width:48px;
   text-align:center;
   color:#18233b;
   font-size:11px;
@@ -1181,7 +1206,7 @@ button.skill.clickable-skill:hover{
 .email-page-button{
   border:1px solid #ccd5e1;
   border-radius:8px;
-  padding:8px 12px;
+  padding:7px 11px;
   background:#fff;
   color:#18233b;
   cursor:pointer;
@@ -1196,28 +1221,52 @@ button.skill.clickable-skill:hover{
   cursor:default;
   opacity:.4;
 }
+
+/* Laptop screens */
+@media (max-height:900px) and (min-width:900px){
+  .modal-box{
+    max-height:94vh !important;
+  }
+  .email-page-viewer{
+    height:calc(94vh - 136px);
+    min-height:460px;
+  }
+}
+
+/* Larger desktop monitors */
+@media (min-width:1400px) and (min-height:900px){
+  .email-page-viewer{
+    height:calc(96vh - 140px);
+  }
+}
+
+/* Smaller laptop widths */
+@media (max-width:1000px){
+  .modal-box{
+    width:97vw !important;
+  }
+  .email-page-viewer{
+    height:calc(94vh - 145px);
+    min-height:420px;
+  }
+}
+
+/* Phones / narrow screens */
 @media(max-width:700px){
   .modal-box{
     width:98vw !important;
     max-height:96vh !important;
   }
   .email-support-wrap{
-    padding:12px;
+    padding:11px;
   }
   .email-page-viewer{
-    height:calc(96vh - 160px);
+    height:calc(96vh - 150px);
     min-height:300px;
   }
+  .email-video-frame,
   .email-image-frame{
-    padding:5px;
-  }
-  .email-image-frame img{
-    max-width:98% !important;
-    max-height:98% !important;
-  }
-  .email-support-player{
-    max-width:88vw !important;
-    max-height:calc(100% - 2px) !important;
+    min-height:280px;
   }
 }
 </style>
