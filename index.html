@@ -1073,6 +1073,120 @@ button.skill.clickable-skill:hover{
 }
 </style>
 
+
+<style>
+/* V34 — Email Support one-page-at-a-time viewer */
+.modal-box{
+    max-height:94vh !important;
+    overflow:hidden !important;
+}
+.email-support-wrap{
+    display:none;
+    padding:20px 24px 18px;
+    background:#f7f8fb;
+}
+.email-support-intro{
+    margin-bottom:14px;
+}
+.email-support-intro h3{
+    margin:0 0 5px;
+    font-size:24px;
+    color:#18233b;
+}
+.email-support-intro p{
+    margin:0;
+    color:#687286;
+    font-size:12px;
+}
+.email-page-viewer{
+    width:100%;
+}
+.email-page{
+    width:100%;
+}
+.email-page-title{
+    font-size:15px;
+    font-weight:800;
+    color:#18233b;
+    margin-bottom:4px;
+}
+.email-page-subtitle{
+    color:#687286;
+    font-size:11px;
+    margin-bottom:10px;
+}
+.email-video-frame,
+.email-image-frame{
+    width:100%;
+    height:calc(94vh - 210px);
+    min-height:420px;
+    max-height:760px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eef1f5;
+    border:1px solid #dfe4ea;
+    border-radius:12px;
+    overflow:hidden;
+    padding:10px;
+}
+.email-support-player{
+    display:block;
+    width:100%;
+    height:100%;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    border-radius:8px;
+    background:#11131a;
+}
+.email-image-frame img{
+    display:block;
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:8px;
+}
+.email-page-nav{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:12px 0 0;
+}
+.email-page-nav span{
+    min-width:54px;
+    text-align:center;
+    color:#18233b;
+    font-size:12px;
+    font-weight:800;
+}
+.email-page-button{
+    border:1px solid #ccd5e1;
+    border-radius:8px;
+    padding:9px 13px;
+    background:#fff;
+    color:#18233b;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:800;
+}
+.email-page-button:hover{
+    border-color:#4963ed;
+    color:#4963ed;
+}
+@media(max-width:700px){
+    .modal-box{max-height:96vh !important}
+    .email-support-wrap{padding:14px}
+    .email-video-frame,.email-image-frame{
+        height:calc(96vh - 220px);
+        min-height:300px;
+    }
+}
+</style>
+
 </style>
 </head>
 
@@ -1267,60 +1381,60 @@ button.skill.clickable-skill:hover{
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
+
 <div id="emailSupportWrap" class="email-support-wrap" style="display:none;">
     <div class="email-support-intro">
         <div class="section-label">EMAIL SUPPORT</div>
         <h3>Email Support</h3>
-        <p>Review the presentation and email examples from left to right.</p>
+        <p>View the presentation first, then review each email example one page at a time.</p>
     </div>
 
-    <div class="email-support-sequence-label" aria-hidden="true">
-        <span>VIDEO</span><b>→</b><span>SAMPLE 1</span><b>→</b><span>SAMPLE 2</span><b>→</b><span>SAMPLE 3</span>
+    <div class="email-page-viewer">
+        <section class="email-page" id="emailPageVideo">
+            <div class="email-page-title">Page 1 — Presentation Video</div>
+            <div class="email-page-subtitle">Full 3:55 Email Support presentation</div>
+            <div class="email-video-frame">
+                <video class="email-support-player"
+                       controls
+                       playsinline
+                       preload="metadata"
+                       poster="Images/05-email-support-1.png"
+                       aria-label="Email Support Portfolio Presentation">
+                    <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+        </section>
+
+        <section class="email-page" id="emailPage1" style="display:none;">
+            <div class="email-page-title">Page 2 — Email Sample 1</div>
+            <div class="email-page-subtitle">Customer response and follow-up example</div>
+            <div class="email-image-frame">
+                <img src="Images/05-email-support-1.png" alt="Email Support Sample 1">
+            </div>
+        </section>
+
+        <section class="email-page" id="emailPage2" style="display:none;">
+            <div class="email-page-title">Page 3 — Email Sample 2</div>
+            <div class="email-page-subtitle">Coverage inquiry and customer communication example</div>
+            <div class="email-image-frame">
+                <img src="Images/05-email-support-2.png" alt="Email Support Sample 2">
+            </div>
+        </section>
+
+        <section class="email-page" id="emailPage3" style="display:none;">
+            <div class="email-page-title">Page 4 — Email Sample 3</div>
+            <div class="email-page-subtitle">Issue resolution and professional follow-through example</div>
+            <div class="email-image-frame">
+                <img src="Images/05-email-support-3.png" alt="Email Support Sample 3">
+            </div>
+        </section>
     </div>
 
-    <div class="email-support-horizontal">
-        <article class="email-support-panel email-video-panel">
-            <div class="email-support-panel-title">Presentation Video</div>
-            <div class="email-support-panel-subtitle">Full 3:55 Email Support presentation</div>
-            <video class="email-support-player"
-                   controls
-                   playsinline
-                   preload="metadata"
-                   poster="Images/05-email-support-1.png"
-                   aria-label="Email Support Portfolio Presentation">
-                <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-        </article>
-
-        <article class="email-support-panel">
-            <div class="email-support-panel-title">Sample 1</div>
-            <img src="Images/05-email-support-1.png"
-                 alt="Email Support Sample 1"
-                 class="email-support-sample-image">
-            <div class="email-support-panel-caption">Customer response and follow-up example.</div>
-        </article>
-
-        <article class="email-support-panel">
-            <div class="email-support-panel-title">Sample 2</div>
-            <img src="Images/05-email-support-2.png"
-                 alt="Email Support Sample 2"
-                 class="email-support-sample-image">
-            <div class="email-support-panel-caption">Coverage inquiry and customer communication example.</div>
-        </article>
-
-        <article class="email-support-panel">
-            <div class="email-support-panel-title">Sample 3</div>
-            <img src="Images/05-email-support-3.png"
-                 alt="Email Support Sample 3"
-                 class="email-support-sample-image">
-            <div class="email-support-panel-caption">Issue resolution and professional follow-through example.</div>
-        </article>
-    </div>
-
-    <div class="email-support-scroll-hint">
-        <span class="email-support-hint-arrow">→</span>
-        <span>Move left / right to view the full sequence</span>
+    <div class="email-page-nav" aria-label="Email Support page navigation">
+        <button type="button" class="email-page-button" onclick="showEmailPage(-1)">← Previous</button>
+        <span id="emailPageCounter">1 / 4</span>
+        <button type="button" class="email-page-button" onclick="showEmailPage(1)">Next →</button>
     </div>
 </div>
 
@@ -1541,11 +1655,44 @@ function openCustomerSupportModal(){
   document.body.style.overflow="hidden";
 }
 
+function showEmailPage(direction){
+  const pages=[
+    document.getElementById("emailPageVideo"),
+    document.getElementById("emailPage1"),
+    document.getElementById("emailPage2"),
+    document.getElementById("emailPage3")
+  ].filter(Boolean);
+
+  if(!pages.length) return;
+  if(typeof window.emailPageIndex!=="number") window.emailPageIndex=0;
+
+  window.emailPageIndex += direction;
+  if(window.emailPageIndex<0) window.emailPageIndex=0;
+  if(window.emailPageIndex>pages.length-1) window.emailPageIndex=pages.length-1;
+
+  pages.forEach((page,i)=>{
+    page.style.display=(i===window.emailPageIndex) ? "block" : "none";
+  });
+
+  const counter=document.getElementById("emailPageCounter");
+  if(counter) counter.textContent=`${window.emailPageIndex+1} / ${pages.length}`;
+
+  const buttons=document.querySelectorAll(".email-page-button");
+  if(buttons.length>=2){
+    buttons[0].disabled=(window.emailPageIndex===0);
+    buttons[1].disabled=(window.emailPageIndex===pages.length-1);
+    buttons[0].style.opacity=buttons[0].disabled ? ".45" : "1";
+    buttons[1].style.opacity=buttons[1].disabled ? ".45" : "1";
+  }
+}
+
 function openEmailModal(){
   hideAllPanels();
   if(!modal || !emailSupportWrap) return;
   if(modalTitle) modalTitle.textContent="Email Support";
   emailSupportWrap.style.display="block";
+  window.emailPageIndex=0;
+  showEmailPage(0);
   modal.classList.add("open");
   document.body.style.overflow="hidden";
 }
@@ -1689,6 +1836,7 @@ window.openClaimsCaseStudy = openClaimsCaseStudy;
 window.openClaimsInteractiveStudy = openClaimsInteractiveStudy;
 window.closeModal = closeModal;
 
+window.showEmailPage=showEmailPage;
 </script>
 
 </body>
