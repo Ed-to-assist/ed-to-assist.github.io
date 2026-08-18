@@ -828,34 +828,44 @@ footer p+p{opacity:.65}
 
 
 <style>
-/* V45 — Email video is page 1 of the existing Email Support carousel */
-.email-video-card{
-    margin:0 24px 10px;
-    padding:12px;
-    background:#fff;
-    border:1px solid #dfe4ea;
-    border-radius:13px;
-    box-shadow:0 8px 24px rgba(24,35,59,.05);
+/* V45 — guaranteed Core Skills interaction */
+button.skill.clickable-skill{
+  width:100%;
+  min-height:55px;
+  display:flex;
+  align-items:center;
+  padding:14px 17px;
+  background:white;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  font:700 13px/1.2 inherit;
+  color:#172033;
+  text-align:left;
+  cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none;
 }
-.email-video-player{
-    display:block;
-    width:100%;
-    max-width:100%;
-    aspect-ratio:16/9;
-    max-height:62vh;
-    height:auto;
-    border-radius:9px;
-    background:#11131a;
-    object-fit:contain;
+button.skill.clickable-skill:hover{
+  transform:translateY(-3px);
+  border-color:#4963ed;
+  box-shadow:0 8px 20px rgba(73,99,237,.12);
+  color:#4963ed;
 }
-#emailVideoCard .support-explanation{
-    margin:8px 0 10px !important;
+button.skill.clickable-skill:focus-visible{
+  outline:3px solid rgba(73,99,237,.3);
+  outline-offset:2px;
 }
-@media(max-width:800px){
-    .email-video-player{
-        max-height:52vh;
-    }
+body.dark button.skill.clickable-skill{
+  background:#172235;
+  border-color:#2d3c55;
+  color:#fff;
 }
+/* Keep modal controls clickable above media */
+.modal,.modal-box,.modal-close,.email-controls,.email-controls button{
+  pointer-events:auto !important;
+}
+</style>
+
 </style>
 </head>
 
@@ -950,31 +960,19 @@ footer p+p{opacity:.65}
 
     <div class="skills-grid">
 
-        <div class="skill clickable-skill" data-skill="customer-service">
-            Customer &amp; Phone Support <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="customer-service" onclick="openCustomerSupportModal()">Customer &amp; Phone Support <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="benefits">
-            Benefits Administration <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="benefits" onclick="openModal('04-customer-profile','Benefits Administration')">Benefits Administration <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="crm">
-            CRM Management <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="crm" onclick="openModal('03-crm-dashboard','CRM Management')">CRM Management <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="email">
-            Email Support <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="email" onclick="openEmailModal()">Email Support <span class="skill-arrow">→</span></button>
 
-        <div class="skill clickable-skill" data-skill="chat">
-            Live Chat Support <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="chat" onclick="openLiveChatModal()">Live Chat Support <span class="skill-arrow">→</span></button>
 
         <div class="skill">Administrative Support</div>
 <div class="skill">Data Entry</div>
-        <div class="skill clickable-skill" data-skill="claims">
-            Claims &amp; Documentation Review <span class="skill-arrow">→</span>
-        </div>
+        <button type="button" class="skill clickable-skill" data-skill="claims" onclick="openClaimsCaseStudy()">Claims &amp; Documentation Review <span class="skill-arrow">→</span></button>
         <div class="skill">Microsoft Office</div>
         <div class="skill">Google Workspace</div>
 </div>
@@ -1193,7 +1191,7 @@ footer p+p{opacity:.65}
 
         <div class="email-controls" id="emailControls">
             <button id="previousEmail" type="button">← Previous</button>
-            <span class="counter" id="emailCounter">1 / 4</span>
+            <span class="counter" id="emailCounter">1 / 3</span>
             <button id="nextEmail" type="button">Next →</button>
         </div>
     </div>
@@ -1370,7 +1368,7 @@ function loadClaimsSupportImages(){
 function openClaimsCaseStudy(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
+function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
@@ -1380,51 +1378,61 @@ function openCustomerSupportModal(){emailVideoCard.style.display='none';liveChat
 }
 
 function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){
-  liveChatExplanation.style.display='none';
-  customerSupportWrap.style.display='none';
-  claimsImagesWrap.style.display='none';
-  claimsSiteWrap.style.display='none';
-  claimsSiteStatus.style.display='none';
-  modalImage.style.display='none';
-  emailVideoCard.style.display='block';
-  currentEmail=-1;
-  modalTitle.textContent='Email Support';
-  emailControls.classList.add('show');
-  showEmail();
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
-}
+function openEmailModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
+function openLiveChatModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
-previousEmail.addEventListener('click',e=>{
+portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
+backgroundImage.addEventListener('click',()=>openModal('02-about','Professional Background'));
+
+document.querySelectorAll('.clickable-skill').forEach(skill=>skill.addEventListener('click',()=>{
+  const type=skill.dataset.skill;
+  if(type==='customer-service') openCustomerSupportModal();
+  else if(type==='benefits') openModal('04-customer-profile','Benefits Administration');
+  else if(type==='crm') openModal('03-crm-dashboard','CRM Management');
+  else if(type==='email') openEmailModal();
+  else if(type==='chat') openLiveChatModal();
+  else if(type==='claims') openClaimsCaseStudy();
+}));
+
+if(previousEmail) previousEmail.addEventListener('click',e=>{
   e.stopPropagation();
   if(modalTitle.textContent==='Live Chat Support Samples'){
     currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;
     showLiveChat();
   }else{
-    if(currentEmail===-1) currentEmail=2;
-    else if(currentEmail===0) currentEmail=-1;
-    else currentEmail--;
+    currentEmail--;
+    if(currentEmail<-1) currentEmail=2;
     showEmail();
   }
 });
-nextEmail.addEventListener('click',e=>{
+if(nextEmail) nextEmail.addEventListener('click',e=>{
   e.stopPropagation();
   if(modalTitle.textContent==='Live Chat Support Samples'){
     currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;
     showLiveChat();
   }else{
-    if(currentEmail===-1) currentEmail=0;
-    else if(currentEmail===2) currentEmail=-1;
-    else currentEmail++;
+    currentEmail++;
+    if(currentEmail>2) currentEmail=2;
     showEmail();
   }
 });
-claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
+if(claimsOpenCaseStudy) claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
 function closeModal(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
-modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+if(modalClose) modalClose.addEventListener('click',closeModal); if(modal) modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+
+
+
+window.openCustomerSupportModal=openCustomerSupportModal;
+window.openModal=openModal;
+window.openEmailModal=openEmailModal;
+window.openLiveChatModal=openLiveChatModal;
+window.openClaimsCaseStudy=openClaimsCaseStudy;
+window.openClaimsInteractiveStudy=openClaimsInteractiveStudy;
+window.closeModal=closeModal;
 
 
 </script>
