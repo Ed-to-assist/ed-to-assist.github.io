@@ -1047,9 +1047,9 @@ footer p+p{opacity:.65}
                controls
                playsinline
                preload="metadata"
-               poster="Images/05-email-support-1.png"
+               poster="https://ed-to-assist.github.io/Images/05-email-support-1.png"
                aria-label="Email Support Portfolio Presentation">
-            <source src="../Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+            <source src="https://ed-to-assist.github.io/Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
         <div class="email-support-note">Plays directly inside the portfolio.</div>
@@ -1057,19 +1057,19 @@ footer p+p{opacity:.65}
 
     <div class="email-support-sample-card">
         <h4>Sample 1</h4>
-        <img src="Images/05-email-support-1.png" alt="Email Support Sample 1">
+        <img src="https://ed-to-assist.github.io/Images/05-email-support-1.png" alt="Email Support Sample 1">
         <div class="email-support-sample-caption">Professional customer response and follow-up example.</div>
     </div>
 
     <div class="email-support-sample-card">
         <h4>Sample 2</h4>
-        <img src="Images/05-email-support-2.png" alt="Email Support Sample 2">
+        <img src="https://ed-to-assist.github.io/Images/05-email-support-2.png" alt="Email Support Sample 2">
         <div class="email-support-sample-caption">Coverage inquiry and customer communication example.</div>
     </div>
 
     <div class="email-support-sample-card">
         <h4>Sample 3</h4>
-        <img src="Images/05-email-support-3.png" alt="Email Support Sample 3">
+        <img src="https://ed-to-assist.github.io/Images/05-email-support-3.png" alt="Email Support Sample 3">
         <div class="email-support-sample-caption">Professional issue-resolution and follow-through example.</div>
     </div>
 </div>
@@ -1092,9 +1092,9 @@ footer p+p{opacity:.65}
        controls
        playsinline
        preload="metadata"
-       poster="Images/03-crm-dashboard.png"
+       poster="https://ed-to-assist.github.io/Images/03-crm-dashboard.png"
        aria-label="Customer Support Portfolio Presentation">
-    <source src="../Videos/customer-phone-support.mp4" type="video/mp4">
+    <source src="https://ed-to-assist.github.io/Videos/customer-phone-support.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
 </video>
     <div class="customer-support-video-note">
@@ -1186,12 +1186,15 @@ footer p+p{opacity:.65}
 
 <script>
 
+
+
+
 /* =========================================================
    ROBUST LOCAL IMAGE LOADER
    Works with the user's Windows Images folder and also provides
    a folder-picker fallback for browsers that restrict file:// access.
 ========================================================= */
-const LOCAL_IMAGES_PATH = '/../Images/';
+const LOCAL_IMAGES_PATH = 'https://ed-to-assist.github.io/Images/';
 const imageFileMap = new Map();
 let selectedImagesFolder = false;
 
@@ -1217,9 +1220,9 @@ function encodeFileName(name){ return name.split('/').map(encodeURIComponent).jo
 function autoCandidates(baseName){
   const names = IMAGE_NAMES[baseName] || [baseName+'.png.png',baseName+'.png',baseName+'.jpg',baseName+'.jpeg',baseName+'.webp'];
   const roots = [
-    '/../Images/',
-    './../Images/',
-    '../Images/'
+    'https://ed-to-assist.github.io/Images/',
+    'https://ed-to-assist.github.io/Images/',
+    'https://ed-to-assist.github.io/Images/'
   ];
   return roots.flatMap(root => names.map(n => root + encodeFileName(n)));
 }
@@ -1353,7 +1356,7 @@ function openClaimsInteractiveStudy(){emailSupportWrap.style.display='none';cust
 }
 
 function openCustomerSupportModal(){emailSupportWrap.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
-  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
+  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='https://ed-to-assist.github.io/Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
 
@@ -1372,13 +1375,14 @@ function upworkSingleImage(baseName,title){
   modalImage.style.display='block';
   emailControls.classList.remove('show');
   resolveModalImage(baseName);
+  if(window.upworkDirectImage) window.upworkDirectImage(baseName,modalImage);
   upworkOpenModal();
 }
 
 function upworkShowLiveChat(){
   modalTitle.textContent='Live Chat Support Samples';
   modalImage.style.display='block';
-  resolveModalImage(liveChatSamples[currentLiveChat]);
+  resolveModalImage(liveChatSamples[currentLiveChat]); if(window.upworkDirectImage) window.upworkDirectImage(liveChatSamples[currentLiveChat],modalImage);
   emailControls.classList.add('show');
   emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;
 }
@@ -1438,6 +1442,57 @@ claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 function closeModal(){emailSupportWrap.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+
+
+
+/* V28 — absolute GitHub Pages asset fallback for /upwork/ */
+(function(){
+  const GH="https://ed-to-assist.github.io";
+  const direct={
+    email1:GH+"/Images/05-email-support-1.png",
+    email2:GH+"/Images/05-email-support-2.png",
+    email3:GH+"/Images/05-email-support-3.png",
+    chat1:GH+"/Images/07-live-chat.png",
+    chat2:GH+"/Images/08-live-chat.png",
+    customer:GH+"/Images/08-customer-service.png",
+    pizza:GH+"/Images/Piazzoffice.png", pizzaAlt:GH+"/Images/Office%20Pizza%20Party%20Group%20Photo.png",
+    emailVideo:GH+"/Videos/Email_Support_Portfolio_GitHub_HD.mp4"
+  };
+  window.upworkDirectAssets=direct;
+
+  const player=document.querySelector(".email-support-player source");
+  if(player) player.src=direct.emailVideo;
+
+  /* If the robust resolver fails, these are the exact GitHub Pages assets. */
+  window.upworkDirectImage=function(base,element){
+    const map={
+      "05-email-support-1":direct.email1,
+      "05-email-support-2":direct.email2,
+      "05-email-support-3":direct.email3,
+      "07-live-chat":direct.chat1,
+      "08-live-chat":direct.chat2,
+      "08-customer-service":direct.customer,
+      "pizzaoffice":direct.pizza
+    };
+    if(element && map[base]){
+      element.src=map[base];
+      element.style.display="block";
+    }
+  };
+})();
+
+
+
+(function(){
+  const GH="https://ed-to-assist.github.io";
+  const video=document.querySelector(".email-support-player");
+  if(video){
+    const source=video.querySelector("source");
+    if(source) source.src=GH+"/Videos/Email_Support_Portfolio_GitHub_HD.mp4";
+    video.poster=GH+"/Images/05-email-support-1.png";
+    video.load();
+  }
+})();
 
 </script>
 
