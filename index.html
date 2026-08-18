@@ -871,6 +871,100 @@ body.dark button.skill.clickable-skill{
 .email-video-card{display:none;margin:0 24px 14px;padding:12px;background:#fff;border:1px solid #dfe4ea;border-radius:13px;box-shadow:0 8px 24px rgba(24,35,59,.05)}
 .email-video-player{display:block;width:100%;max-width:100%;max-height:60vh;aspect-ratio:1 / 1;object-fit:contain;border-radius:9px;background:#11131a}
 </style>
+
+<style>
+/* V47 — dedicated Live Chat panel using absolute GitHub Pages image URLs */
+.live-chat-wrap{
+  display:none;
+  padding:16px 20px;
+  background:#f7f8fb;
+}
+.live-chat-heading{margin-bottom:8px}
+.live-chat-heading h3{margin:0;color:#18233b;font-size:22px}
+.live-chat-explanation{
+  margin:0 0 10px;
+  padding:12px 14px;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+}
+.live-chat-explanation .support-explanation-title{margin:7px 0 2px;color:#18233b;font-size:11px;font-weight:800}
+.live-chat-explanation .support-explanation-title:first-child{margin-top:0}
+.live-chat-explanation p{margin:0;color:#687286;font-size:10px;line-height:1.45}
+.live-chat-page{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:calc(88vh - 180px);
+  min-height:420px;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  overflow:hidden;
+  padding:3px;
+}
+.live-chat-page img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:7px;
+}
+.live-chat-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding-top:8px;
+}
+.live-chat-nav button{
+  border:1px solid #ccd5e1;
+  border-radius:8px;
+  padding:8px 12px;
+  background:#fff;
+  color:#18233b;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:800;
+}
+.live-chat-nav span{
+  min-width:48px;
+  text-align:center;
+  color:#18233b;
+  font-size:11px;
+  font-weight:800;
+}
+</style>
+
+
+<style>
+/* V48 — descriptions for every image-based portfolio item */
+.portfolio-explanation{
+  margin:12px 18px 16px;
+  padding:13px 15px;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:11px;
+  box-shadow:0 6px 18px rgba(24,35,59,.04);
+}
+.portfolio-explanation-title{
+  margin:8px 0 2px;
+  color:#18233b;
+  font-size:11px;
+  font-weight:800;
+}
+.portfolio-explanation-title:first-child{margin-top:0}
+.portfolio-explanation p{
+  margin:0;
+  color:#687286;
+  font-size:10px;
+  line-height:1.5;
+}
+</style>
+
 </style>
 </head>
 
@@ -1065,6 +1159,53 @@ body.dark button.skill.clickable-skill{
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
+<div id="portfolioExplanation" class="portfolio-explanation" style="display:none;">
+  <div class="portfolio-explanation-title" id="explainWhatIDidTitle">What I Did</div>
+  <p id="explainWhatIDid"></p>
+
+  <div class="portfolio-explanation-title" id="explainWhatPortrayedTitle">What I Portrayed</div>
+  <p id="explainWhatPortrayed"></p>
+
+  <div class="portfolio-explanation-title" id="explainHowSupportedTitle">How I Supported</div>
+  <p id="explainHowSupported"></p>
+
+  <div class="portfolio-explanation-title" id="explainDemonstratesTitle">What This Demonstrates</div>
+  <p id="explainDemonstrates"></p>
+</div>
+
+
+<div id="liveChatWrap" class="live-chat-wrap" style="display:none;">
+  <div class="live-chat-heading">
+    <div class="section-label">LIVE CHAT SUPPORT</div>
+    <h3>Live Chat Samples</h3>
+  </div>
+
+  <div class="live-chat-explanation">
+    <div class="support-explanation-title">What I Did</div>
+    <p>Provided real-time customer assistance through live chat, identified the customer's concern, clarified the issue, and guided the conversation toward an appropriate resolution.</p>
+    <div class="support-explanation-title">What I Portrayed</div>
+    <p>These samples demonstrate how I handle customer conversations when information needs to be clarified quickly and the customer needs a clear response or next step.</p>
+    <div class="support-explanation-title">How I Supported the Customer</div>
+    <p>I used focused questions to understand the issue, provided relevant information, explained next steps, and maintained a professional and helpful tone throughout the conversation.</p>
+    <div class="support-explanation-title">What This Demonstrates</div>
+    <p>Real-time customer communication, active listening, clarification, quick issue identification, clear next-step guidance, and professional handling of customer concerns.</p>
+  </div>
+
+  <div class="live-chat-page" id="liveChatPage1">
+    <img src="https://ed-to-assist.github.io/Images/07-live-chat.png" alt="Live Chat Sample 1">
+  </div>
+  <div class="live-chat-page" id="liveChatPage2" style="display:none;">
+    <img src="https://ed-to-assist.github.io/Images/08-live-chat.png" alt="Live Chat Sample 2">
+  </div>
+
+  <div class="live-chat-nav">
+    <button type="button" id="liveChatPrev">← Previous</button>
+    <span id="liveChatCounter">1 / 2</span>
+    <button type="button" id="liveChatNext">Next →</button>
+  </div>
+</div>
+
+
 <div id="emailVideoCard" class="email-video-card">
   <h4>Email Support Portfolio Presentation</h4>
   <p>Full 3:55 presentation demonstrating professional email handling, customer communication, and follow-through.</p>
@@ -1211,6 +1352,8 @@ body.dark button.skill.clickable-skill{
 <script>
 
 
+
+
 /* =========================================================
    ROBUST LOCAL IMAGE LOADER
    Works with the user's Windows Images folder and also provides
@@ -1355,6 +1498,10 @@ const customerServiceImage=document.getElementById('customerServiceImage');
 const pizzaOfficeImage=document.getElementById('pizzaOfficeImage');
 const emailControls=document.getElementById('emailControls');
 const emailVideoCard=document.getElementById('emailVideoCard');
+const liveChatWrap=document.getElementById('liveChatWrap');
+const liveChatPrev=document.getElementById('liveChatPrev');
+const liveChatNext=document.getElementById('liveChatNext');
+const liveChatCounter=document.getElementById('liveChatCounter');
 const liveChatExplanation=document.getElementById('liveChatExplanation');
 const previousEmail=document.getElementById('previousEmail');
 const nextEmail=document.getElementById('nextEmail');
@@ -1370,30 +1517,126 @@ function loadClaimsSupportImages(){
   resolveImage('receipt',claimsReceiptImage);
 }
 
-function openClaimsCaseStudy(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
+function openClaimsCaseStudy(){
+  liveChatWrap.style.display='none';
+  emailVideoCard.style.display='none';
+  customerSupportWrap.style.display='none';
+  claimsImagesWrap.style.display='block';
+  claimsSiteWrap.style.display='none';
+  claimsSiteStatus.style.display='none';
+  modalImage.style.display='none';
+  emailControls.classList.remove('show');
+  modalTitle.textContent='Claims & Documentation Review Evidence';
+  showPortfolioExplanation('09-Sf-case');
+  loadClaimsSupportImages();
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
+function openClaimsInteractiveStudy(){liveChatWrap.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
 
-function openCustomerSupportModal(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
-  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); pizzaOfficeImage.src='Images/Piazzoffice.png'; pizzaOfficeImage.style.display='block'; modal.classList.add('open'); document.body.style.overflow='hidden';
+function openCustomerSupportModal(){
+  hidePortfolioExplanation();
+  liveChatWrap.style.display='none';
+  emailVideoCard.style.display='none';
+  claimsImagesWrap.style.display='none';
+  claimsSiteWrap.style.display='none';
+  claimsSiteStatus.style.display='none';
+  modalImage.style.display='none';
+  emailControls.classList.remove('show');
+  modalTitle.textContent='Customer & Phone Support';
+  customerSupportWrap.style.display='block';
+  resolveImage('08-customer-service',customerServiceImage);
+  pizzaOfficeImage.src='Images/Piazzoffice.png';
+  pizzaOfficeImage.style.display='block';
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){emailVideoCard.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){
+
+const PORTFOLIO_EXPLANATIONS = {
+  "03-crm-dashboard": {
+    whatIDid: "Worked with customer cases, tasks, support activity, and administrative workflows while keeping records organized and information easy to follow.",
+    whatPortrayed: "This example portrays how I organize customer information, track support activity, and manage administrative work within a CRM-style workflow.",
+    howSupported: "I kept information structured, reviewed case details carefully, and made sure the next action or status could be identified quickly.",
+    demonstrates: "CRM organization, accurate recordkeeping, case tracking, administrative support, and attention to detail."
+  },
+  "04-customer-profile": {
+    whatIDid: "Reviewed and maintained customer information, plan details, case history, and support activity in a structured customer record.",
+    whatPortrayed: "This example portrays how I work through customer records while keeping important information organized and accessible.",
+    howSupported: "I focused on accuracy, clear documentation, and making sure the customer's information could be reviewed efficiently when support was needed.",
+    demonstrates: "Customer record management, documentation accuracy, organization, and dependable administrative support."
+  },
+  "08-customer-service": {
+    whatIDid: "Handled customer support interactions by listening to the concern, identifying what assistance was needed, and guiding the customer toward the appropriate next step.",
+    whatPortrayed: "This example portrays my approach to customer service: clear communication, active listening, accurate handling of requests, and professional follow-through.",
+    howSupported: "I focused on understanding the issue first, providing relevant information, and keeping the customer informed throughout the interaction.",
+    demonstrates: "Customer service, communication, active listening, issue identification, and dependable follow-through."
+  },
+  "07-live-chat": {
+    whatIDid: "Provided real-time customer assistance through live chat, clarified the concern, and guided the conversation toward an appropriate resolution.",
+    whatPortrayed: "This sample portrays how I handle customer conversations when a response needs to be clear, focused, and timely.",
+    howSupported: "I used focused questions, provided relevant information, explained the next step, and maintained a professional tone throughout the conversation.",
+    demonstrates: "Real-time communication, active listening, clarification, quick issue identification, and customer support."
+  },
+  "08-live-chat": {
+    whatIDid: "Handled a second live-chat scenario by identifying the customer's concern, clarifying the request, and providing guidance toward resolution.",
+    whatPortrayed: "This sample portrays another example of handling customer conversations while keeping the interaction clear and organized.",
+    howSupported: "I kept the conversation focused, responded to the customer's concern, and explained what should happen next.",
+    demonstrates: "Live-chat support, clear explanations, responsiveness, problem solving, and professional communication."
+  },
+  "09-Sf-case": {
+    whatIDid: "Reviewed supporting claim documentation and examined the information needed to assess the case accurately.",
+    whatPortrayed: "This example portrays how I review documentation and supporting information before moving a claim or case forward.",
+    howSupported: "I checked the available details carefully, looked for completeness and consistency, and identified information that required attention.",
+    demonstrates: "Claims review, documentation review, accuracy, attention to detail, and case analysis."
+  },
+  "receipt": {
+    whatIDid: "Reviewed receipt information as part of a claims-supporting documentation check, focusing on the key details needed for accurate processing.",
+    whatPortrayed: "This example portrays how I examine supporting financial documentation to verify the information relevant to a claim.",
+    howSupported: "I reviewed the document carefully and focused on the information needed to support accurate case handling.",
+    demonstrates: "Documentation review, verification, accuracy, and careful claims support."
+  },
+  "02-about": {
+    whatIDid: "Presented my professional background and the working environment that supports my customer service and administrative work.",
+    whatPortrayed: "This image provides context for the professional approach, reliability, and organized working style behind the portfolio.",
+    howSupported: "I maintain a professional setup that allows me to handle customer communication, administrative tasks, documentation, and support workflows consistently.",
+    demonstrates: "Professionalism, organization, reliability, and readiness for remote customer support work."
+  }
+};
+function showPortfolioExplanation(key){
+  const box=document.getElementById('portfolioExplanation');
+  if(!box) return;
+  const data=PORTFOLIO_EXPLANATIONS[key];
+  if(!data){
+    box.style.display='none';
+    return;
+  }
+  document.getElementById('explainWhatIDid').textContent=data.whatIDid;
+  document.getElementById('explainWhatPortrayed').textContent=data.whatPortrayed;
+  document.getElementById('explainHowSupported').textContent=data.howSupported;
+  document.getElementById('explainDemonstrates').textContent=data.demonstrates;
+  box.style.display='block';
+}
+function hidePortfolioExplanation(){
+  const box=document.getElementById('portfolioExplanation');
+  if(box) box.style.display='none';
+}
+function openModal(baseName,title='Portfolio Preview'){
+  liveChatWrap.style.display='none';
+  emailVideoCard.style.display='none';
   customerSupportWrap.style.display='none';
   claimsImagesWrap.style.display='none';
   claimsSiteWrap.style.display='none';
-  modalImage.style.display='none';
-  emailVideoCard.style.display='block';
-  liveChatExplanation.style.display='none';
-  currentEmail=-1;
-  modalTitle.textContent='Email Support';
-  emailControls.classList.add('show');
-  showEmail();
+  claimsSiteStatus.style.display='none';
+  modalTitle.textContent=title;
+  modalImage.style.display='block';
+  emailControls.classList.remove('show');
+  resolveModalImage(baseName);
+  showPortfolioExplanation(baseName);
   modal.classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -1434,7 +1677,7 @@ if(nextEmail) nextEmail.addEventListener('click',e=>{
 });
 if(claimsOpenCaseStudy) claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
-function closeModal(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+function closeModal(){hidePortfolioExplanation();liveChatWrap.style.display='none';emailVideoCard.style.display='none';liveChatExplanation.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 if(modalClose) modalClose.addEventListener('click',closeModal); if(modal) modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
 
@@ -1447,6 +1690,20 @@ window.openLiveChatModal=openLiveChatModal;
 window.openClaimsCaseStudy=openClaimsCaseStudy;
 window.openClaimsInteractiveStudy=openClaimsInteractiveStudy;
 window.closeModal=closeModal;
+
+
+
+
+if(liveChatPrev) liveChatPrev.addEventListener('click',()=>{
+  currentLiveChat=(currentLiveChat-1+2)%2;
+  showLiveChat();
+});
+if(liveChatNext) liveChatNext.addEventListener('click',()=>{
+  currentLiveChat=(currentLiveChat+1)%2;
+  showLiveChat();
+});
+window.openLiveChatModal=openLiveChatModal;
+window.showLiveChat=showLiveChat;
 
 
 </script>
