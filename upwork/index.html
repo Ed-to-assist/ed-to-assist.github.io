@@ -921,29 +921,29 @@ footer p+p{opacity:.65}
 
     <div class="skills-grid">
 
-        <div class="skill clickable-skill" data-skill="customer-service">
+        <div class="skill clickable-skill" data-skill="customer-service" onclick="upworkSkill('customer-service')" role="button" tabindex="0">
             Customer &amp; Phone Support <span class="skill-arrow">→</span>
         </div>
 
-        <div class="skill clickable-skill" data-skill="benefits">
+        <div class="skill clickable-skill" data-skill="benefits" onclick="upworkSkill('benefits')" role="button" tabindex="0">
             Benefits Administration <span class="skill-arrow">→</span>
         </div>
 
-        <div class="skill clickable-skill" data-skill="crm">
+        <div class="skill clickable-skill" data-skill="crm" onclick="upworkSkill('crm')" role="button" tabindex="0">
             CRM Management <span class="skill-arrow">→</span>
         </div>
 
-        <div class="skill clickable-skill" data-skill="email">
+        <div class="skill clickable-skill" data-skill="email" onclick="upworkSkill('email')" role="button" tabindex="0">
             Email Support <span class="skill-arrow">→</span>
         </div>
 
-        <div class="skill clickable-skill" data-skill="chat">
+        <div class="skill clickable-skill" data-skill="chat" onclick="upworkSkill('chat')" role="button" tabindex="0">
             Live Chat Support <span class="skill-arrow">→</span>
         </div>
 
         <div class="skill">Administrative Support</div>
 <div class="skill">Data Entry</div>
-        <div class="skill clickable-skill" data-skill="claims">
+        <div class="skill clickable-skill" data-skill="claims" onclick="upworkSkill('claims')" role="button" tabindex="0">
             Claims &amp; Documentation Review <span class="skill-arrow">→</span>
         </div>
         <div class="skill">Microsoft Office</div>
@@ -1185,6 +1185,7 @@ footer p+p{opacity:.65}
 
 
 <script>
+
 /* =========================================================
    ROBUST LOCAL IMAGE LOADER
    Works with the user's Windows Images folder and also provides
@@ -1355,6 +1356,59 @@ function openCustomerSupportModal(){emailSupportWrap.style.display='none';claims
   customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
+
+function upworkOpenModal(){
+  if(modal) modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function upworkSingleImage(baseName,title){
+  emailSupportWrap.style.display='none';
+  customerSupportWrap.style.display='none';
+  claimsImagesWrap.style.display='none';
+  claimsSiteWrap.style.display='none';
+  claimsSiteStatus.style.display='none';
+  modalTitle.textContent=title;
+  modalImage.style.display='block';
+  emailControls.classList.remove('show');
+  resolveModalImage(baseName);
+  upworkOpenModal();
+}
+
+function upworkShowLiveChat(){
+  modalTitle.textContent='Live Chat Support Samples';
+  modalImage.style.display='block';
+  resolveModalImage(liveChatSamples[currentLiveChat]);
+  emailControls.classList.add('show');
+  emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;
+}
+
+function upworkOpenLiveChat(){
+  emailSupportWrap.style.display='none';
+  customerSupportWrap.style.display='none';
+  claimsImagesWrap.style.display='none';
+  claimsSiteWrap.style.display='none';
+  claimsSiteStatus.style.display='none';
+  modalImage.style.display='block';
+  currentLiveChat=0;
+  upworkShowLiveChat();
+  upworkOpenModal();
+}
+
+
+function openLiveChatModal(){
+  upworkOpenLiveChat();
+}
+function upworkSkill(type){
+  if(type==='customer-service') openCustomerSupportModal();
+  else if(type==='benefits') upworkSingleImage('04-customer-profile','Benefits Administration');
+  else if(type==='crm') upworkSingleImage('03-crm-dashboard','CRM Management');
+  else if(type==='email') openEmailModal();
+  else if(type==='chat') upworkOpenLiveChat();
+  else if(type==='claims') openClaimsCaseStudy();
+}
+window.upworkSkill=upworkSkill;
+
 function openModal(baseName,title='Portfolio Preview'){emailSupportWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
 function openEmailModal(){
   customerSupportWrap.style.display='none';
@@ -1369,6 +1423,14 @@ function openEmailModal(){
   document.body.style.overflow='hidden';
 }
 
+
+document.addEventListener('click',e=>{
+  const skill=e.target.closest('.clickable-skill');
+  if(skill){
+    e.preventDefault();
+    upworkSkill(skill.dataset.skill);
+  }
+});
 previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail-1+emailSamples.length)%emailSamples.length;showEmail();}});
 nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
 claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
@@ -1376,6 +1438,7 @@ claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 function closeModal(){emailSupportWrap.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+
 </script>
 
 </body>
