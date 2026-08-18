@@ -828,6 +828,23 @@ footer p+p{opacity:.65}
     color:#687286;
 }
 
+
+<style>
+/* V30 — Selected Work previews are direct GitHub assets and clickable */
+.portfolio-card{
+  cursor:pointer;
+}
+.portfolio-card:hover{
+  transform:translateY(-2px);
+}
+.portfolio-image{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}
+</style>
+
 </style>
 </head>
 
@@ -897,7 +914,7 @@ footer p+p{opacity:.65}
 
         <div class="background-grid">
             <div>
-                <img src="" data-image-base="02-about" class="background-image" id="backgroundImage"
+                <img src="https://ed-to-assist.github.io/Images/02-about.png" data-image-base="02-about" class="background-image" id="backgroundImage"
                      alt="Edward professional background">
             </div>
 
@@ -968,7 +985,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="crm" data-type="single" data-image-base="03-crm-dashboard">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="03-crm-dashboard" class="portfolio-image" alt="CRM Dashboard">
+                <img src="https://ed-to-assist.github.io/Images/03-crm-dashboard.png" data-image-base="03-crm-dashboard" class="portfolio-image" alt="CRM Dashboard">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CRM</div>
@@ -980,7 +997,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="crm" data-type="single" data-image-base="04-customer-profile">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="04-customer-profile" class="portfolio-image" alt="Customer Profile">
+                <img src="https://ed-to-assist.github.io/Images/04-customer-profile.png" data-image-base="04-customer-profile" class="portfolio-image" alt="Customer Profile">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CRM</div>
@@ -992,7 +1009,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="support" data-type="email">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="05-email-support-1" class="portfolio-image" alt="Email Support Samples">
+                <img src="https://ed-to-assist.github.io/Images/05-email-support-1.png" data-image-base="05-email-support-1" class="portfolio-image" alt="Email Support Samples">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CUSTOMER SUPPORT</div>
@@ -1004,7 +1021,7 @@ footer p+p{opacity:.65}
 
         <article class="portfolio-card" data-category="support" data-type="single" data-image-base="08-live-chat">
             <div class="portfolio-image-box">
-                <img src="" data-image-base="08-live-chat" class="portfolio-image" alt="Live Chat Samples">
+                <img src="https://ed-to-assist.github.io/Images/08-live-chat.png" data-image-base="08-live-chat" class="portfolio-image" alt="Live Chat Samples">
             </div>
             <div class="portfolio-info">
                 <div class="portfolio-category">CUSTOMER SUPPORT</div>
@@ -1172,19 +1189,9 @@ footer p+p{opacity:.65}
 
         <div class="email-controls" id="emailControls">
             <button id="previousEmail" type="button">← Previous</button>
-            <span class="counter" id="emailCounter">1 / 3</span>
-            <button id="nextEmail" type="button">Next →</button>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>Edward • Customer Support &amp; Administrative Support</p>
-    <p>Fictional portfolio demonstrations — no real customer data.</p>
-</footer>
+     <script>
 
 
-<script>
 
 
 
@@ -1413,6 +1420,22 @@ function upworkSkill(type){
 }
 window.upworkSkill=upworkSkill;
 
+/* Selected Work card click handling */
+if(!window.__upworkPortfolioCardsBound){
+  window.__upworkPortfolioCardsBound=true;
+  document.querySelectorAll(".portfolio-card").forEach(card=>{
+    card.addEventListener("click",()=>{
+      const type=card.dataset.type;
+      const base=card.dataset.imageBase;
+      const title=card.querySelector("h3")?.textContent || "Portfolio Preview";
+      if(type==="email") openEmailModal();
+      else if(base==="08-live-chat") upworkOpenLiveChat();
+      else if(typeof openModal==="function") openModal(base,title);
+    });
+  });
+}
+
+
 function openModal(baseName,title='Portfolio Preview'){emailSupportWrap.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
 function openEmailModal(){
   customerSupportWrap.style.display='none';
@@ -1485,6 +1508,30 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(moda
 
 (function(){
   const GH="https://ed-to-assist.github.io";
+  const video=document.querySelector(".email-support-player");
+  if(video){
+    const source=video.querySelector("source");
+    if(source) source.src=GH+"/Videos/Email_Support_Portfolio_GitHub_HD.mp4";
+    video.poster=GH+"/Images/05-email-support-1.png";
+    video.load();
+  }
+})();
+
+
+
+(function(){
+  const GH="https://ed-to-assist.github.io";
+  const map={
+    "05-email-support-1":GH+"/Images/05-email-support-1.png",
+    "08-live-chat":GH+"/Images/08-live-chat.png"
+  };
+  document.querySelectorAll("img[data-image-base]").forEach(img=>{
+    const u=map[img.dataset.imageBase];
+    if(u){ img.src=u; img.style.display="block"; }
+  });
+})();
+
+</script>-to-assist.github.io";
   const video=document.querySelector(".email-support-player");
   if(video){
     const source=video.querySelector("source");
