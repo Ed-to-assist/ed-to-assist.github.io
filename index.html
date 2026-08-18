@@ -761,40 +761,68 @@ footer p+p{opacity:.65}
 
 
 <style>
-/* V42 — only addition: Email Support video above existing sample carousel */
+/* V44 — targeted additions on top of the stable V22 base */
+.modal-image{
+  width:100%;
+  max-width:100%;
+  max-height:90vh;
+  height:auto;
+  object-fit:contain;
+}
 .email-video-card{
-    margin:0 24px 14px;
-    padding:12px;
-    background:#fff;
-    border:1px solid #dfe4ea;
-    border-radius:13px;
-    box-shadow:0 8px 24px rgba(24,35,59,.05);
+  display:none;
+  margin:0 24px 14px;
+  padding:12px;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:13px;
+  box-shadow:0 8px 24px rgba(24,35,59,.05);
 }
 .email-video-card h4{
-    margin:0 0 5px;
-    color:#18233b;
-    font-size:14px;
+  margin:0 0 5px;
+  color:#18233b;
+  font-size:14px;
 }
 .email-video-card p{
-    margin:0 0 9px;
-    color:#687286;
-    font-size:11px;
-    line-height:1.4;
+  margin:0 0 9px;
+  color:#687286;
+  font-size:11px;
+  line-height:1.4;
 }
 .email-video-player{
-    display:block;
-    width:100%;
-    max-width:100%;
-    aspect-ratio:1 / 1;
-    height:auto;
-    border-radius:9px;
-    background:#11131a;
-    object-fit:contain;
+  width:100%;
+  display:block;
+  aspect-ratio:1 / 1;
+  max-height:56vh;
+  border-radius:9px;
+  background:#11131a;
+  object-fit:contain;
 }
-.email-video-note{
-    margin-top:7px;
-    color:#687286;
-    font-size:10px;
+.support-explanation{
+  display:none;
+  margin:0 24px 14px;
+  padding:12px 14px;
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:11px;
+  box-shadow:0 6px 18px rgba(24,35,59,.04);
+}
+.support-explanation-title{
+  margin:8px 0 2px;
+  color:#18233b;
+  font-size:11px;
+  font-weight:800;
+}
+.support-explanation-title:first-child{margin-top:0}
+.support-explanation p{
+  margin:0;
+  color:#687286;
+  font-size:10px;
+  line-height:1.45;
+}
+@media(max-width:800px){
+  .modal-image{max-height:82vh}
+  .email-video-player{max-height:48vh}
 }
 </style>
 
@@ -1004,19 +1032,37 @@ footer p+p{opacity:.65}
         <button class="modal-close" id="modalClose" type="button">×</button>
         <img src="" class="modal-image" id="modalImage" alt="Portfolio Preview">
 
-<div id="emailVideoCard" class="email-video-card" style="display:none;">
-    <h4>Email Support Portfolio Presentation</h4>
-    <p>Full 3:55 Email Support presentation.</p>
-    <video class="email-video-player"
-           controls
-           playsinline
-           preload="metadata"
-           poster="Images/05-email-support-1.png"
-           aria-label="Email Support Portfolio Presentation">
-        <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    <div class="email-video-note">Plays directly in the portfolio.</div>
+<div id="emailVideoCard" class="email-video-card">
+  <h4>Email Support Portfolio Presentation</h4>
+  <p>Full 3:55 presentation demonstrating professional email handling, customer communication, and follow-through.</p>
+  <div id="emailSupportExplanation" class="support-explanation" style="display:block;margin:0 0 10px;">
+    <div class="support-explanation-title">What I Did</div>
+    <p>Handled customer inquiries through email, reviewed the request and available information, and provided clear, professional responses based on the situation.</p>
+    <div class="support-explanation-title">What I Portrayed</div>
+    <p>These examples demonstrate customer communication involving coverage questions, account-related requests, follow-ups, and requests requiring additional review.</p>
+    <div class="support-explanation-title">How I Supported the Customer</div>
+    <p>I acknowledged the concern, explained the current status clearly, set appropriate expectations, and followed through until the request could be resolved or the next step was clear.</p>
+    <div class="support-explanation-title">What This Demonstrates</div>
+    <p>Professional written communication, accurate information handling, customer follow-up, case ownership, and clear explanations.</p>
+  </div>
+  <video class="email-video-player" controls playsinline preload="metadata"
+         poster="Images/05-email-support-1.png"
+         aria-label="Email Support Portfolio Presentation">
+    <source src="Videos/Email_Support_Portfolio_GitHub_HD.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div style="margin-top:7px;color:#687286;font-size:10px;">Video presentation · Plays directly in this portfolio.</div>
+</div>
+
+<div id="liveChatExplanation" class="support-explanation">
+  <div class="support-explanation-title">What I Did</div>
+  <p>Provided real-time customer assistance through live chat, identified the customer's concern, clarified the issue, and guided the conversation toward an appropriate resolution.</p>
+  <div class="support-explanation-title">What I Portrayed</div>
+  <p>These samples demonstrate how I handle customer conversations when information needs to be clarified quickly and the customer needs a clear response or next step.</p>
+  <div class="support-explanation-title">How I Supported the Customer</div>
+  <p>I used focused questions to understand the issue, provided relevant information, explained next steps, and maintained a professional and helpful tone throughout the conversation.</p>
+  <div class="support-explanation-title">What This Demonstrates</div>
+  <p>Real-time communication, active listening, clarification, quick issue identification, clear next-step guidance, and professional handling of customer concerns.</p>
 </div>
 
 <div id="customerSupportWrap" class="customer-support-wrap" style="display:none;">
@@ -1130,6 +1176,7 @@ footer p+p{opacity:.65}
 
 
 <script>
+
 /* =========================================================
    ROBUST LOCAL IMAGE LOADER
    Works with the user's Windows Images folder and also provides
@@ -1237,7 +1284,6 @@ folderInput.addEventListener('change',()=>{
   loadImagesButton.style.background='#4963ed';
   loadImagesButton.style.color='#fff';
   document.querySelectorAll('img[data-image-base]').forEach(img=>resolvePageImage(img,img.dataset.imageBase));
-emailVideoCard.style.display='none';
   if(document.getElementById('backgroundImage')) resolvePageImage(document.getElementById('backgroundImage'),'02-about');
 });
 
@@ -1275,6 +1321,7 @@ const customerServiceImage=document.getElementById('customerServiceImage');
 const pizzaOfficeImage=document.getElementById('pizzaOfficeImage');
 const emailControls=document.getElementById('emailControls');
 const emailVideoCard=document.getElementById('emailVideoCard');
+const liveChatExplanation=document.getElementById('liveChatExplanation');
 const previousEmail=document.getElementById('previousEmail');
 const nextEmail=document.getElementById('nextEmail');
 const emailCounter=document.getElementById('emailCounter');
@@ -1282,29 +1329,29 @@ const backgroundImage=document.getElementById('backgroundImage');
 
 const emailSamples=['05-email-support-1','05-email-support-2','05-email-support-3'];
 const liveChatSamples=['07-live-chat','08-live-chat'];
-let currentEmail=0,currentLiveChat=0;
+let currentEmail=-1,currentLiveChat=0;
 
 function loadClaimsSupportImages(){
   resolveImage('09-Sf-case',claimsSfImage);
   resolveImage('receipt',claimsReceiptImage);
 }
 
-function openClaimsCaseStudy(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
+function openClaimsCaseStudy(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='block'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &amp; Documentation Review Evidence'; loadClaimsSupportImages(); modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openClaimsInteractiveStudy(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
+function openClaimsInteractiveStudy(){customerSupportWrap.style.display='none'; claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='block'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Claims &  — Interactive Case Study';
   const candidates=['Images/Missing_Date_Case_Study_Improved.html','./Images/Missing_Date_Case_Study_Improved.html','Missing_Date_Case_Study_Improved.html'];
   let i=0; function tryNext(){if(i>=candidates.length){claimsSiteStatus.style.display='block';return;} claimsSiteFrame.src=candidates[i++];} claimsSiteFrame.onload=()=>claimsSiteStatus.style.display='none'; claimsSiteFrame.onerror=tryNext; tryNext();
 }
 
-function openCustomerSupportModal(){emailVideoCard.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
-  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); resolveImage('pizzaoffice',pizzaOfficeImage); pizzaOfficeImage.onerror=()=>{pizzaOfficeImage.src='Images/Piazzoffice.png';}; modal.classList.add('open'); document.body.style.overflow='hidden';
+function openCustomerSupportModal(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';claimsImagesWrap.style.display='none'; claimsSiteWrap.style.display='none'; claimsSiteStatus.style.display='none'; modalImage.style.display='none'; emailControls.classList.remove('show'); modalTitle.textContent='Customer & Phone Support';
+  customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); pizzaOfficeImage.src='Images/Piazzoffice.png'; pizzaOfficeImage.style.display='block'; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){emailVideoCard.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){emailVideoCard.style.display='block';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
-function openLiveChatModal(){emailVideoCard.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
+function openLiveChatModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
 function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
 
 portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
@@ -1320,13 +1367,34 @@ document.querySelectorAll('.clickable-skill').forEach(skill=>skill.addEventListe
   else if(type==='claims') openClaimsCaseStudy();
 }));
 
-previousEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail-1+emailSamples.length)%emailSamples.length;showEmail();}});
-nextEmail.addEventListener('click',e=>{e.stopPropagation();if(modalTitle.textContent==='Live Chat Support Samples'){currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;showLiveChat();}else{currentEmail=(currentEmail+1)%emailSamples.length;showEmail();}});
+previousEmail.addEventListener('click',e=>{
+  e.stopPropagation();
+  if(modalTitle.textContent==='Live Chat Support Samples'){
+    currentLiveChat=(currentLiveChat-1+liveChatSamples.length)%liveChatSamples.length;
+    showLiveChat();
+  }else{
+    currentEmail--;
+    if(currentEmail<-1) currentEmail=2;
+    showEmail();
+  }
+});
+nextEmail.addEventListener('click',e=>{
+  e.stopPropagation();
+  if(modalTitle.textContent==='Live Chat Support Samples'){
+    currentLiveChat=(currentLiveChat+1)%liveChatSamples.length;
+    showLiveChat();
+  }else{
+    currentEmail++;
+    if(currentEmail>2) currentEmail=2;
+    showEmail();
+  }
+});
 claimsOpenCaseStudy.addEventListener('click',openClaimsInteractiveStudy);
 
-function closeModal(){emailVideoCard.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
+function closeModal(){emailVideoCard.style.display='none';liveChatExplanation.style.display='none';modal.classList.remove('open');document.body.style.overflow='';modalImage.removeAttribute('src');claimsSiteFrame.removeAttribute('src');claimsSiteWrap.style.display='none';claimsImagesWrap.style.display='none';customerSupportWrap.style.display='none';emailControls.classList.remove('show');}
 modalClose.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(modal.classList.contains('open')&&emailControls.classList.contains('show')){if(e.key==='ArrowRight')nextEmail.click();if(e.key==='ArrowLeft')previousEmail.click();}});
+
 </script>
 
 </body>
