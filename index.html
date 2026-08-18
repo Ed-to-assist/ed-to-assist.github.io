@@ -866,6 +866,11 @@ body.dark button.skill.clickable-skill{
 }
 </style>
 
+<style>
+/* V46 — Email Support video first */
+.email-video-card{display:none;margin:0 24px 14px;padding:12px;background:#fff;border:1px solid #dfe4ea;border-radius:13px;box-shadow:0 8px 24px rgba(24,35,59,.05)}
+.email-video-player{display:block;width:100%;max-width:100%;max-height:60vh;aspect-ratio:1 / 1;object-fit:contain;border-radius:9px;background:#11131a}
+</style>
 </style>
 </head>
 
@@ -1377,24 +1382,33 @@ function openCustomerSupportModal(){emailVideoCard.style.display='none';liveChat
   customerSupportWrap.style.display='block'; resolveImage('08-customer-service',customerServiceImage); pizzaOfficeImage.src='Images/Piazzoffice.png'; pizzaOfficeImage.style.display='block'; modal.classList.add('open'); document.body.style.overflow='hidden';
 }
 
-function openModal(baseName,title='Portfolio Preview'){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
-function openEmailModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentEmail=0;modalTitle.textContent='Email Support Samples';emailControls.classList.add('show');showEmail();modal.classList.add('open');document.body.style.overflow='hidden';}
-function showEmail(){resolveModalImage(emailSamples[currentEmail]);emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;}
-function openLiveChatModal(){customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';modalImage.style.display='block';currentLiveChat=0;modalTitle.textContent='Live Chat Support Samples';emailControls.classList.add('show');showLiveChat();modal.classList.add('open');document.body.style.overflow='hidden';}
-function showLiveChat(){resolveModalImage(liveChatSamples[currentLiveChat]);emailCounter.textContent=`${currentLiveChat+1} / ${liveChatSamples.length}`;}
-
-portfolioCards.forEach(card=>card.addEventListener('click',()=>{if(card.dataset.type==='email')openEmailModal();else openModal(card.dataset.imageBase,card.querySelector('h3')?.textContent||'Portfolio Preview');}));
-backgroundImage.addEventListener('click',()=>openModal('02-about','Professional Background'));
-
-document.querySelectorAll('.clickable-skill').forEach(skill=>skill.addEventListener('click',()=>{
-  const type=skill.dataset.skill;
-  if(type==='customer-service') openCustomerSupportModal();
-  else if(type==='benefits') openModal('04-customer-profile','Benefits Administration');
-  else if(type==='crm') openModal('03-crm-dashboard','CRM Management');
-  else if(type==='email') openEmailModal();
-  else if(type==='chat') openLiveChatModal();
-  else if(type==='claims') openClaimsCaseStudy();
-}));
+function openModal(baseName,title='Portfolio Preview'){emailVideoCard.style.display='none';customerSupportWrap.style.display='none';claimsImagesWrap.style.display='none';claimsSiteWrap.style.display='none';claimsSiteStatus.style.display='none';modalTitle.textContent=title;modalImage.style.display='block';emailControls.classList.remove('show');resolveModalImage(baseName);modal.classList.add('open');document.body.style.overflow='hidden';}
+function openEmailModal(){
+  customerSupportWrap.style.display='none';
+  claimsImagesWrap.style.display='none';
+  claimsSiteWrap.style.display='none';
+  modalImage.style.display='none';
+  emailVideoCard.style.display='block';
+  liveChatExplanation.style.display='none';
+  currentEmail=-1;
+  modalTitle.textContent='Email Support';
+  emailControls.classList.add('show');
+  showEmail();
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function showEmail(){
+  if(currentEmail===-1){
+    emailVideoCard.style.display='block';
+    modalImage.style.display='none';
+    emailCounter.textContent='Video';
+    return;
+  }
+  emailVideoCard.style.display='none';
+  modalImage.style.display='block';
+  resolveModalImage(emailSamples[currentEmail]);
+  emailCounter.textContent=`${currentEmail+1} / ${emailSamples.length}`;
+}
 
 if(previousEmail) previousEmail.addEventListener('click',e=>{
   e.stopPropagation();
