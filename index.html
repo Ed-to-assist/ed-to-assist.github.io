@@ -880,66 +880,9 @@ footer p+p{opacity:.65}
 </style>
 
 
-<style>
-/* V50 — Certifications */
-.certifications-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-}
-.certification-card{
-  background:#fff;
-  border:1px solid #dfe4ea;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:0 8px 22px rgba(24,35,59,.05);
-}
-.certification-badge{
-  display:inline-block;
-  margin-bottom:10px;
-  padding:5px 8px;
-  border-radius:6px;
-  background:#eef1ff;
-  color:#4963ed;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:.08em;
-}
-.certification-card h3{
-  margin:0 0 8px;
-  color:#18233b;
-  font-size:17px;
-  line-height:1.35;
-}
-.certification-card p{
-  margin:0;
-  color:#687286;
-  font-size:11px;
-  line-height:1.55;
-}
-.certification-skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-top:13px;
-}
-.certification-skills span{
-  padding:6px 8px;
-  border:1px solid #dfe4ea;
-  border-radius:7px;
-  color:#516074;
-  background:#f8f9fb;
-  font-size:9px;
-  font-weight:700;
-}
-@media(max-width:800px){
-  .certifications-grid{grid-template-columns:1fr}
-}
-</style>
-
 
 <style>
-/* V51 — certification images and credential details */
+/* V53 — Certifications section restored; image slots ready for future upload */
 .certifications-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -951,25 +894,20 @@ footer p+p{opacity:.65}
   border-radius:12px;
   padding:18px;
   box-shadow:0 8px 22px rgba(24,35,59,.05);
-  overflow:hidden;
 }
-.certification-image-wrap{
+.certification-image-placeholder{
   width:100%;
   aspect-ratio:16/10;
-  background:#f4f6f8;
-  border:1px solid #e4e8ed;
-  border-radius:9px;
-  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
   margin-bottom:14px;
-}
-.certification-image{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
+  border:1px dashed #cfd7e2;
+  border-radius:9px;
+  background:#f7f8fa;
+  color:#8a94a6;
+  font-size:11px;
+  font-weight:700;
 }
 .certification-badge{
   display:inline-block;
@@ -991,34 +929,12 @@ footer p+p{opacity:.65}
 .certification-details{
   display:grid;
   gap:4px;
-  margin:0 0 10px;
   color:#516074;
   font-size:10px;
   line-height:1.45;
 }
 .certification-details strong{
   color:#18233b;
-}
-.certification-card p{
-  margin:0;
-  color:#687286;
-  font-size:11px;
-  line-height:1.55;
-}
-.certification-skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-top:12px;
-}
-.certification-skills span{
-  padding:6px 8px;
-  border:1px solid #dfe4ea;
-  border-radius:7px;
-  color:#516074;
-  background:#f8f9fb;
-  font-size:9px;
-  font-weight:700;
 }
 .certification-verify-link{
   display:inline-block;
@@ -1028,13 +944,144 @@ footer p+p{opacity:.65}
   font-weight:800;
   text-decoration:none;
 }
-.certification-verify-link:hover{
-  text-decoration:underline;
-}
+.certification-verify-link:hover{text-decoration:underline}
 @media(max-width:800px){
-  .certifications-grid{
-    grid-template-columns:1fr;
-  }
+  .certifications-grid{grid-template-columns:1fr}
+}
+</style>
+
+
+<style>
+/* V54 — certificate images are opened only when clicked */
+.certification-image-wrap{
+  width:100%;
+  aspect-ratio:16/10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:14px;
+  border:1px dashed #cfd7e2;
+  border-radius:9px;
+  background:#f7f8fa;
+}
+.certification-click-target{
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.certification-click-target:hover,
+.certification-click-target:focus{
+  transform:translateY(-2px);
+  border-color:#4963ed;
+  box-shadow:0 8px 20px rgba(73,99,237,.12);
+  outline:none;
+}
+.certification-view-label{
+  color:#4963ed;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.certification-modal{
+  position:fixed;
+  inset:0;
+  z-index:10050;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(17,22,34,.86);
+}
+.certification-modal.open{
+  display:flex;
+}
+.certification-modal-box{
+  position:relative;
+  width:min(92vw,1100px);
+  max-height:92vh;
+  padding:18px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+  overflow:auto;
+}
+.certification-modal-title{
+  margin:0 40px 12px 2px;
+  color:#18233b;
+  font-size:18px;
+  font-weight:800;
+}
+.certification-modal-image-wrap{
+  width:100%;
+  min-height:240px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f5f7fa;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  overflow:hidden;
+}
+.certification-modal-image-wrap img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  max-height:76vh;
+  height:auto;
+  object-fit:contain;
+}
+.certification-modal-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#2f3440;
+  color:#fff;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+}
+@media(max-width:700px){
+  .certification-modal-box{width:96vw;padding:12px}
+  .certification-modal-image-wrap img{max-height:78vh}
+}
+</style>
+
+
+<style>
+/* V55 — certificates open only when the certification title is clicked */
+.certification-title-click{
+  cursor:pointer;
+  color:#18233b;
+  transition:color .18s ease;
+}
+.certification-title-click:hover,
+.certification-title-click:focus{
+  color:#4963ed;
+  outline:none;
+}
+</style>
+
+
+<style>
+/* V56 — certification titles open the actual GitHub-hosted PDF */
+.certification-pdf-wrap{
+  width:100%;
+  height:78vh;
+  min-height:420px;
+  background:#f3f5f8;
+  border:1px solid #dfe4ea;
+  border-radius:10px;
+  overflow:hidden;
+}
+.certification-pdf-wrap iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+  background:#fff;
 }
 </style>
 
@@ -1065,7 +1112,7 @@ footer p+p{opacity:.65}
     <div class="hero-main-content">
         
     <div class="hero-content">
-        <div class="eyebrow">CUSTOMER SUPPORT • BENEFITS ADMINISTRATION • ADMINISTRATIVE SUPPORT</div>
+        <div class="eyebrow">Customer Support • Data Entry • Document Verification • Confidential Data Handling<br>Administrative Support • Chat • Email • Phone Support</div>
         <h1>Hello,<br>My name is<br><span>Edward.</span></h1>
         <p class="hero-description">
             Customer support and administrative professional focused on accurate work,
@@ -1164,98 +1211,44 @@ footer p+p{opacity:.65}
 </section>
 
 
+
 <section class="section certifications-section" id="certifications">
   <div class="section-header">
     <div class="section-label">CERTIFICATIONS</div>
     <h2>Professional Certifications</h2>
-    <p>Selected training that supports my communication, customer service, administrative, and business support capabilities.</p>
+    <p>Selected certifications and training that support my communication, customer service, administrative, and business support capabilities.</p>
   </div>
 
-  
-<div class="certifications-grid">
+  <div class="certifications-grid">
+    <article class="certification-card">
+<div class="certification-badge">CERTIFICATION</div>
+      <h3 class="certification-title-click" role="button" tabindex="0" data-cert-pdf="Images/Certificate_of_Completion_Workplace%20Communication.pdf" data-cert-title="Workplace Communication">Workplace Communication</h3>
+      <div class="certification-details">
+        <div><strong>Provider:</strong> TESDA Technical Education and Skills Development Authority</div>
+        <div><strong>Issued:</strong> August 2026</div>
+        <div><strong>Certification ID:</strong> PYZ4MFPYHW</div>
+      </div>
+      <a class="certification-verify-link"
+         href="https://www.tesda.gov.ph/"
+         target="_blank"
+         rel="noopener noreferrer">Verify on TESDA →</a>
+    </article>
 
-  <article class="certification-card">
-    <div class="certification-image-wrap">
-      <img
-        src="Images/cert-workplace-communication.png"
-        alt="TESDA Workplace Communication Certificate"
-        class="certification-image"
-        loading="lazy">
-    </div>
-
-    <div class="certification-badge">CERTIFICATION</div>
-    <h3>Workplace Communication</h3>
-
-    <div class="certification-details">
-      <div><strong>Provider:</strong> TESDA Technical Education and Skills Development Authority</div>
-      <div><strong>Issued:</strong> August 2026</div>
-      <div><strong>Certification ID:</strong> PYZ4MFPYHW</div>
-    </div>
-
-    <p>
-      Training focused on clear, professional workplace communication, active listening,
-      written communication, and effective interaction with customers and colleagues.
-    </p>
-
-    <div class="certification-skills">
-      <span>Professional Communication</span>
-      <span>Active Listening</span>
-      <span>Written Communication</span>
-      <span>Customer Communication</span>
-    </div>
-
-    <a
-      class="certification-verify-link"
-      href="https://www.tesda.gov.ph/"
-      target="_blank"
-      rel="noopener noreferrer">
-      Verify on TESDA →
-    </a>
-  </article>
-
-  <article class="certification-card">
-    <div class="certification-image-wrap">
-      <img
-        src="Images/cert-msme.png"
-        alt="TESDA Establishing and Operating Micro-Small Medium Enterprises Certificate"
-        class="certification-image"
-        loading="lazy">
-    </div>
-
-    <div class="certification-badge">CERTIFICATION</div>
-    <h3>Establishing and Operating Micro-Small Medium Enterprises (MSMEs)</h3>
-
-    <div class="certification-details">
-      <div><strong>Provider:</strong> TESDA Technical Education and Skills Development Authority</div>
-      <div><strong>Issued:</strong> August 2026</div>
-      <div><strong>Certification ID:</strong> 4FFU9VZXRV</div>
-    </div>
-
-    <p>
-      Training covering the fundamentals of establishing and operating a micro, small,
-      or medium enterprise, including planning, business operations, organization,
-      and practical management.
-    </p>
-
-    <div class="certification-skills">
-      <span>Business Planning</span>
-      <span>Business Operations</span>
-      <span>Organization</span>
-      <span>Basic Business Management</span>
-    </div>
-
-    <a
-      class="certification-verify-link"
-      href="https://www.tesda.gov.ph/"
-      target="_blank"
-      rel="noopener noreferrer">
-      Verify on TESDA →
-    </a>
-  </article>
-
-</div>
+    <article class="certification-card">
+<div class="certification-badge">CERTIFICATION</div>
+      <h3 class="certification-title-click" role="button" tabindex="0" data-cert-pdf="Images/Certificate_of_Completion_Establish%20and%20Operating%20SME.pdf" data-cert-title="Establishing and Operating Micro-Small Medium Enterprises (MSMEs)">Establishing and Operating Micro-Small Medium Enterprises (MSMEs)</h3>
+      <div class="certification-details">
+        <div><strong>Provider:</strong> TESDA Technical Education and Skills Development Authority</div>
+        <div><strong>Issued:</strong> August 2026</div>
+        <div><strong>Certification ID:</strong> 4FFU9VZXRV</div>
+      </div>
+      <a class="certification-verify-link"
+         href="https://www.tesda.gov.ph/"
+         target="_blank"
+         rel="noopener noreferrer">Verify on TESDA →</a>
+    </article>
+  </div>
 </section>
-
 
 <section class="section" id="portfolio">
     <div class="section-header">
@@ -1333,7 +1326,25 @@ footer p+p{opacity:.65}
     </div>
 </section>
 
+
+
+<div class="certification-modal" id="certificationModal" aria-hidden="true">
+  <div class="certification-modal-box">
+    <button class="certification-modal-close" id="certificationModalClose" type="button" aria-label="Close certificate">×</button>
+    <div class="certification-modal-title" id="certificationModalTitle">Certificate</div>
+    <div class="certification-pdf-wrap">
+      <iframe
+        id="certificationPdfViewer"
+        title="Certificate PDF"
+        src=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</div>
+
 <div class="modal" id="portfolioModal">
+
     <div class="modal-box">
         <div class="modal-title" id="modalTitle">Portfolio Preview</div>
         <button class="modal-close" id="modalClose" type="button">×</button>
@@ -1484,6 +1495,9 @@ footer p+p{opacity:.65}
 
 <script>
 
+
+
+
 const IMG = {
   "02-about":["02-about.png","02-about.png.png","02-about.jpg","02-about.jpeg","02-about.webp"],
   "03-crm-dashboard":["03-crm-dashboard.png","03-crm-dashboard.png.png","03-crm-dashboard.jpg","03-crm-dashboard.jpeg","03-crm-dashboard.webp"],
@@ -1593,6 +1607,55 @@ const emailVideo=emailVideoCard?.querySelector("video source");
 if(emailVideo)emailVideo.src="Videos/Email_Support_Portfolio_GitHub_HD.mp4";
 const customerVideo=document.querySelector(".customer-support-native-player source");
 if(customerVideo)customerVideo.src="Videos/customer-phone-support.mp4";
+
+
+
+/* V54 — certification click-to-view modal */
+const certificationModal=document.getElementById('certificationModal');
+const certificationModalClose=document.getElementById('certificationModalClose');
+const certificationPdfViewer=document.getElementById('certificationPdfViewer');
+const certificationModalTitle=document.getElementById('certificationModalTitle');
+
+function openCertificationImage(pdfPath,title){
+  if(!certificationModal || !certificationPdfViewer) return;
+  const fullUrl='https://ed-to-assist.github.io/'+pdfPath;
+  certificationPdfViewer.src=fullUrl;
+  if(certificationModalTitle) certificationModalTitle.textContent=title || 'Certificate';
+  certificationModal.classList.add('open');
+  certificationModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closeCertificationImage(){
+  if(!certificationModal) return;
+  certificationModal.classList.remove('open');
+  certificationModal.setAttribute('aria-hidden','true');
+  if(certificationPdfViewer) certificationPdfViewer.removeAttribute('src');
+  document.body.style.overflow='';
+}
+
+
+document.querySelectorAll('.certification-title-click').forEach(title=>{
+  const activate=()=>{
+    openCertificationImage(title.dataset.certPdf,title.dataset.certTitle);
+  };
+  title.addEventListener('click',activate);
+  title.addEventListener('keydown',e=>{
+    if(e.key==='Enter' || e.key===' '){
+      e.preventDefault();
+      activate();
+    }
+  });
+});
+
+if(certificationModalClose) certificationModalClose.addEventListener('click',closeCertificationImage);
+if(certificationModal){
+  certificationModal.addEventListener('click',e=>{
+    if(e.target===certificationModal) closeCertificationImage();
+  });
+}
+
+
 
 </script>
 
