@@ -879,6 +879,165 @@ footer p+p{opacity:.65}
 #liveChatExplanation .support-explanation-title:first-child{margin-top:0}
 </style>
 
+
+<style>
+/* V50 — Certifications */
+.certifications-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.certification-card{
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 8px 22px rgba(24,35,59,.05);
+}
+.certification-badge{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:5px 8px;
+  border-radius:6px;
+  background:#eef1ff;
+  color:#4963ed;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.certification-card h3{
+  margin:0 0 8px;
+  color:#18233b;
+  font-size:17px;
+  line-height:1.35;
+}
+.certification-card p{
+  margin:0;
+  color:#687286;
+  font-size:11px;
+  line-height:1.55;
+}
+.certification-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:13px;
+}
+.certification-skills span{
+  padding:6px 8px;
+  border:1px solid #dfe4ea;
+  border-radius:7px;
+  color:#516074;
+  background:#f8f9fb;
+  font-size:9px;
+  font-weight:700;
+}
+@media(max-width:800px){
+  .certifications-grid{grid-template-columns:1fr}
+}
+</style>
+
+
+<style>
+/* V51 — certification images and credential details */
+.certifications-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.certification-card{
+  background:#fff;
+  border:1px solid #dfe4ea;
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 8px 22px rgba(24,35,59,.05);
+  overflow:hidden;
+}
+.certification-image-wrap{
+  width:100%;
+  aspect-ratio:16/10;
+  background:#f4f6f8;
+  border:1px solid #e4e8ed;
+  border-radius:9px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:14px;
+}
+.certification-image{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.certification-badge{
+  display:inline-block;
+  margin-bottom:9px;
+  padding:5px 8px;
+  border-radius:6px;
+  background:#eef1ff;
+  color:#4963ed;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.certification-card h3{
+  margin:0 0 10px;
+  color:#18233b;
+  font-size:17px;
+  line-height:1.35;
+}
+.certification-details{
+  display:grid;
+  gap:4px;
+  margin:0 0 10px;
+  color:#516074;
+  font-size:10px;
+  line-height:1.45;
+}
+.certification-details strong{
+  color:#18233b;
+}
+.certification-card p{
+  margin:0;
+  color:#687286;
+  font-size:11px;
+  line-height:1.55;
+}
+.certification-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:12px;
+}
+.certification-skills span{
+  padding:6px 8px;
+  border:1px solid #dfe4ea;
+  border-radius:7px;
+  color:#516074;
+  background:#f8f9fb;
+  font-size:9px;
+  font-weight:700;
+}
+.certification-verify-link{
+  display:inline-block;
+  margin-top:13px;
+  color:#4963ed;
+  font-size:11px;
+  font-weight:800;
+  text-decoration:none;
+}
+.certification-verify-link:hover{
+  text-decoration:underline;
+}
+@media(max-width:800px){
+  .certifications-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
 </style>
 </head>
 
@@ -894,6 +1053,7 @@ footer p+p{opacity:.65}
             <a href="#about">About</a>
             <a href="#background">Background</a>
             <a href="#portfolio">Portfolio</a>
+            <a href="#certifications">Certifications</a>
             <a href="#expertise">Expertise</a>
         </nav>
         <button class="theme-button" id="themeButton" type="button">☾</button>
@@ -1002,6 +1162,100 @@ footer p+p{opacity:.65}
         <div class="skill">Google Workspace</div>
 </div>
 </section>
+
+
+<section class="section certifications-section" id="certifications">
+  <div class="section-header">
+    <div class="section-label">CERTIFICATIONS</div>
+    <h2>Professional Certifications</h2>
+    <p>Selected training that supports my communication, customer service, administrative, and business support capabilities.</p>
+  </div>
+
+  
+<div class="certifications-grid">
+
+  <article class="certification-card">
+    <div class="certification-image-wrap">
+      <img
+        src="Images/cert-workplace-communication.png"
+        alt="TESDA Workplace Communication Certificate"
+        class="certification-image"
+        loading="lazy">
+    </div>
+
+    <div class="certification-badge">CERTIFICATION</div>
+    <h3>Workplace Communication</h3>
+
+    <div class="certification-details">
+      <div><strong>Provider:</strong> TESDA Technical Education and Skills Development Authority</div>
+      <div><strong>Issued:</strong> August 2026</div>
+      <div><strong>Certification ID:</strong> PYZ4MFPYHW</div>
+    </div>
+
+    <p>
+      Training focused on clear, professional workplace communication, active listening,
+      written communication, and effective interaction with customers and colleagues.
+    </p>
+
+    <div class="certification-skills">
+      <span>Professional Communication</span>
+      <span>Active Listening</span>
+      <span>Written Communication</span>
+      <span>Customer Communication</span>
+    </div>
+
+    <a
+      class="certification-verify-link"
+      href="https://www.tesda.gov.ph/"
+      target="_blank"
+      rel="noopener noreferrer">
+      Verify on TESDA →
+    </a>
+  </article>
+
+  <article class="certification-card">
+    <div class="certification-image-wrap">
+      <img
+        src="Images/cert-msme.png"
+        alt="TESDA Establishing and Operating Micro-Small Medium Enterprises Certificate"
+        class="certification-image"
+        loading="lazy">
+    </div>
+
+    <div class="certification-badge">CERTIFICATION</div>
+    <h3>Establishing and Operating Micro-Small Medium Enterprises (MSMEs)</h3>
+
+    <div class="certification-details">
+      <div><strong>Provider:</strong> TESDA Technical Education and Skills Development Authority</div>
+      <div><strong>Issued:</strong> August 2026</div>
+      <div><strong>Certification ID:</strong> 4FFU9VZXRV</div>
+    </div>
+
+    <p>
+      Training covering the fundamentals of establishing and operating a micro, small,
+      or medium enterprise, including planning, business operations, organization,
+      and practical management.
+    </p>
+
+    <div class="certification-skills">
+      <span>Business Planning</span>
+      <span>Business Operations</span>
+      <span>Organization</span>
+      <span>Basic Business Management</span>
+    </div>
+
+    <a
+      class="certification-verify-link"
+      href="https://www.tesda.gov.ph/"
+      target="_blank"
+      rel="noopener noreferrer">
+      Verify on TESDA →
+    </a>
+  </article>
+
+</div>
+</section>
+
 
 <section class="section" id="portfolio">
     <div class="section-header">
